@@ -69,10 +69,10 @@ if (!isset($_SESSION["usuario"])) {
                     <th>ID</th>
                     <th>Nombre</th>
                     <th>Apellido Paterno</th>
-                    <th>Apellido Materno</th>
                     <th>Telefono</th>
                     <th>Correo</th>
                     <th>Puntos Lealtad</th>
+                    <th>Mensaje</th>
                     <!-- <th>Mensaje</th> 
                     <th>Dominio</th>
                     <th>Giro Dominio</th>
