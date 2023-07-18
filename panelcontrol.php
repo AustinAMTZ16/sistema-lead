@@ -18,7 +18,16 @@ if ($conn->connect_error) {
 }
 $usuario = $_SESSION["usuario"];
 // Obtener todos los registros de la base de datos
-$sql = "SELECT * FROM tb_prospecto tp
+$sql = "SELECT 
+        tp.idProspecto,
+		tp.nombre,	
+		tp.telefono,	
+		tp.correo,
+		tp.fechaNacimiento,
+		tp.lugarNacimiento,
+		tc.puntosRecompensa,
+		tp.estadoSistema 
+        FROM tb_prospecto tp
         LEFT JOIN tb_recompensa tc
         on tp.idProspecto = tc.idProspecto
         where dominioOrigen = '$usuario' 
