@@ -3,25 +3,24 @@
     session_start();
     require_once 'conexion.php';
 
+    // Verificar si se envió el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
         $id = $_POST["idProspecto"];
         $nombre = $_POST["nombre"];
         $apellidoPaterno = $_POST["apellidoPaterno"];
         $apellidoMaterno = $_POST['apellidoMaterno'];
         $telefono = $_POST['telefono'];
         $correo = $_POST['correo'];
-        $asunto = $_POST['asunto'];
         $mensaje = $_POST['mensaje'];
-        $conversacion = $_POST['conversacion'];
         $fechaNacimiento = $_POST['fechaNacimiento'];
         $lugarNacimiento = $_POST['lugarNacimiento'];
-
-
-
+        $origenProspecto = $_POST['origenProspecto'];
 
         // Consulta SQL para actualizar el registro
         $sql = "UPDATE tb_prospecto SET nombre='$nombre', apellidoPaterno='$apellidoPaterno',apellidoMaterno='$apellidoMaterno',telefono='$telefono',
-        correo='$correo', asunto='$asunto' , mensaje='$mensaje' , conversacion='$conversacion', fechaNacimiento='$fechaNacimiento', lugarNacimiento='$lugarNacimiento'
+        mensaje='$mensaje' , fechaNacimiento='$fechaNacimiento', lugarNacimiento='$lugarNacimiento',
+        origenProspecto='$origenProspecto'
         WHERE idProspecto=$id";
 
         if ($conn->query($sql) === TRUE) {
@@ -70,17 +69,6 @@
 
                             <form action="editar.php" method="POST">
                                 <input type="hidden" name="idProspecto" value="<?php echo $usuario['idProspecto']; ?>">
-                                <!-- Nombre: <input type="text" name="nombre" value="<?php echo $usuario['nombre']; ?>"><br><br>
-                                Apellido Paterno: <input type="text" name="apellidoPaterno" value="<?php echo $usuario['apellidoPaterno']; ?>"><br><br>
-                                Apellido Materno: <input type="text" name="apellidoMaterno" value="<?php echo $usuario['apellidoMaterno']; ?>"><br><br>
-                                Telefono: <input type="text" name="telefono" value="<?php echo $usuario['telefono']; ?>"><br><br>
-                                Correo: <input type="text" name="correo" value="<?php echo $usuario['correo']; ?>"><br><br>
-                                Asunto: <input type="text" name="asunto" value="<?php echo $usuario['asunto']; ?>"><br><br>
-                                Mensaje: <input type="text" name="mensaje" value="<?php echo $usuario['mensaje']; ?>"><br><br>
-                                Conversacion: <input type="text" name="conversacion" value="<?php echo $usuario['conversacion']; ?>"><br><br>
-                                Fecha Nacimiento: <input type="text" name="fechaNacimiento" value="<?php echo $usuario['fechaNacimiento']; ?>"><br><br>
-                                Lugar Nacimiento: <input type="text" name="lugarNacimiento" value="<?php echo $usuario['lugarNacimiento']; ?>"><br><br>
-                                <input type="submit" value="Actualizar"> -->
 
                                 <div class="mb-3">
                                     <input type="text" class="form-control" name="nombre" value="<?php echo $usuario['nombre']; ?>">
@@ -97,15 +85,11 @@
                                 <div class="mb-3">
                                     <input type="email" class="form-control" name="correo" value="<?php echo $usuario['correo']; ?>" placeholder="Ingrese Correo " >
                                 </div>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" name="asunto" value="<?php echo $usuario['asunto']; ?>" placeholder="Ingrese Asunto ">
-                                </div>
+                                
                                 <div class="mb-3">
                                     <input type="text" class="form-control" name="mensaje" value="<?php echo $usuario['mensaje']; ?>" placeholder="Ingrese Mensaje ">
                                 </div>
-                                <div class="mb-3">
-                                    <input type="text" class="form-control" name="conversacion" value="<?php echo $usuario['conversacion']; ?>" placeholder="Ingrese Conversacion ">
-                                </div>
+                               
                                 <div class="mb-3">
                                     <input type="text" class="form-control" name="fechaNacimiento" value="<?php echo $usuario['fechaNacimiento']; ?>" placeholder="Ingrese Fecha Nacimiento ">
                                 </div>
