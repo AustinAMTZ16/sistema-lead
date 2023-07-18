@@ -1,79 +1,43 @@
 <?php
 require_once 'conexion.php';
-
+session_start();
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // $id = $_POST["idProspecto"];
-    $id = $_POST['idProspecto'];
+    //Campos que modificar o agregar sea el caso.
+    $idProspecto = $_POST['idProspecto'];
     $puntosRecompensa = $_POST["puntosRecompensa"];
 
-    if (isset($id)) {
-         // Consulta SQL para insertar un nuevo registro
-    $sql = "INSERT INTO tb_recompensa (puntosRecompensa,idProspecto) 
-    VALUES ('$puntosRecompensa','$id')";
+    //Consulta para validar el registro existente.
+    $sql = "SELECT * FROM tb_recompensa WHERE idProspecto = '$idProspecto'";
+    $resultado = $conn->query($sql);
 
-    if ($conn->query($sql) === TRUE) {
-        header("Location: panelcontrol.php"); // Redireccionar a la página principal después de crear el registro
-        exit();
+    if ($resultado->num_rows > 0) {
+        // El registro ya existe, realizar una operación de actualización
+        $fila = $resultado->fetch_assoc();
+        $idProspectoR = $fila["idProspecto"];
+
+        $sqlActualizar = "UPDATE tb_recompensa SET puntosRecompensa = '$puntosRecompensa' WHERE idProspecto = $idProspectoR";
+        if ($conn->query($sqlActualizar) === TRUE) {
+            echo "Registro actualizado correctamente.";
+        } else {
+            echo "Error al actualizar el registro: " . $conn->error;
+        }
     } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-        // echo "VALORES IGUALES";
-
-        // Consulta SQL para insertar un nuevo registro
-
-    } else if(isset($id) and $id == isset($id)) {
-        // echo "VALORES DESIAGUALES";
-    $sql = "UPDATE tb_recompensa SET puntosRecompensa = '$puntosRecompensa' WHERE idProspecto = '$id'";
-    header("Location: panelcontrol.php"); 
+        // El registro no existe, realizar una operación de inserción
+        $sqlInsertar = "INSERT INTO tb_recompensa (idProspecto, puntosRecompensa) VALUES ('$idProspecto', '$puntosRecompensa')";
+        if ($conn->query($sqlInsertar) === TRUE) {
+            echo "Registro insertado correctamente.";
+        } else {
+            echo "Error al insertar el registro: " . $conn->error;
+        }
     }
 
 
-    // Consulta SQL para insertar un nuevo registro
-
-
-    // $sql = "SELECT * FROM tb_recompensa";
-    // $result = $conn->query($sql);
-
-    // if ($result->num_rows > 0) {
-    //     $idRecompensaArray = array();
-
-    //     while ($row = $result->fetch_assoc()) {
-    //         $idRecompensaArray[] = $row["idRecompensa"];
-    //     }
-
-    //     // Imprimir los valores de idRecompensa
-    //     foreach ($idRecompensaArray as $idRecompensa) {
-    //         echo $idRecompensa . "<br>";
-    //          $sql = "UPDATE tb_recompensa SET puntosRecompensa = '$puntosRecompensa',idProspecto = '$id'  WHERE idRecompensa = '$idRecompensa'";
-    //     }
-    //     if ($conn->query($sql) === TRUE) {
-    //         header("Location: panelcontrol.php"); // Redireccionar a la página principal después de crear el registro
-    //         exit();
-    //     } else {
-    //         echo "Error: " . $sql . "<br>" . $conn->error;
-    //     }
-    // }
+    if (!isset($_SESSION["usuario"])) {
+        // Redireccionar al usuario a la página de inicio de sesión
+        header("Location: index.php");
+        exit();
+    }
 }
-
-//consulta
-// $sql = "SELECT * FROM tb_recompensa ";
-// $result = $conn->query($sql);
-
-// if ($result->num_rows > 0) {
-//     $idRecompensaArray = array();
-
-//     while ($row = $result->fetch_assoc()) {
-//         $idRecompensaArray[] = $row["idRecompensa"];
-//     }
-
-//     // Imprimir los valores de idRecompensa
-//     foreach ($idRecompensaArray as $idRecompensa) {
-//         echo $idRecompensa . "<br>";
-//     }
-// } else {
-//     echo "No se encontraron resultados.";
-// }
-
 
 $conn->close();
 ?>
