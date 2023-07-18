@@ -57,7 +57,9 @@ if (!isset($_SESSION["usuario"])) {
 
 </head>
 <body>
-    <h5>Bienvenido, <?php echo $_SESSION["usuario"]; ?></h5>
+    <h5>Bienvenido,<?php 
+    echo $_SESSION["usuario"]; 
+    ?></h5>
     <button type="button" class="btn btn-outline-success"><a href="logout.php">Salir</a></button>
     <!-- <a href="logout.php">Salir</a><br><br><br> -->
     <div class="container">

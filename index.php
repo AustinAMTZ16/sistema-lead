@@ -31,16 +31,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Obtener los valores ingresados en el formulario
     $usuario = $_POST["usuario"];
     $contraseña = $_POST["contraseña"];
+    
 
     // Consultar la base de datos para verificar el usuario
     //$sql = "SELECT * FROM usuarios WHERE nombre_usuario = '$usuario' AND contraseña = '$contraseña'";
-    $sql = "SELECT idLogin,fecha_creacion FROM tb_login WHERE dominioB2B = '$usuario' and password = '$contraseña'";
+    $sql = "SELECT * FROM tb_login WHERE dominioB2B = '$usuario' and password = '$contraseña'";
 
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
         // Usuario válido, redireccionar a la página de inicio
-        $_SESSION["usuario"] = $usuario;
+        
+        $row = mysqli_fetch_assoc($result);
+        $_SESSION["isUser"] = $row['idLogin'];
+        $_SESSION['usuario'] = $row['dominioB2B'];
+        $_SESSION['giroDominio'] = $row['giroDominio'];
+
+
         header("Location: panelcontrol.php");
         exit();
     } else {

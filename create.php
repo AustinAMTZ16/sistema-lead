@@ -1,6 +1,10 @@
 <?php
 require_once 'conexion.php';
+
+
 session_start();
+
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     //tb_Prospectos
     $nombre = $_POST["nombre"];
@@ -10,14 +14,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $correo = $_POST['correo'];
     $asunto = 'Sistema DCK-LEAD';
     $mensaje = 'Version 2.0';
-    $dominioOrigen = 'Obtener_Dominio'; //obtener el dominio del usuario en sesion 
-    $giroDominio = 'Se debe obtener del usrio en sesion'; //obtener el giro del usuario en sesion 
     $categoriaProspecto = 'Prospecto';
     //$fechaCreacion = 'Fecha del día del registro';
     $estadoSistema = 'Activo';
     $fechaNacimiento = $_POST['fechaNacimiento'];
     $lugarNacimiento = $_POST['lugarNacimiento'];
-
+    $origenProspecto = $_POST['origenProspecto'];
+    $dominioOrigen = $_SESSION["usuario"]; //obtener el dominio del usuario en sesion 
+$giroDominio = $_SESSION["giroDominio"]; //obtener el giro del usuario en sesion 
     //tb_Recompensa
     $puntosRecompensa = '1';
     //$fechaModificacion = '';
@@ -28,9 +32,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // VALUES ('$nombre', '$apellidoPaterno',' $apellidoMaterno',' $telefono','$correo','$asunto','$mensaje','$conversacion','$fechaNacimiento','$lugarNacimiento')";
 
     $sqlProspecto = "INSERT INTO tb_prospecto (
-            nombre, apellidoPaterno, apellidoMaterno, telefono, correo, asunto, mensaje, dominioOrigen, giroDominio, categoriaProspecto, estadoSistema, fechaNacimiento, lugarNacimiento
+            nombre, apellidoPaterno, apellidoMaterno, telefono, correo, asunto, mensaje, dominioOrigen, giroDominio, categoriaProspecto, estadoSistema, fechaNacimiento, lugarNacimiento, origenProspecto
         )VALUES (
-            '$nombre', '$apellidoPaterno', '$apellidoMaterno', '$telefono', '$correo', '$asunto', '$mensaje', '$dominioOrigen', '$giroDominio', '$categoriaProspecto', '$fechaCreacion', '$estadoSistema', '$lugarNacimiento')";
+            '$nombre', '$apellidoPaterno', '$apellidoMaterno', '$telefono', '$correo', '$asunto', '$mensaje', '$dominioOrigen', '$giroDominio', '$categoriaProspecto', '$estadoSistema',  '$fechaNacimiento','$lugarNacimiento', '$origenProspecto')";
 
     if ($conn->query($sqlProspecto) === TRUE ){
         //header("Seguardo prospecto 'idProspecto = 509'"); // Redireccionar a la página principal después de crear el registro
@@ -110,7 +114,9 @@ if (!isset($_SESSION["usuario"])) {
                                 <div class="mb-3">
                                     <input type="text" class="form-control" name="lugarNacimiento" placeholder="Ingrese Lugar Nacimiento ">
                                 </div>
-
+                                <div class="mb-3">
+                                    <input type="text" class="form-control" name="origenProspecto" placeholder="Red Social, Formulario WEB o Usuario Presente">
+                                </div>
                                 <!-- Nombre: <input type="text" name="nombre"><br><br>
                                 Apellido Paterno: <input type="text" name="apellidoPaterno"><br><br>
                                 Apellido Materno: <input type="text" name="apellidoMaterno"><br><br>

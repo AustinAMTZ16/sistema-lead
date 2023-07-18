@@ -1,4 +1,5 @@
 <?php
+session_start();
 // Establece los datos de conexión a la base de datos
 $host = '45.89.204.4';
 $user = 'u115254492_rootdck';
@@ -20,20 +21,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $contrasena = $_POST['contrasena'];
 
     // Consulta para verificar las credenciales
-    $query = "SELECT idLogin,fecha_creacion FROM tb_login WHERE dominioB2B = '$email' and password = '$contrasena'";
+    $query = "SELECT * FROM tb_login WHERE dominioB2B = '$email' and password = '$contrasena'";
     $result = mysqli_query($conn, $query);
+
+    $_SESSION['dominioB2B'] = $row['dominioB2B'];
+    $_SESSION['giroDominio'] = $row['giroDominio'];
 
     if ($result && mysqli_num_rows($result) > 0) {
         // Credenciales válidas, inicio de sesión exitoso
         $row = mysqli_fetch_assoc($result);
-        $usuarioId = $row['idLogin'];
-        $nombreUsuario = $row['fecha_creacion'];
-
         // Inicia la sesión y guarda los datos del usuario
-        session_start();
-        $_SESSION['usuarioId'] = $usuarioId;
-        $_SESSION['nombreUsuario'] = $nombreUsuario;
-
+        
         // Redirecciona al área protegida o a otra página de tu elección
         header('Location: inicio.php');
         exit();
