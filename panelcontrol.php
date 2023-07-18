@@ -23,6 +23,7 @@ $sql = "SELECT
 		tp.nombre,	
 		tp.telefono,	
 		tp.correo,
+        tp.mensaje,
 		tp.fechaNacimiento,
 		tp.lugarNacimiento,
 		tc.puntosRecompensa,
@@ -79,8 +80,6 @@ if (!isset($_SESSION["usuario"])) {
                     <th>Fech. Creacion</th>
                     <th>Estado. Sistema</th>
                     <th>Conversacion</th>-->
-                    <th>Fech. Nacimiento</th>
-                    <th>Lugar. Nacimiento</th>
                 </tr>
             </thead>
             <tbody>
@@ -89,19 +88,19 @@ if (!isset($_SESSION["usuario"])) {
                         <td><?php echo $row['idProspecto']; ?></td>
                         <td><?php echo $row['nombre']; ?></td>
                         <td><?php echo $row['apellidoPaterno']; ?></td>
-                        <td><?php echo $row['apellidoMaterno']; ?></td>
                         <td><?php echo $row['telefono']; ?></td>
                         <td><?php echo $row['correo']; ?></td>
                         <td><?php echo $row['puntosRecompensa']; ?></td>
+                        <td><?php echo $row['mensaje']; ?></td>
                         <!-- <td><?php //echo $row['mensaje']; ?></td>
                         <td><?php //echo $row['dominioOrigen']; ?></td>
                         <td><?php //echo $row['giroDominio']; ?></td>
                         <td><?php //echo $row['categoriaProspecto']; ?></td>
                         <td><?php //echo $row['fechaCreacion']; ?></td>
                         <td><?php //echo $row['estadoSistema']; ?></td>
-                        <td><?php //echo $row['conversacion']; ?></td> -->
+                        <td><?php //echo $row['conversacion']; ?></td> 
                         <td><?php //echo $row['fechaNacimiento']; ?></td>
-                        <td><?php //echo $row['lugarNacimiento']; ?></td>
+                        <td><?php //echo $row['lugarNacimiento']; ?></td>-->
 
                         <td>
                             <a class="btn btn-primary btn-sm" href="editar.php?idProspecto=<?php echo $row['idProspecto']; ?>">Modificar Cliente</a>
