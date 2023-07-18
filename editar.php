@@ -1,50 +1,58 @@
 <?php
-require_once 'conexion.php';
+    // Iniciar la sesión
+    session_start();
+    require_once 'conexion.php';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $id = $_POST["idProspecto"];
-    $nombre = $_POST["nombre"];
-    $apellidoPaterno = $_POST["apellidoPaterno"];
-    $apellidoMaterno = $_POST['apellidoMaterno'];
-    $telefono = $_POST['telefono'];
-    $correo = $_POST['correo'];
-    $asunto = $_POST['asunto'];
-    $mensaje = $_POST['mensaje'];
-    $conversacion = $_POST['conversacion'];
-    $fechaNacimiento = $_POST['fechaNacimiento'];
-    $lugarNacimiento = $_POST['lugarNacimiento'];
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $id = $_POST["idProspecto"];
+        $nombre = $_POST["nombre"];
+        $apellidoPaterno = $_POST["apellidoPaterno"];
+        $apellidoMaterno = $_POST['apellidoMaterno'];
+        $telefono = $_POST['telefono'];
+        $correo = $_POST['correo'];
+        $asunto = $_POST['asunto'];
+        $mensaje = $_POST['mensaje'];
+        $conversacion = $_POST['conversacion'];
+        $fechaNacimiento = $_POST['fechaNacimiento'];
+        $lugarNacimiento = $_POST['lugarNacimiento'];
 
 
 
 
-    // Consulta SQL para actualizar el registro
-    $sql = "UPDATE tb_prospecto SET nombre='$nombre', apellidoPaterno='$apellidoPaterno',apellidoMaterno='$apellidoMaterno',telefono='$telefono',
-    correo='$correo', asunto='$asunto' , mensaje='$mensaje' , conversacion='$conversacion', fechaNacimiento='$fechaNacimiento', lugarNacimiento='$lugarNacimiento'
-    WHERE idProspecto=$id";
+        // Consulta SQL para actualizar el registro
+        $sql = "UPDATE tb_prospecto SET nombre='$nombre', apellidoPaterno='$apellidoPaterno',apellidoMaterno='$apellidoMaterno',telefono='$telefono',
+        correo='$correo', asunto='$asunto' , mensaje='$mensaje' , conversacion='$conversacion', fechaNacimiento='$fechaNacimiento', lugarNacimiento='$lugarNacimiento'
+        WHERE idProspecto=$id";
 
-    if ($conn->query($sql) === TRUE) {
-        header("Location: panelcontrol.php"); // Redireccionar a la página principal después de actualizar el registro
-        exit();
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        if ($conn->query($sql) === TRUE) {
+            header("Location: panelcontrol.php"); // Redireccionar a la página principal después de actualizar el registro
+            exit();
+        } else {
+            echo "Error: " . $sql . "<br>" . $conn->error;
+        }
     }
-}
 
-// Obtener el ID del registro a editar
-$id = $_GET["idProspecto"];
+    // Obtener el ID del registro a editar
+    $id = $_GET["idProspecto"];
 
-// Consulta SQL para obtener el registro específico
-$sql = "SELECT * FROM tb_prospecto WHERE idProspecto = $id";
-$result = $conn->query($sql);
+    // Consulta SQL para obtener el registro específico
+    $sql = "SELECT * FROM tb_prospecto WHERE idProspecto = $id";
+    $result = $conn->query($sql);
 
-$usuario = $result->fetch_assoc();
+    $usuario = $result->fetch_assoc();
 
-$conn->close();
+    // Cerrar la conexión
+    $conn->close();
+    // Verificar si el usuario ha iniciado sesión
+    if (!isset($_SESSION["usuario"])) {
+        // Redireccionar al usuario a la página de inicio de sesión
+        header("Location: index.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Edit</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -115,5 +123,4 @@ $conn->close();
         </div>
     </div>
 </body>
-
 </html>

@@ -1,52 +1,36 @@
 <?php
-session_start();
+    session_start();
+    // Iniciar la sesión
+    require_once 'conexion.php';
+    
+    $usuario = $_SESSION["usuario"];
+    // Obtener todos los registros de la base de datos
+    $sql = "SELECT 
+            tp.idProspecto,
+            tp.nombre,	
+            tp.telefono,	
+            tp.correo,
+            tp.mensaje,
+            tp.fechaNacimiento,
+            tp.lugarNacimiento,
+            tc.puntosRecompensa,
+            tp.estadoSistema 
+            FROM tb_prospecto tp
+            LEFT JOIN tb_recompensa tc
+            on tp.idProspecto = tc.idProspecto
+            where dominioOrigen = '$usuario' 
+            and estadoSistema = 'Activo'"; //'Falso'
+    $result = $conn->query($sql);
 
-$host = '45.89.204.4';
-$user = 'u115254492_rootdck';
-$password = '1~wR>Qs3FC';
-$database = 'u115254492_apidck';
-
-
-// Conecta a la base de datos
-
-// Crear la conexión
-$conn = new mysqli($host, $user, $password, $database);
-
-// Verificar la conexión
-if ($conn->connect_error) {
-    die("Conexión fallida: " . $conn->connect_error);
-}
-$usuario = $_SESSION["usuario"];
-// Obtener todos los registros de la base de datos
-$sql = "SELECT 
-        tp.idProspecto,
-		tp.nombre,	
-		tp.telefono,	
-		tp.correo,
-        tp.mensaje,
-		tp.fechaNacimiento,
-		tp.lugarNacimiento,
-		tc.puntosRecompensa,
-		tp.estadoSistema 
-        FROM tb_prospecto tp
-        LEFT JOIN tb_recompensa tc
-        on tp.idProspecto = tc.idProspecto
-        where dominioOrigen = '$usuario' 
-        and estadoSistema = 'Activo'"; //'Falso'
-$result = $conn->query($sql);
-
-// Cerrar la conexión
-$conn->close();
-
-// session_start();
-
-//validacion doble comprueba por url
-// Verificar si el usuario ha iniciado sesión
-if (!isset($_SESSION["usuario"])) {
-    // Redireccionar al usuario a la página de inicio de sesión
-    header("Location: index.php");
-    exit();
-}
+    // Cerrar la conexión
+    $conn->close();
+    //validacion doble comprueba por url
+    // Verificar si el usuario ha iniciado sesión
+    if (!isset($_SESSION["usuario"])) {
+        // Redireccionar al usuario a la página de inicio de sesión
+        header("Location: index.php");
+        exit();
+    }
 ?>
 
 <!DOCTYPE html>
@@ -75,13 +59,6 @@ if (!isset($_SESSION["usuario"])) {
                     <th>Correo</th>
                     <th>Puntos Lealtad</th>
                     <th>Mensaje</th>
-                    <!-- <th>Mensaje</th> 
-                    <th>Dominio</th>
-                    <th>Giro Dominio</th>
-                    <th>Categoria Propecto</th>
-                    <th>Fech. Creacion</th>
-                    <th>Estado. Sistema</th>
-                    <th>Conversacion</th>-->
                 </tr>
             </thead>
             <tbody>
@@ -94,15 +71,6 @@ if (!isset($_SESSION["usuario"])) {
                         <td><?php echo $row['correo']; ?></td>
                         <td><?php echo $row['puntosRecompensa']; ?></td>
                         <td><?php echo $row['mensaje']; ?></td>
-                        <!-- <td><?php //echo $row['mensaje']; ?></td>
-                        <td><?php //echo $row['dominioOrigen']; ?></td>
-                        <td><?php //echo $row['giroDominio']; ?></td>
-                        <td><?php //echo $row['categoriaProspecto']; ?></td>
-                        <td><?php //echo $row['fechaCreacion']; ?></td>
-                        <td><?php //echo $row['estadoSistema']; ?></td>
-                        <td><?php //echo $row['conversacion']; ?></td> 
-                        <td><?php //echo $row['fechaNacimiento']; ?></td>
-                        <td><?php //echo $row['lugarNacimiento']; ?></td>-->
 
                         <td>
                             <a class="btn btn-primary btn-sm" href="editar.php?idProspecto=<?php echo $row['idProspecto']; ?>">Modificar Cliente</a>

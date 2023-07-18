@@ -1,62 +1,61 @@
 <?php
-require_once 'conexion.php';
-session_start();
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //Campos que modificar o agregar sea el caso.
-    $idProspecto = $_POST['idProspecto'];
-    $puntosRecompensa = $_POST["puntosRecompensa"];
+    // Iniciar la sesión
+    session_start();
+    require_once 'conexion.php';
 
-    //Consulta para validar el registro existente.
-    $sql = "SELECT * FROM tb_recompensa WHERE idProspecto = '$idProspecto'";
-    $resultado = $conn->query($sql);
+    // Verificar si se envió el formulario
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        //Campos que modificar o agregar sea el caso.
+        $idProspecto = $_POST['idProspecto'];
+        $puntosRecompensa = $_POST["puntosRecompensa"];
 
-    if ($resultado->num_rows > 0) {
-        // El registro ya existe, realizar una operación de actualización
-        $fila = $resultado->fetch_assoc();
-        $idProspectoR = $fila["idProspecto"];
+        //Consulta para validar el registro existente.
+        $sql = "SELECT * FROM tb_recompensa WHERE idProspecto = '$idProspecto'";
+        $resultado = $conn->query($sql);
 
-        $sqlActualizar = "UPDATE tb_recompensa SET puntosRecompensa = '$puntosRecompensa' WHERE idProspecto = $idProspectoR";
-        if ($conn->query($sqlActualizar) === TRUE) {
-            echo "Registro actualizado correctamente.";
-            header("Location: panelcontrol.php");
+        if ($resultado->num_rows > 0) {
+            // El registro ya existe, realizar una operación de actualización
+            $fila = $resultado->fetch_assoc();
+            $idProspectoR = $fila["idProspecto"];
+
+            $sqlActualizar = "UPDATE tb_recompensa SET puntosRecompensa = '$puntosRecompensa' WHERE idProspecto = $idProspectoR";
+            if ($conn->query($sqlActualizar) === TRUE) {
+                echo "Registro actualizado correctamente.";
+                header("Location: panelcontrol.php");
+            } else {
+                echo "Error al actualizar el registro: " . $conn->error;
+                header("Location: panelcontrol.php");
+            }
         } else {
-            echo "Error al actualizar el registro: " . $conn->error;
-            header("Location: panelcontrol.php");
-        }
-    } else {
-        // El registro no existe, realizar una operación de inserción
-        $sqlInsertar = "INSERT INTO tb_recompensa (idProspecto, puntosRecompensa) VALUES ('$idProspecto', '$puntosRecompensa')";
-        if ($conn->query($sqlInsertar) === TRUE) {
-            echo "Registro insertado correctamente.";
-            header("Location: panelcontrol.php");
-        } else {
-            echo "Error al insertar el registro: " . $conn->error;
-            header("Location: panelcontrol.php");
+            // El registro no existe, realizar una operación de inserción
+            $sqlInsertar = "INSERT INTO tb_recompensa (idProspecto, puntosRecompensa) VALUES ('$idProspecto', '$puntosRecompensa')";
+            if ($conn->query($sqlInsertar) === TRUE) {
+                echo "Registro insertado correctamente.";
+                header("Location: panelcontrol.php");
+            } else {
+                echo "Error al insertar el registro: " . $conn->error;
+                header("Location: panelcontrol.php");
+            }
         }
     }
-
-
+    
+    // Cerrar la conexión
+    $conn->close();
+    // Verificar si el usuario ha iniciado sesión
     if (!isset($_SESSION["usuario"])) {
         // Redireccionar al usuario a la página de inicio de sesión
         header("Location: index.php");
         exit();
     }
-}
-
-$conn->close();
 ?>
-
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>Inicio</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <!-- Aquí empieza el formulario HTML -->
-
 <body>
     <div class="vh-100 d-flex justify-content-center align-items-center">
         <div class="container">
@@ -78,8 +77,6 @@ $conn->close();
                                     <button class="btn btn-outline-dark" type="submit">Crear</button>
                                 </div>
                             </form>
-
-
                         </div>
                     </div>
                 </div>
@@ -87,5 +84,4 @@ $conn->close();
         </div>
     </div>
 </body>
-
 </html>
