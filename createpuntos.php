@@ -18,16 +18,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $sqlActualizar = "UPDATE tb_recompensa SET puntosRecompensa = '$puntosRecompensa' WHERE idProspecto = $idProspectoR";
         if ($conn->query($sqlActualizar) === TRUE) {
             echo "Registro actualizado correctamente.";
+            header("Location: panelcontrol.php");
         } else {
             echo "Error al actualizar el registro: " . $conn->error;
+            header("Location: panelcontrol.php");
         }
     } else {
         // El registro no existe, realizar una operación de inserción
         $sqlInsertar = "INSERT INTO tb_recompensa (idProspecto, puntosRecompensa) VALUES ('$idProspecto', '$puntosRecompensa')";
         if ($conn->query($sqlInsertar) === TRUE) {
             echo "Registro insertado correctamente.";
+            header("Location: panelcontrol.php");
         } else {
             echo "Error al insertar el registro: " . $conn->error;
+            header("Location: panelcontrol.php");
         }
     }
 
