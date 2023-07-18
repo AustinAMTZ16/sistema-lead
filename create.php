@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $telefono = $_POST['telefono'];
     $correo = $_POST['correo'];
     $asunto = 'Sistema DCK-LEAD';
-    $mensaje = 'Version 2.0';
+    $mensaje = '';
     $categoriaProspecto = 'Prospecto';
     //$fechaCreacion = 'Fecha del día del registro';
     $estadoSistema = 'Activo';
