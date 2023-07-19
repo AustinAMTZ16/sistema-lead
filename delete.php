@@ -2,6 +2,7 @@
     // Iniciar la sesión
     session_start();
     require_once 'conexion.php';
+    
     // Obtener el ID del registro a editar
     $id = $_GET["idProspecto"];
 

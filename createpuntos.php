@@ -3,14 +3,15 @@
     session_start();
     require_once 'conexion.php';
 
+
     // Verificar si se envió el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         //Campos que modificar o agregar sea el caso.
         $idProspecto = $_POST['idProspecto'];
-        $puntosRecompensa = $_POST["puntosRecompensa"];
+        $puntosRecompensa = $_POST["puntosRecompensaF"];
 
         //Consulta para validar el registro existente.
-        $sql = "SELECT * FROM tb_recompensa WHERE idProspecto = '$idProspecto'";
+        $sql = "SELECT idProspecto FROM tb_recompensa WHERE idProspecto = '$idProspecto'";
         $resultado = $conn->query($sql);
 
         if ($resultado->num_rows > 0) {
@@ -20,25 +21,37 @@
 
             $sqlActualizar = "UPDATE tb_recompensa SET puntosRecompensa = '$puntosRecompensa' WHERE idProspecto = $idProspectoR";
             if ($conn->query($sqlActualizar) === TRUE) {
-                echo "Registro actualizado correctamente.";
+                //echo "Registro actualizado correctamente1.";
                 header("Location: panelcontrol.php");
             } else {
                 echo "Error al actualizar el registro: " . $conn->error;
                 header("Location: panelcontrol.php");
             }
+            //header("Location: panelcontrol.php");
         } else {
             // El registro no existe, realizar una operación de inserción
             $sqlInsertar = "INSERT INTO tb_recompensa (idProspecto, puntosRecompensa) VALUES ('$idProspecto', '$puntosRecompensa')";
             if ($conn->query($sqlInsertar) === TRUE) {
-                echo "Registro insertado correctamente.";
+                //echo "Registro insertado correctamente2.";
                 header("Location: panelcontrol.php");
             } else {
                 echo "Error al insertar el registro: " . $conn->error;
                 header("Location: panelcontrol.php");
             }
         }
-    }
+
+        
     
+    }
+
+
+        $idUser = $_GET['idProspecto'];//540
+        $sqlBuscarUserPuntos="SELECT * FROM tb_recompensa WHERE idProspecto='$idUser'";//Consulta puntos del usuario(IdUsuario) 2, 10, 10-20-23, 540
+        $Response = $conn->query($sqlBuscarUserPuntos);
+        $ResponsePuntosUsuario = $Response->fetch_assoc();
+
+
+
     // Cerrar la conexión
     $conn->close();
     // Verificar si el usuario ha iniciado sesión
@@ -64,14 +77,15 @@
                     <div class="card bg-white">
                         <div class="card-body p-5">
                             <h3>Crear Puntos Recompensa</h3><br><br>
+                            <p>Puntos Lealtad actuales: <?php echo $ResponsePuntosUsuario['puntosRecompensa']; ?></p>
                             <form action="createpuntos.php" method="POST">
-                                <!-- <input type="hidden"  value="idProspecto"><?php echo $id = $_GET['idProspecto']; ?> -->
-                                <!-- <input type="text" name="idProspecto" value="<?php echo $_GET['idProspecto']; ?>"> -->
-                                <input type="text" name="idProspecto" value="<?php echo isset($_GET['idProspecto']) ? $_GET['idProspecto'] : ''; ?>">
-                                <!-- Puntos Recompensa: <input type="text" name="puntosRecompensa"><br><br>
-                                <input type="submit" value="Crear"> -->
+
+
+                                <input type="hidden"  name="idProspecto" value="<?php echo isset($_GET['idProspecto']) ? $_GET['idProspecto'] : ''; ?>">
+
+
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="puntosRecompensa" placeholder="Ingrese  Puntos Recompensa">
+                                    <input type="text" class="form-control" name="puntosRecompensaF" placeholder="Ingrese  Puntos Recompensa">
                                 </div>
                                 <div class="d-grid">
                                     <button class="btn btn-outline-dark" type="submit">Crear</button>
