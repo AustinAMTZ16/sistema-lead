@@ -98,6 +98,9 @@
                                 </div>
                                 <div class="d-grid">
                                     <button class="btn btn-outline-dark" type="submit" onclick="return confirm('¿Está seguro de Actualizar este registro?')">Actualizar</button>
+                                </div><br>
+                                <div class="d-grid">
+                                    <button class="btn btn-outline-dark" type="submit" onclick="window.location.href='panelcontrol.php'">Regresar al Menu</button>
                                 </div>
                             </form>
                         </div>
