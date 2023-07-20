@@ -79,7 +79,7 @@
                             
                             <a class="btn btn-warning btn-sm" href="createpuntos.php?idProspecto=<?php echo $row['idProspecto']; ?>">Puntos Lealtad</a>
 
-                            <a class="btn btn-danger btn-sm" href="./delete.php?idProspecto=<?php echo $row['idProspecto']; ?>">Quitar </a> 
+                            <a class="btn btn-danger btn-sm" href="./delete.php?idProspecto=<?php echo $row['idProspecto']; ?>" onclick="return confirm('¿Está seguro de eliminar este registro?')">Quitar </a> 
                             <!--Llamar a funcion cambiar estado(sqlCambiar estado dentro de  la tabla tb_Prospecto va buscar el registro seleccionado y va a modificar propiedad estadoSistema='Falso') -->
                         </td>
                     </tr>

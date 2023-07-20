@@ -88,7 +88,7 @@
                                     <input type="text" class="form-control" name="puntosRecompensaF" placeholder="Ingrese  Puntos Recompensa">
                                 </div>
                                 <div class="d-grid">
-                                    <button class="btn btn-outline-dark" type="submit">Crear</button>
+                                    <button class="btn btn-outline-dark" type="submit" onclick="return confirm('¿Está seguro de Crear este registro?')">Crear</button>
                                 </div>
                             </form>
                         </div>

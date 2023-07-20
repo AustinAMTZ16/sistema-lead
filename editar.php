@@ -97,7 +97,7 @@
                                     <input type="text" class="form-control" name="lugarNacimiento" value="<?php echo $usuario['lugarNacimiento']; ?>" placeholder="Ingrese Lugar Nacimiento ">
                                 </div>
                                 <div class="d-grid">
-                                    <button class="btn btn-outline-dark" type="submit">Actualizar</button>
+                                    <button class="btn btn-outline-dark" type="submit" onclick="return confirm('¿Está seguro de Actualizar este registro?')">Actualizar</button>
                                 </div>
                             </form>
                         </div>
