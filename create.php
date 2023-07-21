@@ -5,6 +5,9 @@ require_once 'conexion.php';
 
 // Verificar si se envió el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fecha_actual = date("Y-m-d");
+    $fechaAlex = date('Y-m-d', strtotime($fecha_actual));
+
     //tb_Prospectos
     $nombre = $_POST["nombre"];
     $apellidoPaterno = $_POST["apellidoPaterno"];
@@ -27,9 +30,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $idProstecto = ''; //Obtener el ID del usuario
 
     $sqlProspecto = "INSERT INTO tb_prospecto (
-                    nombre, apellidoPaterno, apellidoMaterno, telefono, correo, asunto, mensaje, dominioOrigen, giroDominio, categoriaProspecto, estadoSistema, fechaNacimiento, lugarNacimiento, origenProspecto
+                    nombre, apellidoPaterno, apellidoMaterno, telefono, correo, asunto, mensaje, dominioOrigen, giroDominio, categoriaProspecto, fechaCreacion, estadoSistema, fechaNacimiento, lugarNacimiento, origenProspecto
                 )VALUES (
-                    '$nombre', '$apellidoPaterno', '$apellidoMaterno', '$telefono', '$correo', '$asunto', '$mensaje', '$dominioOrigen', '$giroDominio', '$categoriaProspecto', '$estadoSistema',  '$fechaNacimiento','$lugarNacimiento', '$origenProspecto')";
+                    '$nombre', '$apellidoPaterno', '$apellidoMaterno', '$telefono', '$correo', '$asunto', '$mensaje', '$dominioOrigen', '$giroDominio', '$categoriaProspecto', '$fechaAlex', '$estadoSistema',  '$fechaNacimiento','$lugarNacimiento', '$origenProspecto')";
 
     if ($conn->query($sqlProspecto) === TRUE) {
         //header("Seguardo prospecto 'idProspecto = 509'"); // Redireccionar a la página principal después de crear el registro
@@ -96,7 +99,7 @@ if (!isset($_SESSION["usuario"])) {
                                     <input type="text" class="form-control" name="apellidoMaterno" placeholder="Ingrese Apellido Materno " required>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="telefono" placeholder="Ingrese Telefono ">
+                                    <input type="number" class="form-control" name="telefono" placeholder="Ingrese Telefono ">
                                 </div>
                                 <div class="mb-3">
                                     <input type="email" class="form-control" name="correo" placeholder="Ingrese Correo " required>

@@ -80,7 +80,7 @@
                                     <input type="text" class="form-control" name="apellidoMaterno" value="<?php echo $usuario['apellidoMaterno']; ?>" placeholder="Ingrese Apellido Materno " >
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="telefono" value="<?php echo $usuario['telefono']; ?>" placeholder="Ingrese Telefono ">
+                                    <input type="number" class="form-control" name="telefono" value="<?php echo $usuario['telefono']; ?>" placeholder="Ingrese Telefono ">
                                 </div>
                                 <div class="mb-3">
                                     <input type="email" class="form-control" name="correo" value="<?php echo $usuario['correo']; ?>" placeholder="Ingrese Correo " >
