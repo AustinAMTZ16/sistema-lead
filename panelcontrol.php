@@ -48,9 +48,10 @@ if (!isset($_SESSION["usuario"])) {
 <!-- Aquí empieza el formulario HTML -->
 
 <body>
-  <!-- <h5>Bienvenido,<?php
-                      echo $_SESSION["usuario"];
-                      ?></h5>
+  <!-- <h5>Bienvenido,
+    <?php
+      echo $_SESSION["usuario"];
+    ?></h5>
     <button type="button" class="btn btn-outline-success"><a href="logout.php">Salir</a></button> -->
 
   <header class="p-3 mb-3 border-bottom">
@@ -139,7 +140,7 @@ if (!isset($_SESSION["usuario"])) {
     </table>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-  <script src="//cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js"></script>
+  <script src="./jquery.dataTables.min.js"></script>
 
   <script>
     $(document).ready(function() {

@@ -66,7 +66,7 @@
                                     <input type="password" class="form-control" name="contraseña" id="contraseña" placeholder="*******" required>
                                 </div>
                                 <div class="d-grid">
-                                    <button class="btn btn-outline-dark" type="submit">Inicia sesión</button>
+                                    <button class="btn btn-outline-dark" type="submit">Login</button>
                                 </div>
                             </form>
 
