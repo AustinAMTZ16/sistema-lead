@@ -5,7 +5,7 @@ require_once 'conexion.php';
 
 // Verificar si se envió el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $fecha_actual = date("Y-m-d"); 
+    $fecha_actual = date("Y-m-d h:i:s"); 
     //tb_Prospectos
     $nombre = $_POST["nombre"];
     $apellidoPaterno = $_POST["apellidoPaterno"];
