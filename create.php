@@ -5,6 +5,8 @@ require_once 'conexion.php';
 
 // Verificar si se envió el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fecha_actual = date("Y-m-d h:i:s"); 
+    //tb_Prospectos
     $nombre = $_POST["nombre"];
     $apellidoPaterno = $_POST["apellidoPaterno"];
     $apellidoMaterno = $_POST['apellidoMaterno'];
@@ -19,6 +21,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $origenProspecto = $_POST['origenProspecto'];
     $dominioOrigen = $_SESSION["usuario"]; //obtener el dominio del usuario en sesion 
     $giroDominio = $_SESSION["giroDominio"]; //obtener el giro del usuario en sesion 
+    //tb_Recompensa
+    // $puntosRecompens = '1';
+    // $puntosRecompensa =str_replace(' ', '', $puntosRecompens);
+
+
+    //$fechaModificacion = '';
+    $idProstecto = ''; //Obtener el ID del usuario
+
     $sqlProspecto = "INSERT INTO tb_prospecto (
                     nombre, apellidoPaterno, apellidoMaterno, telefono, correo, asunto, mensaje, dominioOrigen, giroDominio, categoriaProspecto, estadoSistema, fechaNacimiento, lugarNacimiento, origenProspecto
                 )VALUES (
@@ -40,8 +50,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $sqlBuscarProspecto =  idProspecto Que guarde el idProspecto del ultimo registro guardado.
     // $idProstecto = $sqlBuscarProspecto;
     $sqlPuntos = "INSERT INTO tb_recompensa(
-                    puntosRecompensa, idProspecto
-                ) VALUES('1', '$idProstecto')";
+                    puntosRecompensa,fechaModificacion, idProspecto
+                ) VALUES('1','$fecha_actual', '$idProstecto')";
 
     if ($conn->query($sqlPuntos) === TRUE) {
         header("Location: panelcontrol.php"); // Redireccionar a la página principal después de crear el registro

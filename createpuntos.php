@@ -79,6 +79,7 @@
                         <div class="card-body p-5">
                             <h3>Crear Puntos Recompensa</h3><br><br>
                             <p>Puntos Lealtad actuales: <?php echo $ResponsePuntosUsuario['puntosRecompensa']; ?></p>
+                            <p>Fecha modificación: <?php echo $ResponsePuntosUsuario['fechaModificacion']; ?></p>
                             <form action="createpuntos.php" method="POST">
 
 
@@ -86,7 +87,7 @@
 
 
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="puntosRecompensaF" placeholder="Ingrese  Puntos Recompensa">
+                                    <input type="number" class="form-control" name="puntosRecompensaF" placeholder="Ingrese  Puntos Recompensa">
                                 </div>
                                 <div class="d-grid">
                                     <button class="btn btn-outline-dark" type="submit" onclick="return confirm('¿Está seguro de Crear este registro?')">Asignar</button>
