@@ -79,6 +79,7 @@
                         <div class="card-body p-5">
                             <h3>Crear Puntos Recompensa</h3><br><br>
                             <p>Puntos Lealtad actuales: <?php echo $ResponsePuntosUsuario['puntosRecompensa']; ?></p>
+                            <p>Fecha modificación: <?php echo $ResponsePuntosUsuario['fechaModificacion']; ?></p>
                             <form action="createpuntos.php" method="POST">
 
 
