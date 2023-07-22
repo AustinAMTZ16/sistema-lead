@@ -5,7 +5,6 @@ require_once 'conexion.php';
 
 // Verificar si se envió el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    //tb_Prospectos
     $nombre = $_POST["nombre"];
     $apellidoPaterno = $_POST["apellidoPaterno"];
     $apellidoMaterno = $_POST['apellidoMaterno'];
@@ -14,18 +13,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $asunto = 'Sistema DCK-LEAD';
     $mensaje = '';
     $categoriaProspecto = 'Prospecto';
-    //$fechaCreacion = 'Fecha del día del registro';
     $estadoSistema = 'Activo';
     $fechaNacimiento = $_POST['fechaNacimiento'];
     $lugarNacimiento = $_POST['lugarNacimiento'];
     $origenProspecto = $_POST['origenProspecto'];
     $dominioOrigen = $_SESSION["usuario"]; //obtener el dominio del usuario en sesion 
     $giroDominio = $_SESSION["giroDominio"]; //obtener el giro del usuario en sesion 
-    //tb_Recompensa
-    $puntosRecompensa = '1';
-    //$fechaModificacion = '';
-    $idProstecto = ''; //Obtener el ID del usuario
-
     $sqlProspecto = "INSERT INTO tb_prospecto (
                     nombre, apellidoPaterno, apellidoMaterno, telefono, correo, asunto, mensaje, dominioOrigen, giroDominio, categoriaProspecto, estadoSistema, fechaNacimiento, lugarNacimiento, origenProspecto
                 )VALUES (
@@ -48,8 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $idProstecto = $sqlBuscarProspecto;
     $sqlPuntos = "INSERT INTO tb_recompensa(
                     puntosRecompensa, idProspecto
-                ) VALUES('
-                    $puntosRecompensa', '$idProstecto')";
+                ) VALUES('1', '$idProstecto')";
 
     if ($conn->query($sqlPuntos) === TRUE) {
         header("Location: panelcontrol.php"); // Redireccionar a la página principal después de crear el registro
