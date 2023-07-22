@@ -20,7 +20,7 @@
             $fila = $resultado->fetch_assoc();
             $idProspectoR = $fila["idProspecto"];
             // $fecha_actual = date("d-m-Y h:i:s"); 
-            $fecha_actual = date("Y-m-d h:i:s"); 
+            $fecha_actual = date("Y-m-d"); 
             // print_r($fecha_actual);
 
             $sqlActualizar = "UPDATE tb_recompensa SET puntosRecompensa = '$puntosRecompensa',fechaModificacion = '$fecha_actual' WHERE idProspecto = $idProspectoR";

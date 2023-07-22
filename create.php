@@ -5,6 +5,7 @@ require_once 'conexion.php';
 
 // Verificar si se envió el formulario
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $fecha_actual = date("Y-m-d"); 
     //tb_Prospectos
     $nombre = $_POST["nombre"];
     $apellidoPaterno = $_POST["apellidoPaterno"];
@@ -22,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dominioOrigen = $_SESSION["usuario"]; //obtener el dominio del usuario en sesion 
     $giroDominio = $_SESSION["giroDominio"]; //obtener el giro del usuario en sesion 
     //tb_Recompensa
-    $puntosRecompens = ' 1 ';
+    $puntosRecompens = '1';
     $puntosRecompensa =str_replace(' ', '', $puntosRecompens);
 
 
