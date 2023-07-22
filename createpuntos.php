@@ -91,7 +91,7 @@ if (!isset($_SESSION["usuario"])) {
 
 
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="puntosRecompensaF" placeholder="Ingrese  Puntos Recompensa">
+                                    <input type="number" class="form-control" name="puntosRecompensaF" placeholder="Ingrese  Puntos Recompensa">
                                 </div>
                                 <div class="d-grid">
                                     <button class="btn btn-outline-dark" type="submit" onclick="return confirm('¿Está seguro de Crear este registro?')">Asignar</button>

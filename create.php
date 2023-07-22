@@ -25,7 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $dominioOrigen = $_SESSION["usuario"]; //obtener el dominio del usuario en sesion 
     $giroDominio = $_SESSION["giroDominio"]; //obtener el giro del usuario en sesion 
     //tb_Recompensa
-    $puntosRecompensa = '1';
+    $puntosRecompens = ' 1 ';
+    $puntosRecompensa =str_replace(' ', '', $puntosRecompens);
+
+
     //$fechaModificacion = '';
     $idProstecto = ''; //Obtener el ID del usuario
 
@@ -50,9 +53,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // $sqlBuscarProspecto =  idProspecto Que guarde el idProspecto del ultimo registro guardado.
     // $idProstecto = $sqlBuscarProspecto;
     $sqlPuntos = "INSERT INTO tb_recompensa(
-                    puntosRecompensa, idProspecto
+                    puntosRecompensa,fechaModificacion, idProspecto
                 ) VALUES('
-                    $puntosRecompensa', '$idProstecto')";
+                    $puntosRecompensa','$fecha_actual', '$idProstecto')";
 
     if ($conn->query($sqlPuntos) === TRUE) {
         header("Location: panelcontrol.php"); // Redireccionar a la página principal después de crear el registro
