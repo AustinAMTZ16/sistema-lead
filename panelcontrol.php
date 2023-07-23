@@ -4,7 +4,9 @@ session_start();
 require_once 'conexion.php';
 
 $usuario = $_SESSION["usuario"];
-// Obtener todos los registros de la base de datos
+$isUser = $_SESSION["isUser"];
+
+// Obtener todos los registros de la base de datos P/Llenar tabla
 $sql = "SELECT 
             tp.idProspecto,
             tp.nombre,
@@ -22,6 +24,10 @@ $sql = "SELECT
             where dominioOrigen = '$usuario' 
             and estadoSistema = 'Activo'"; //'Falso'
 $result = $conn->query($sql);
+// Obtener todos los registros de la base de datos P/Obtener el logotipo base64
+$sqlLogotipo = "SELECT logotipoEmpresa FROM tb_empresa where id_login = $isUser";
+$arregloLogo = $conn->query($sqlLogotipo);
+
 
 // Cerrar la conexión
 $conn->close();
@@ -48,12 +54,6 @@ if (!isset($_SESSION["usuario"])) {
 <!-- Aquí empieza el formulario HTML -->
 
 <body>
-  <!-- <h5>Bienvenido,
-    <?php
-      echo $_SESSION["usuario"];
-    ?></h5>
-    <button type="button" class="btn btn-outline-success"><a href="logout.php">Salir</a></button> -->
-
   <header class="p-3 mb-3 border-bottom">
     <div class="container">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
@@ -62,42 +62,41 @@ if (!isset($_SESSION["usuario"])) {
             <use xlink:href="#bootstrap"></use>
           </svg>
         </a>
-
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <!-- <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Products</a></li> -->
-
-          <li><a href="#" class="nav-link px-2 link-dark">Bienvenido, <b> <?php
-                                                                          echo $_SESSION["usuario"];
-                                                                          ?></b></a></li>
+          <li>
+            <a href="#" class="nav-link px-2 link-dark">Bienvenido,
+              <b>
+                <?php echo $_SESSION["usuario"];?>
+              </b>
+            </a>
+          </li>
         </ul>
-
-        <!-- <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
-          <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
-        </form> -->
 
         <div class="dropdown text-end">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <!-- <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-           -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-              <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-            </svg>
+
+            <?php
+            if ($arregloLogo->num_rows > 0) {
+              // Paso 3: Obtener el valor de la imagen en base64
+              $fila = $arregloLogo->fetch_assoc();
+              $imagenBase64 = $fila["logotipoEmpresa"];
+
+              // Paso 4: Mostrar la imagen en HTML utilizando la etiqueta <img>
+              echo '<img width="18%" src="data:image/jpeg;base64,' . $imagenBase64 . '" alt="Imagen en base64">';
+            } else {
+              echo "No se encontró la imagen en la base de datos.";
+            }
+            ?>
           </a>
-          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" style="">
-            <li><a class="dropdown-item" href="#">Mi perfil</a></li>
-            <!-- <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
-            <li><hr class="dropdown-divider"></li> -->
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1" >
+            <!-- <li><a class="dropdown-item" href="#">Mi perfil</a></li> -->
             <li><a class="dropdown-item" href="logout.php">Cerrar sesion</a></li>
           </ul>
         </div>
       </div>
     </div>
   </header>
+
   <div class="container">
     <h4>Listado de Prospecto</h4>
     <a class="btn btn-primary mb-3" href="create.php">Crear nuevo</a>
@@ -127,10 +126,7 @@ if (!isset($_SESSION["usuario"])) {
 
             <td>
               <a class="btn btn-primary btn-sm" href="editar.php?idProspecto=<?php echo $row['idProspecto']; ?>">Modificar Cliente</a>
-              <!-- <a class="btn btn-primary btn-sm" href="editar.php?id=<?php echo $row['idProspecto']; ?>">Modificar Cliente</a> -->
-
               <a class="btn btn-warning btn-sm" href="createpuntos.php?idProspecto=<?php echo $row['idProspecto']; ?>">Puntos Lealtad</a>
-
               <a class="btn btn-danger btn-sm" href="./delete.php?idProspecto=<?php echo $row['idProspecto']; ?>" onclick="return confirm('¿Está seguro de eliminar este registro?')">Quitar </a>
               <!--Llamar a funcion cambiar estado(sqlCambiar estado dentro de  la tabla tb_Prospecto va buscar el registro seleccionado y va a modificar propiedad estadoSistema='Falso') -->
             </td>
@@ -139,17 +135,14 @@ if (!isset($_SESSION["usuario"])) {
       </tbody>
     </table>
   </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
   <script src="./jquery.dataTables.min.js"></script>
-
   <script>
     $(document).ready(function() {
       $('#myTable').DataTable();
     });
   </script>
-
-
-
 </body>
 
 </html>
