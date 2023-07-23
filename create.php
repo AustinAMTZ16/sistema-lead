@@ -98,7 +98,7 @@ if (!isset($_SESSION["usuario"])) {
                                     <input type="text" class="form-control" name="apellidoMaterno" placeholder="Ingrese Apellido Materno " required>
                                 </div>
                                 <div class="mb-3">
-                                    <input type="text" class="form-control" name="telefono" placeholder="Ingrese Telefono ">
+                                    <input type="number" class="form-control" name="telefono" placeholder="Ingrese Telefono ">
                                 </div>
                                 <div class="mb-3">
                                     <input type="email" class="form-control" name="correo" placeholder="Ingrese Correo " required>
