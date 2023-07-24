@@ -82,7 +82,7 @@ if (!isset($_SESSION["usuario"])) {
               $imagenBase64 = $fila["logotipoEmpresa"];
 
               // Paso 4: Mostrar la imagen en HTML utilizando la etiqueta <img>
-              echo '<img width="18%" src="data:image/jpeg;base64,' . $imagenBase64 . '" alt="Imagen en base64">';
+              echo '<img width="10%" src="data:image/jpeg;base64,' . $imagenBase64 . '" alt="Imagen en base64">';
             } else {
               echo "No se encontró la imagen en la base de datos.";
             }

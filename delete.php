@@ -23,7 +23,7 @@
         exit();
     }
 
-     // Cerrar la conexión
+    // Cerrar la conexión
     $conn->close();
     // Verificar si el usuario ha iniciado sesión
     if (!isset($_SESSION["usuario"])) {
