@@ -103,10 +103,3 @@
 
 
 
-
-
-  ----CONEXCION
-  [19:38, 10/7/2023] Agustin Digi: '45.89.204.4', 'u115254492_rootdck', '1~wR>Qs3FC', 'u115254492_apidck'
-[19:38, 10/7/2023] Agustin Digi: SELECT * FROM tb_login  lg;
-SELECT * FROM tb_prospecto tp where dominioOrigen   = 'hotelcasadepiedra.com';
-SELECT * FROM tb_recompensa tc;
