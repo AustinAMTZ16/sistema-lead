@@ -1,7 +1,7 @@
 <?php
     $servername = "45.89.204.4";
     $username = "u115254492_rootdck";
-    $password = "1~wR>Qs3FC";
+    $password = "N4v[uGo7?";
     $dbname = "u115254492_apidck";
 
     // Crear conexión

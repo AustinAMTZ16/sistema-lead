@@ -74,8 +74,7 @@
             }
         }
     }
-    // Cerrar la conexión
-    $conn->close();
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -127,10 +126,25 @@
         <div class="hijo">
             <div class="fila">
                 <div class="columna12">
-
+                    <?php
+                        $resultad = $conn->query("CALL SumarLealtad()");
+                        if ($resultad) {
+                            // Puedes recorrer los resultados obtenidos si el procedimiento almacenado devuelve datos
+                            while ($fila = $resultad->fetch_assoc()) {
+                                // Procesar cada fila de resultados
+                                // ...
+                                echo '<p>'.$fila['totalSuma'].'</p>';
+                            }
+                        } else {
+                            // Manejar errores si el procedimiento almacenado no se ejecuta correctamente
+                            echo "Error al ejecutar el procedimiento almacenado: " . $conn->error;
+                        }
+                    ?>
                 </div>
             </div>
         </div>
     </div>
 </body>
 </html>
+
+<?php $conn->close();?>
