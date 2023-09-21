@@ -1,87 +1,62 @@
 <?php
     // Iniciar la sesión
     session_start();
-    require_once 'conexion.php';
-
-    // Verificar si se envió el formulario
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        // Obtener los valores ingresados en el formulario
-        $usuario = $_POST["usuario"];
-        $contraseña = $_POST["contraseña"];
-        // Consultar la base de datos para verificar el usuario
-        $sql = "SELECT * FROM tb_login WHERE dominioB2B = '$usuario' and password = '$contraseña'";
-
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            // Usuario válido, redireccionar a la página de inicio
-
-            $row = mysqli_fetch_assoc($result);
-            $_SESSION["isUser"] = $row['idLogin'];
-            $_SESSION['usuario'] = $row['dominioB2B'];
-            $_SESSION['giroDominio'] = $row['giroDominio'];
-
-
-            header("Location: panelcontrol.php");
-            exit();
-        } else {
-            // Usuario inválido, mostrar mensaje de error
-            $mensaje_error = "Nombre de usuario o contraseña incorrectos.";
-        }
-    }
-    
+    require_once './functions/IniciarSesion.php';
     // Cerrar la conexión
     $conn->close();
-    // Verificar si el usuario ha iniciado sesión
-    // if (!isset($_SESSION["usuario"])) {
-    //     // Redireccionar al usuario a la página de inicio de sesión
-    //     header("Location: index.php");
-    //     exit();
-    // }
-?>  
+?>
 <!DOCTYPE html>
 <html>
-<head>
-    <title>Inicio</title>
-    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
-</head>
-<!-- Aquí empieza el formulario HTML -->
-<body>
-    <div class="vh-100 d-flex justify-content-center align-items-center">
-        <div class="container">
-            <div class="row d-flex justify-content-center">
-                <div class="col-12 col-md-8 col-lg-6">
-                    <div class="card bg-white">
-                        <div class="card-body p-5">
-                            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+    <head>
+        <?php require_once './views/head-section/head.php'; ?>
+    </head>
 
-                                <div class="mb-3">
-                                    <label for="email" class="form-label ">Usuario </label>
-                                    <input type="text" class="form-control" name="usuario" id="usuario" placeholder="name@example.com" required>
+    <body>
+        <div class="vh-100 d-flex justify-content-center align-items-center">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-12 col-md-8 col-lg-6">
+                        <div class="card bg-white">
+                            <div class="card-body p-5">
+                                <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                                    <h3>Bienvenido MexiClientes</h3>
+                                    <div class="mb-3">
+                                        <label for="email" class="form-label ">Usuario </label>
+                                        <input type="text" class="form-control" name="usuario" id="usuario" placeholder="name@example.com" required>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="password" class="form-label ">Contraseña</label>
+                                        <input type="password" class="form-control" name="contraseña" id="contraseña" placeholder="*******" required>
+                                    </div>
+                                    <div class="d-grid">
+                                        <button class="btn btn-outline-dark" type="submit">Iniciar Sesión</button>
+                                    </div>
+                                </form>
+                                <div class="padre">
+                                    <div class="hijo">
+                                        <div class="columna12">
+                                            <div class="fila">
+                                                <a href="#" target="_blank" rel="noopener noreferrer"><strong>Crear mi perfil.</strong></a>
+                                            </div>
+                                            <div class="fila">
+                                                <a href="#" target="_blank" rel="noopener noreferrer"><strong>Recuperar contraseña.</strong></a>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="password" class="form-label ">Contraseña</label>
-                                    <input type="password" class="form-control" name="contraseña" id="contraseña" placeholder="*******" required>
-                                </div>
-                                <div class="d-grid">
-                                    <button class="btn btn-outline-dark" type="submit">Iniciar Sesión</button>
-                                </div>
-                            </form>
-
+                            </div>
+                            <?php
+                            // Mostrar mensaje de error, si existe
+                            if (isset($mensaje_error)) {
+                                echo '<p style="color: red;">' . $mensaje_error . '</p>';
+                            }
+                            ?>
                         </div>
-                        <?php
-                        // Mostrar mensaje de error, si existe
-                        if (isset($mensaje_error)) {
-                            echo '<p style="color: red;">' . $mensaje_error . '</p>';
-                        }
-                        ?>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-</body>
+        <?php require_once './views/head-section/web-js.php'; ?>
+    </body>
 </html>
