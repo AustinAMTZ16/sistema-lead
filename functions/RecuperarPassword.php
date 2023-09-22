@@ -16,7 +16,7 @@
             $row = mysqli_fetch_assoc($result);
             $password = $row['password'];
             $dominio = $row['dominioB2B'];
-            mail($_POST['correo'], "Recuperación de tu perfil MexiClientes", "Buenas tardes, es un gusto ayudarle, mandamos su clave: $password & Dominio: $dominio");
+            mail($_POST['correo'], "Recuperacion de tu perfil MexiClientes", "Buenas tardes, es un gusto ayudarle, mandamos su clave: $password & Dominio: $dominio & Correo: $correo" );
             header("Location: ../index.php");
             exit();
         } else {
