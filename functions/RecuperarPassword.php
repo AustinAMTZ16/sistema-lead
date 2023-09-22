@@ -1,8 +1,25 @@
 <?php
     require_once './../connection/conexion.php'; 
+    
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        // Obtener los valores ingresados en el formulario
+        $correo = $_POST['correo'];
+        // Consultar la base de datos para verificar el usuario
+        $sql = "SELECT * FROM tb_login WHERE correo = '$correo'";
 
+        $result = $conn->query($sql);
 
-    $correo = $_POST['correo'];
-    mail($_POST['correo'], "Recuperación de tu perfil MexiClientes", 'Buenas tardes, es un gusto ayudarle <br> Mandamos su contraseña: xxx.');
+        if ($result->num_rows > 0) {
+            // Usuario válido, redireccionar a la página de inicio
 
+            $row = mysqli_fetch_assoc($result);
+            $password = $row['password'];
+            mail($_POST['correo'], "Recuperación de tu perfil MexiClientes", "Buenas tardes, es un gusto ayudarle, mandamos su contraseña: $password");
+            header("Location: ../index.php");
+            exit();
+        } else {
+            // Usuario inválido, mostrar mensaje de error
+            $mensaje_error = "Nombre de usuario o contraseña incorrectos.";
+        }
+    }
 ?>
