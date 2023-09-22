@@ -20,7 +20,7 @@
                             <h3>Recupera tu perfil MexiClientes</h3>
                             <div class="mb-3">
                                 <label for="email" class="form-label ">Dirección de correo electrónico </label>
-                                <input type="email" autocomplete="off" class="form-control" name="usuario" id="usuario" value="<?php 
+                                <input type="email" autocomplete="off" class="form-control" name="correo" id="correo" value="<?php 
                                 if(isset($_POST['correo'])) echo $_POST['correo'], 
                                 mail($_POST['correo'], "Hotel Casa de Piedra", 'Su reservación está listo un asesor se podrá en contacto.');
                                 mail('soporte@hotelcasadepiedra.com', "Hotel Casa de Piedra", 'El sistema detectó una reservación por favor de revisar el sistema de gestión del hotel');
