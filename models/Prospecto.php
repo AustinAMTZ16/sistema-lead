@@ -86,22 +86,7 @@
             VALUES('".$nombre."', '".$apellidoPaterno."', '".$apellidoMaterno."', '".$telefono."', '".$correo."', '".$asunto."', '".$mensaje."', '".$dominioOrigen."', '".$giroDominio."', '".$categoriaProspecto."', '".$estadoSistema."', '".$conversacion."' )";
             $db->query($query);
             if($db->affected_rows) {
-                // $destinatario = $correo;
-                // $asunto = $asunto;
-                // $mensaje = "Contenido del mensaje: "+$mensaje;
-
-                // // Cabeceras del correo (opcional)
-                // $headers = "From: Marketing@engranetmx.com\r\n";
-                // $headers .= "Content-Type: text/html; charset=UTF-8\r\n";
-
-                // // Envía el correo
-                // $mail_enviado = mail($destinatario, $asunto, $mensaje, $headers);
-
-                // if ($mail_enviado) {
-                //     echo "El correo ha sido enviado exitosamente.";
-                // } else {
-                //     echo "Hubo un error al enviar el correo.";
-                // }
+                mail($correo, "Recuperación de tu perfil MexiClientes", "Gracias por su registro nos estaremos poniendo en contacto lo más pronto posible.");
 
                 return TRUE;
             }//end if
