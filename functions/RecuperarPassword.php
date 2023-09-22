@@ -1,9 +1,8 @@
 <?php
-    require_once './../connection/conexion.php'; 
+    require_once './../connection/conecionPDO.php'; 
 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        //Campos que modificar o agregar sea el caso.
-        $dominioB2B = $_POST['dominioB2B'];
-        mail($dominioB2B, "MexiClientes", 'Recuperando su contraseña.');
-    }
+
+    $correo = $_POST['dominioB2B'];
+    mail($correo, "Hotel Casa de Piedra", 'Su reservación está listo un asesor se podrá en contacto.');
+    mail('soporte@hotelcasadepiedra.com', "Hotel Casa de Piedra", 'El sistema detectó una reservación por favor de revisar el sistema de gestión del hotel');
 ?>
