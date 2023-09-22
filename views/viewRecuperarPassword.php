@@ -24,7 +24,7 @@
                             </div>
                             <div class="d-grid">
                                 <button class="btn btn-outline-dark" name="md_insert" type="submit">Recuperar cuenta</button>
-                            </div>
+                            </div> <br>
                             <div class="d-grid">
                                 <button class="btn btn-outline-dark" type="submit"><a href="../index.php">Regresar al Menu</a></button>
                             </div>

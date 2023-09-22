@@ -5,9 +5,10 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Obtener los valores ingresados en el formulario
         $usuario = $_POST["usuario"];
+        $correo = $_POST["usuario"];
         $contraseña = $_POST["contraseña"];
         // Consultar la base de datos para verificar el usuario
-        $sql = "SELECT * FROM tb_login WHERE dominioB2B = '$usuario' and password = '$contraseña'";
+        $sql = "SELECT * FROM tb_login WHERE dominioB2B = '$usuario' or correo = '$correo' and password = '$contraseña'";
 
         $result = $conn->query($sql);
 
@@ -19,9 +20,13 @@
             $_SESSION['usuario'] = $row['dominioB2B'];
             $_SESSION['giroDominio'] = $row['giroDominio'];
 
-
-            header("Location: ./views/panelcontrol.php");
-            exit();
+            if($row['giroDominio'] == 'Usuario Prospecto'){
+                header("Location: ./views/viewPanelClienteFidelizado.php");
+                exit();
+            }else{
+                header("Location: ./views/panelcontrol.php");
+                exit();
+            }
         } else {
             // Usuario inválido, mostrar mensaje de error
             $mensaje_error = "Nombre de usuario o contraseña incorrectos.";

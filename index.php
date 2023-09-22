@@ -44,7 +44,7 @@ $conn->close();
                 <br>
                 <div class="container text-center">
                     <div class="row justify-content-center">
-                        <a href="./views/viewCrearUsuario.php"><strong>Crear mi perfil.</strong></a>
+                        <a href="./views/viewCrearUsuarioProspecto.php"><strong>Crear mi perfil.</strong></a>
                         <a href="./views/viewRecuperarPassword.php"><strong>Recuperar contraseña.</strong></a>
                     </div>
                 </div>
@@ -52,6 +52,18 @@ $conn->close();
             </div>
         </div>
     </div>
+
+    <div class="padre">
+        <div class="hijo">
+            <div class="columna12">
+                <div class="fila">
+                    <a href="./views/viewCrearUsuarioProspecto.php"></a>
+                    <a href="./views/viewCrearUsuario.php"><strong>Crear negocio.</strong></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <?php require_once './views/head-section/web-js.php'; ?>
 </body>
 
