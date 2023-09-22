@@ -3,6 +3,6 @@
 
 
     $correo = $_POST['correo'];
-    mail($_POST['correo'], "Hotel Casa de Piedra", 'Su reservación está listo un asesor se podrá en contacto.');
+    mail($_POST['correo'], "Recuperación de tu perfil MexiClientes", 'Buenas tardes, es un gusto ayudarle <br> Mandamos su contraseña: xxx.');
 
 ?>
