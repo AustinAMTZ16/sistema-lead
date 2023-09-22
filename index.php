@@ -22,8 +22,8 @@ $conn->close();
                     <form method="POST" action="<?php echo htmlspecialchars($_SERVER    ["PHP_SELF"]); ?>">
                         <h3>Bienvenido MexiClientes</h3>
                         <div class="mb-3">
-                            <label for="email" class="form-label ">Usuario </label>
-                            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="name@example.com" required>
+                            <label for="email" class="form-label ">Dominio </label>
+                            <input type="text" class="form-control" name="usuario" id="usuario" placeholder="ejemplo: engranetmx.com" required>
                         </div>
                         <div class="mb-3">
                             <label for="password" class="form-label ">Contraseña</label>

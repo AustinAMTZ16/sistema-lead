@@ -4,6 +4,7 @@
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Obtener los valores ingresados en el formulario
         $correo = $_POST['correo'];
+        
         // Consultar la base de datos para verificar el usuario
         $sql = "SELECT * FROM tb_login WHERE correo = '$correo'";
 
@@ -14,7 +15,8 @@
 
             $row = mysqli_fetch_assoc($result);
             $password = $row['password'];
-            mail($_POST['correo'], "Recuperación de tu perfil MexiClientes", "Buenas tardes, es un gusto ayudarle, mandamos su contraseña: $password");
+            $dominio = $row['dominioB2B'];
+            mail($_POST['correo'], "Recuperación de tu perfil MexiClientes", "Buenas tardes, es un gusto ayudarle, mandamos su contraseña: $password & Dominio: $dominio");
             header("Location: ../index.php");
             exit();
         } else {
