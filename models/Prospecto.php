@@ -86,8 +86,8 @@
             VALUES('".$nombre."', '".$apellidoPaterno."', '".$apellidoMaterno."', '".$telefono."', '".$correo."', '".$asunto."', '".$mensaje."', '".$dominioOrigen."', '".$giroDominio."', '".$categoriaProspecto."', '".$estadoSistema."', '".$conversacion."' )";
             $db->query($query);
             if($db->affected_rows) {
-                mail($correo, "Recuperación de tu perfil MexiClientes", "Gracias por su registro nos estaremos poniendo en contacto lo mas pronto posible.");
-                mail('aldahir.dar@gmail.com', "Recuperación de tu perfil MexiClientes", "Se registro un cliente revisa tu sistema");
+                mail($correo, "Gracias por suscribirte", "Gracias por su registro nos estaremos poniendo en contacto lo mas pronto posible.");
+                mail('aldahir.dar@gmail.com', "Formulario de suscripcion MexiClientes", "Se registro un cliente revisa tu sistema");
                 return TRUE;
             }//end if
             return FALSE;
