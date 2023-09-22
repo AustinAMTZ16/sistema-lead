@@ -20,12 +20,7 @@
                             <h3>Recupera tu perfil MexiClientes</h3>
                             <div class="mb-3">
                                 <label for="email" class="form-label ">Dirección de correo electrónico </label>
-                                <input type="email" autocomplete="off" class="form-control" name="correo" id="correo" value="<?php 
-                                if(isset($_POST['correo'])) echo $_POST['correo'], 
-                                mail($_POST['correo'], "MexiClientes", 'Recuperacion de contraseña.');
-                                mail('soporte@hotelcasadepiedra.com', "MexiClientes", 'Cliente recupera su contraseña');
-                                
-                                ?>
+                                <input type="email" autocomplete="off" class="form-control" name="correo" id="correo" value="<?php if(isset($_POST['correo'])) echo $_POST['correo']?>
                                 
                                 " require placeholder="name@example.com">
                             </div>
