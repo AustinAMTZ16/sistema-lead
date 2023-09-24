@@ -1,12 +1,12 @@
 <?php
     class PageController{
         public function home(){
-            echo 'HOME';
+            echo 'PAGE HOME';
         }
         public function listar(){
-            echo 'LISTAR';
+            echo 'PAGE LISTAR';
         }
         public function modificar(){
-            echo 'MODIFICAR';
+            echo 'PAGE MODIFICAR';
         }
     }

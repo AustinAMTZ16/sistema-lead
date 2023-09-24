@@ -1,12 +1,12 @@
 <?php
     class ProspectoController{
         public function home(){
-            echo 'Prospectos HOME';
+            echo 'PROSPECTO HOME';
         }
         public function listar(){
-            echo 'Prospectos LISTAR';
+            echo 'PROSPECTO LISTAR';
         }
         public function modificar(){
-            echo 'Prospectos MODIFICAR';
+            echo 'PROSPECTO MODIFICAR';
         }
     }
