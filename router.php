@@ -10,8 +10,8 @@ class Router{
         //var_dump(URL);
         $url = explode("/", URL);
         
-        $this->controller = !empty($url[2]) ? $url[2] : 'page';
-        $this->method = !empty($url[3]) ? $url[3] : 'home';
+        $this->controller = !empty($url[1]) ? $url[1] : 'page';
+        $this->method = !empty($url[2]) ? $url[2] : 'home';
         $this->controller = $this->controller . 'Controller';
 
         var_dump( $url );
