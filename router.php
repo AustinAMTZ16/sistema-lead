@@ -24,7 +24,7 @@ class Router{
         $res = require_once (__DIR__.'/controllers/'.$this->controller . '.php');
         // var_dump('<br>---- DIR:');
         // var_dump(__DIR__);
-        // var_dump('<br>---- Respuesta del controlador');
+        var_dump('<br>---- Pagina no encontrada');
         
     }
     public function run(){
