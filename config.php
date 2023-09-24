@@ -7,10 +7,10 @@
     // var_dump($_SERVER);
     // echo '</pre>';
 
-    echo '<br> folderPath :'.$folderPath;
-    echo '<br> urlPath :'.$urlPath;
-    echo '<br> url :'.$url;
-    echo '<br> ';
+    echo '<br>---- folderPath :'.$folderPath;
+    echo '<br>---- urlPath :'.$urlPath;
+    echo '<br>---- url :'.$url;
+    echo '<br>---- ';
 
     define('URL', $url);
     
