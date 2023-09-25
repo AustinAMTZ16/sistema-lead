@@ -1,25 +1,11 @@
-<?php
-// Iniciar la sesión
-session_start();
-require_once './functions/IniciarSesion.php';
-// Cerrar la conexión
-$conn->close();
-?>
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <?php require_once './views/head-section/head.php'; ?>
-</head>
-
-<body>
+    
     <br><br><br><br><br><br>
     <div class="container text-center">
         <div class="row justify-content-center">
             <div class="col-10 col-sm-6">
                 <div class="container text-center">
                     <div class="row justify-content-center">
-                    <form method="POST" action="<?php echo htmlspecialchars($_SERVER    ["PHP_SELF"]); ?>">
+                    <form method="POST" ction="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
                         <h3>Bienvenido MexiClientes</h3>
                         <div class="mb-3">
                             <label for="email" class="form-label ">Correo electrónico / Dominio </label>
@@ -44,8 +30,8 @@ $conn->close();
                 <br>
                 <div class="container text-center">
                     <div class="row justify-content-center">
-                        <a href="./views/viewCrearUsuarioProspecto.php"><strong>Crear mi perfil.</strong></a>
-                        <a href="./views/viewRecuperarPassword.php"><strong>Recuperar contraseña.</strong></a>
+                        <a href="/login/accountUser"><strong>Crear mi perfil.</strong></a>
+                        <a href="/login/recoverPassword"><strong>Recuperar contraseña.</strong></a>
                     </div>
                 </div>
                 
@@ -57,14 +43,8 @@ $conn->close();
         <div class="hijo">
             <div class="columna12">
                 <div class="fila">
-                    <a href="./views/viewCrearUsuarioProspecto.php"></a>
-                    <a href="./views/viewCrearUsuario.php"><strong>Crear negocio.</strong></a>
+                    <a href="/login/accountBusiness"><strong>Crear negocio.</strong></a>
                 </div>
             </div>
         </div>
     </div>
-
-    <?php require_once './views/head-section/web-js.php'; ?>
-</body>
-
-</html>

@@ -1,12 +1,13 @@
 <?php
     class ProspectoController{
-        public function home(){
-            echo 'PROSPECTO HOME';
+        public function ProspectoLista(){
+            echo 'PROSPECTO LISTA';
+            include './prospecto_view/seleccionar.php';
         }
-        public function listar(){
-            echo 'PROSPECTO LISTAR';
+        public function ProspectoCrear(){
+            echo 'PROSPECTO CREAR';
         }
-        public function modificar(){
-            echo 'PROSPECTO MODIFICAR';
+        public function ProspectoBuscar(){
+            echo 'PROSPECTO BUSCAR';
         }
     }
