@@ -133,7 +133,8 @@
     }
     function updateProspecto($data){
         global $conn;
-        $id_prospecto = $data['id_prospecto'];
+
+        $idProspecto = $data['idProspecto'];
         $nombre = $data['nombre'];
         $apellidoPaterno = $data['apellidoPaterno'];
         $apellidoMaterno = $data['apellidoMaterno'];
@@ -150,11 +151,64 @@
 
         $query = "UPDATE tb_prospecto SET
             nombre='".$nombre."', apellidoPaterno='".$apellidoPaterno."' , apellidoMaterno='".$apellidoMaterno."', telefono='".$telefono."' , correo='".$correo."' , asunto='".$asunto."' , mensaje='".$mensaje."' , dominioOrigen='".$dominioOrigen."' , giroDominio='".$giroDominio."' , categoriaProspecto='".$categoriaProspecto."', estadoSistema='".$estadoSistema."' , conversacion='".$conversacion."' 
-            WHERE idProspecto=$id_prospecto";
-        $conn->query($query);
-        if($conn->affected_rows) {
-            return TRUE;
-        }//end if
-        return FALSE;
+            WHERE idProspecto=$idProspecto";
+        $query_run = $conn->query($query);
+
+        if($query_run) {
+            if($conn->affected_rows){
+                $data = [
+                    'status' => 200,
+                    'message' => 'Se modifico correctamente el prospecto.',
+                ];
+                header("HTTP/1.0 200 Se modifico correctamente el prospecto.");
+                return json_encode($data);
+            }else{
+                $data = [
+                    'status' => 404,
+                    'message' => 'No se modifico prospecto.',
+                ];
+                header("HTTP/1.0 404 No se modifico prospecto.");
+                return json_encode($data);
+            }
+        }else{
+            $data = [
+                'status' => 500,
+                'message' => 'Internal Server Error.',
+                'data' => $data['idProspecto']
+            ];
+            header("HTTP/1.0 500 Internal Server Error.");
+            return json_encode($data);
+        }
+    }
+    function deleteProspecto($data){
+        global $conn;
+        $idProspecto = $data['idProspecto'];
+        $query = "DELETE FROM tb_prospecto WHERE idProspecto=$idProspecto";
+        $query_run = $conn->query($query);
+        if($query_run) {
+            if($conn->affected_rows >= 0) {
+                $data = [
+                    'status' => 200,
+                    'message' => 'Se elimino correctamente el prospecto.',
+                ];
+                header("HTTP/1.0 200 Se elimino correctamente el prospecto.");
+                return json_encode($data);
+            }else{
+                $data = [
+                    'status' => 404,
+                    'message' => 'No se elimino prospecto.',
+                ];
+                header("HTTP/1.0 404 No se elimino prospecto.");
+                return json_encode($data);
+            }
+        }else{
+            $data = [
+                'status' => 500,
+                'message' => 'Internal Server Error.',
+                'data' => $data['idProspecto']
+            ];
+            header("HTTP/1.0 500 Internal Server Error.");
+            return json_encode($data);
+        }
     }
 ?>

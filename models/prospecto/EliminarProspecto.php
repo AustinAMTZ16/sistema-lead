@@ -18,7 +18,7 @@
             header("HTTP/1.0 405 Para hacer uso del API es necesario mandar idProspecto.");
             echo json_encode($data);
         }else{
-            $prospecto = updateProspecto($inputData);
+            $prospecto = deleteProspecto($inputData);
             echo $prospecto;
         }
     }else{
