@@ -172,6 +172,10 @@
             </table>
             ';
 
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= "From: remitente@example.com" . "\r\n";
+
         $postAgregarProspecto = "INSERT INTO tb_prospecto (nombre, apellidoPaterno, apellidoMaterno,telefono, correo, asunto, mensaje, dominioOrigen, giroDominio, categoriaProspecto, estadoSistema, conversacion)
         VALUES('".$nombre."', '".$apellidoPaterno."', '".$apellidoMaterno."', '".$telefono."', '".$correo."', '".$asunto."', '".$mensaje."', '".$dominioOrigen."', '".$giroDominio."', '".$categoriaProspecto."', '".$estadoSistema."', '".$conversacion."' )";
         $query_run=$conn->query($postAgregarProspecto);
@@ -179,8 +183,8 @@
         if($query_run) {
             if($conn->affected_rows){
                 $res = $query_run;
-                mail($correo, "Gracias por suscribirte", $mailSuscripcion);
-                mail($correoCliente, "Formulario de suscripcion MexiClientes", $mailSuscripcion);
+                mail($correo, "Gracias por suscribirte", $mailSuscripcion, $headers);
+                mail($correoCliente, "Formulario de suscripcion MexiClientes", $mailSuscripcion, $headers);
                 $data = [
                     'status' => 200,
                     'message' => 'Se agrego correctamente el prospecto.',
