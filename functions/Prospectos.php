@@ -1,5 +1,5 @@
 <?php
-    include './../connection/dbcon.php';
+    include '../../connection/dbcon.php';
     //require '../views/viewMail/mailSuscricion.php';
     /* CAMPOS NECESARIOS PARA CREAR UN PROSPECTO
         idProspecto : 'int : identificador de prospecto', 
