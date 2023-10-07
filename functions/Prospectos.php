@@ -96,6 +96,7 @@
         $categoriaProspecto = $data['categoriaProspecto'];
         $estadoSistema = $data['estadoSistema'];
         $conversacion = $data['conversacion'];
+        $correoCliente = $data['correoCliente'];
 
         $postAgregarProspecto = "INSERT INTO tb_prospecto (nombre, apellidoPaterno, apellidoMaterno,telefono, correo, asunto, mensaje, dominioOrigen, giroDominio, categoriaProspecto, estadoSistema, conversacion)
         VALUES('".$nombre."', '".$apellidoPaterno."', '".$apellidoMaterno."', '".$telefono."', '".$correo."', '".$asunto."', '".$mensaje."', '".$dominioOrigen."', '".$giroDominio."', '".$categoriaProspecto."', '".$estadoSistema."', '".$conversacion."' )";
@@ -105,7 +106,7 @@
             if($conn->affected_rows){
                 $res = $query_run;
                 mail($correo, "Gracias por suscribirte", "Gracias por su registro nos estaremos poniendo en contacto lo mas pronto posible.");
-                mail('aldahir.dar@gmail.com', "Formulario de suscripcion MexiClientes", "Se registro un cliente revisa tu sistema");
+                mail($correoCliente, "Formulario de suscripcion MexiClientes", "Se registro un cliente revisa tu sistema");
                 $data = [
                     'status' => 200,
                     'message' => 'Se agrego correctamente el prospecto.',
