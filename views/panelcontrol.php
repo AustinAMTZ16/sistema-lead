@@ -1,6 +1,6 @@
 <?php
   session_start();
-  require_once './../functions/sistemav1/PanelControl.php';
+  require_once './../functions/PanelControl.php';
   // Cerrar la conexión
   $conn->close();
   //validacion doble comprueba por url
