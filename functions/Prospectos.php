@@ -99,14 +99,20 @@
         $conversacion = $data['conversacion'];
         $correoCliente = $data['correoCliente'];
 
+        
+        $nameLead = $data['nombre'];
+        $sitioWeb = $data['dominioOrigen'];
+        $urlWhatsapp = $data['urlWhatsapp'];
+        $urlAgedarCita= $data['urlAgedarCita'];
+        
         $mailSuscripcion = '
             <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;background:#ffffff;">
                 <tr>
                     <td align="center" style="padding:0;">
                         <table role="presentation" style="width:602px;border-collapse:collapse;border:1px solid #cccccc;border-spacing:0;text-align:left;">
                             <tr>
-                                <td align="center" style="padding:40px 0 30px 0;background:#70bbd9;">
-                                    <img src="https://assets.codepen.io/210284/h1.png" alt="" width="300" style="height:auto;display:block;" />
+                                <td align="center" style="padding:40px 0 30px 0;">
+                                    <img src="https://engranetmx.com/BackWeb/assets/img/fondo.jpg" alt="" width="90%"  style="height:auto;display:block;" />
                                 </td>
                             </tr>
                             <tr>
@@ -114,9 +120,14 @@
                                     <table role="presentation" style="width:100%;border-collapse:collapse;border:0;border-spacing:0;">
                                         <tr>
                                             <td style="padding:0 0 36px 0;color:#153643;">
-                                                <h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;">Creating Email Magic</h1>
-                                                <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan et dictum, nisi libero ultricies ipsum, posuere neque at erat.</p>
-                                                <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><a href="http://www.example.com" style="color:#ee4c50;text-decoration:underline;">In tempus felis blandit</a></p>
+                                                <span>Hola ' .$nameLead. '.</span>
+                                                <h1 style="font-size:24px;margin:0 0 5px 0;font-family:Arial,sans-serif;">Tu registro fue exitoso.</h1>
+                                                <span>Muchas gracias por compartirnos tus datos. </span>
+                                                <h1 style="font-size:24px;margin:0 0 20px 0;font-family:Arial,sans-serif;"></h1>
+                                                <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
+                                                Un asesor te contactará tan pronto le sea posible para atender cualquier duda que tengas. De igual forma nuestro bot te enviará un mensaje vía Whatsapp para agendar una posible llamada. ﻿Adjuntamos sobre este email una presentación sobre nuestros servicios.
+                                                </p>
+                                                <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><a href="'.$sitioWeb.'" target="_blank" style="color:#ee4c50;text-decoration:underline;">Visita nuestro sitio web</a></p>
                                             </td>
                                         </tr>
                                         <tr>
@@ -125,14 +136,19 @@
                                                     <tr>
                                                         <td style="width:260px;padding:0;vertical-align:top;color:#153643;">
                                                             <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><img src="https://assets.codepen.io/210284/left.gif" alt="" width="260" style="height:auto;display:block;" /></p>
-                                                            <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed. Morbi porttitor, eget accumsan dictum, est nisi libero ultricies ipsum, in posuere mauris neque at erat.</p>
-                                                            <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><a href="http://www.example.com" style="color:#ee4c50;text-decoration:underline;">Blandit ipsum volutpat sed</a></p>
+                                                            <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">
+                                                            Sabemos que tu tiempo es valioso, por eso te ofrecemos la forma más rápida y cómoda de comunicarte con nosotros por WhatsApp.
+                                                            <br>
+                                                            ¡Esperamos tu mensaje!
+                                                            </p>
+                                                            <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><a href="'.$urlWhatsapp.'" target="_blank" style="color:#ee4c50;text-decoration:underline;">Mandar WhatsApp</a></p>
                                                         </td>
                                                         <td style="width:20px;padding:0;font-size:0;line-height:0;">&nbsp;</td>
                                                         <td style="width:260px;padding:0;vertical-align:top;color:#153643;">
                                                             <p style="margin:0 0 25px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><img src="https://assets.codepen.io/210284/right.gif" alt="" width="260" style="height:auto;display:block;" /></p>
-                                                            <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;">Morbi porttitor, eget est accumsan dictum, nisi libero ultricies ipsum, in posuere mauris neque at erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. In tempus adipiscing felis, sit amet blandit ipsum volutpat sed.</p>
-                                                            <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><a href="http://www.example.com" style="color:#ee4c50;text-decoration:underline;">In tempus felis blandit</a></p>
+                                                            <p style="margin:0 0 12px 0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"> Sabemos que tu tiempo es valioso, por lo que te invitamos a agendar una cita con uno de nuestros asesores en línea para que puedas obtener respuestas de manera rápida y personalizada.
+                                                            </p>
+                                                            <p style="margin:0;font-size:16px;line-height:24px;font-family:Arial,sans-serif;"><a href="'.$urlAgedarCita.'" target="_blank" style="color:#ee4c50;text-decoration:underline;">Agendar una cita en línea.</a></p>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -147,17 +163,14 @@
                                         <tr>
                                             <td style="padding:0;width:50%;" align="left">
                                                 <p style="margin:0;font-size:14px;line-height:16px;font-family:Arial,sans-serif;color:#ffffff;">
-                                                    &reg; Someone, Somewhere 2023<br/><a href="http://www.example.com" style="color:#ffffff;text-decoration:underline;">Unsubscribe</a>
+                                                    &reg; Engranet, Soluciones Digitales 2023<br /><a href="https://www.engranetmx.com" target="_blank" style="color:#ffffff;text-decoration:underline;">engranetmx.com</a>
                                                 </p>
                                             </td>
                                             <td style="padding:0;width:50%;" align="right">
                                                 <table role="presentation" style="border-collapse:collapse;border:0;border-spacing:0;">
                                                     <tr>
                                                         <td style="padding:0 0 0 10px;width:38px;">
-                                                            <a href="http://www.twitter.com/" style="color:#ffffff;"><img src="https://assets.codepen.io/210284/tw_1.png" alt="Twitter" width="38" style="height:auto;display:block;border:0;" /></a>
-                                                        </td>
-                                                        <td style="padding:0 0 0 10px;width:38px;">
-                                                            <a href="http://www.facebook.com/" style="color:#ffffff;"><img src="https://assets.codepen.io/210284/fb_1.png" alt="Facebook" width="38" style="height:auto;display:block;border:0;" /></a>
+                                                            <a href="https://www.facebook.com/profile.php?id=100090316568304" target="_blank" style="color:#ffffff;"><img src="https://assets.codepen.io/210284/fb_1.png" alt="Facebook" width="38" style="height:auto;display:block;border:0;" /></a>
                                                         </td>
                                                     </tr>
                                                 </table>
@@ -170,11 +183,15 @@
                     </td>
                 </tr>
             </table>
-            ';
+        ';
+
+
+
+
 
         $headers = "MIME-Version: 1.0" . "\r\n";
         $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-        $headers .= "From: remitente@example.com" . "\r\n";
+        $headers .= "From: engranet@engranetmx.com" . "\r\n";
 
         $postAgregarProspecto = "INSERT INTO tb_prospecto (nombre, apellidoPaterno, apellidoMaterno,telefono, correo, asunto, mensaje, dominioOrigen, giroDominio, categoriaProspecto, estadoSistema, conversacion)
         VALUES('".$nombre."', '".$apellidoPaterno."', '".$apellidoMaterno."', '".$telefono."', '".$correo."', '".$asunto."', '".$mensaje."', '".$dominioOrigen."', '".$giroDominio."', '".$categoriaProspecto."', '".$estadoSistema."', '".$conversacion."' )";
