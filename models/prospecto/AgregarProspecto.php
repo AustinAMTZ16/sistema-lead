@@ -4,7 +4,7 @@
     header('Access-Control-Allow-Method: POST');
     header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorizaction, X-Request-with, X-API-KEY, Origin, Accept, Access-Control-Request-Method");
 
-    include('./functions/Prospectos.php');
+    include('../../functions/Prospectos.php');
 
     $requestMethod = $_SERVER["REQUEST_METHOD"];
     $inputData = json_decode(file_get_contents("php://input"), true);;

@@ -1,15 +1,4 @@
-<?php
-  session_start();
-  require_once './../functions/CrearUsuario.php';
-  // Cerrar la conexión
-  $conn->close();
-?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?php require_once './head-section/head.php'; ?>
-</head>
-<body>
+
     <br><br><br><br><br><br>
     <div class="container text-center">
         <div class="row justify-content-center">
@@ -44,7 +33,7 @@
                             </div>
                             <br>
                             <div class="d-grid">
-                                <button class="btn btn-outline-dark" type="submit" ><a href="../index.php">Regresar al Menu</a></button>
+                                <button class="btn btn-outline-dark" type="submit" ><a href="/login">Regresar al Menu</a></button>
                             </div>
                         </form>
                         
@@ -53,6 +42,3 @@
             </div>
         </div>
     </div>
-    <?php require_once './head-section/web-js.php'; ?>
-</body>
-</html>

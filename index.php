@@ -1,9 +1,9 @@
 <?php
 // Iniciar la sesión
-session_start();
-require_once './functions/sistemav1/RecuperarPassword.php';
+//session_start();
+//require_once './functions/sistemav1/RecuperarPassword.php';
 // Cerrar la conexión
-$conn->close();
+//$conn->close();
 ?>
 <!DOCTYPE html>
 <html lang="en">
