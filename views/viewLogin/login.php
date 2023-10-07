@@ -1,3 +1,18 @@
+<?php
+// Iniciar la sesión
+//session_start();
+require_once './functions/sistemav1/IniciarSesion.php';
+// Cerrar la conexión
+//$conn->close();
+?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <?php require_once './views/head-section/head.php'; ?>
+</head>
+
+<body>
     
     <br><br><br><br><br><br>
     <div class="container text-center">
@@ -5,7 +20,7 @@
             <div class="col-10 col-sm-6">
                 <div class="container text-center">
                     <div class="row justify-content-center">
-                    <form method="POST" ction="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
+                    <form method="POST" >
                         <h3>Bienvenido MexiClientes</h3>
                         <div class="mb-3">
                             <label for="email" class="form-label ">Correo electrónico / Dominio </label>
@@ -16,7 +31,7 @@
                             <input type="password" class="form-control" name="contraseña" id="contraseña" placeholder="*******" required>
                         </div>
                         <div class="d-grid">
-                            <button class="btn btn-outline-dark" type="submit">Iniciar Sesión</button>
+                            <button class="btn btn-outline-dark" type="submit"><a href="/views/panelcontrol.php">Iniciar Sesión</a></button>
                         </div>
                     </form>
                     <?php
@@ -48,3 +63,8 @@
             </div>
         </div>
     </div>
+
+    <?php require_once './views/head-section/web-js.php'; ?>
+</body>
+
+</html>
