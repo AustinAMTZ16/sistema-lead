@@ -28,7 +28,7 @@
           <div class="hijo">
             <div class="fila">
 
-              <div class="columna8" style="overflow: auto; width:100%;">
+              <div class="columna12" style="overflow: auto; width:100%;">
                 <h4>Listado de Prospecto</h4>
                 <a class="btn btn-primary mb-3" href="./create.php">Crear nuevo</a>
                   <div class="fila">
@@ -70,10 +70,10 @@
                     </div>
                   </div>
               </div>
-            <!--</div>
+            </div>
             
-            <div class="fila"> -->
-              <div class="columna4" style="overflow: auto; width:100%; ">
+            <div class="fila">
+              <div class="columna12" style="overflow: auto; width:100%; ">
                 <h4>Listado de Blog</h4>
                 <a class="btn btn-primary mb-3" href="./createBlog.php">Crear nuevo POST</a>
                 <div class="fila">
