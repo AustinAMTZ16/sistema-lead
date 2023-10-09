@@ -16,7 +16,12 @@
         <div class="vh-100 d-flex justify-content-center align-items-center">
             <div class="container">
                 <div class="row d-flex justify-content-center">
-                    <div class="col-12 col-md-8 col-lg-6">
+                    <div class="col-6 col-md-12 col-lg-6">
+                        <div class="card bg-white">
+                            <img src="./assessment/img/login_fondo1.webp" alt="" height="800px">
+                        </div>
+                    </div>
+                    <div class="col-6 col-md-12 col-lg-6">
                         <div class="card bg-white">
                             <div class="card-body p-5">
                                 <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">

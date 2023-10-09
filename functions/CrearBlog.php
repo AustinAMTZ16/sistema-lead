@@ -29,6 +29,6 @@
         }
 
     } else {
-        echo "Error al guardar 1.". $tituloBlog.$descripcionBlog.$accionBlog.$webOrigen.$_FILES['imgBlog'];
+        // echo "Error al guardar 1.". $tituloBlog.$descripcionBlog.$accionBlog.$webOrigen.$_FILES['imgBlog'];
     }
 ?>
