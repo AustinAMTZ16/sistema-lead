@@ -125,6 +125,13 @@
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 text-center">
                         <div class="login">
+                            <div class="">
+                                <img src="/img/about/about.png" alt="" width="100%" >
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <div class="login">
                             <div class="login-form-container">
                                 <div class="login-text">
                                     <h2>RECUPERACIÓN DE CUENTA</h2>
@@ -138,13 +145,6 @@
                                         </div>
                                     </form>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-md-offset-3 text-center">
-                        <div class="login">
-                            <div class="">
-                                <img src="/img/about/about.png" alt="" width="100%" >
                             </div>
                         </div>
                     </div>
