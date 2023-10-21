@@ -1,7 +1,8 @@
 <?php
     // Iniciar la sesión
     session_start();
-    require_once './functions/IniciarSesion.php';
+    require_once './functions/CrearUsuarioProspecto.php';
+    require_once './functions/CrearUsuario.php';
     // Cerrar la conexión
     $conn->close();
 ?>
@@ -49,7 +50,7 @@
 		                <div class="col-md-4 col-sm-4">
 		                    <div class="header-top-right text-end">
 		                        <ul>
-		                            <li><a style="color: white;">Sistema MexiClientes</a></li>
+		                            <li><a style="color: white;" href="index.php">Sistema MexiClientes</a></li>
 		                        </ul>
 		                    </div>
 		                </div>
@@ -122,15 +123,29 @@
 			</div> -->
 		</header>
 		<!-- Header Area End -->
-		
-        <!-- Login start -->
-        <div class="login-area pt-50 pb-150">
+        <!-- Register start -->
+        <div class="register-area pt-150 pb-150">
             <div class="container">
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3 text-center">
                         <div class="login">
-                            <div class="">
-                                <img src="/img/about/about.png" alt="" width="100%" >
+                            <div class="login-form-container">
+                                <div class="login-text">
+                                    <h2>REGISTRAR CON DOMINIO</h2>
+                                    <span>Registre su dominio llenando el formulario con los detalles de la cuenta a continuación.</span>
+                                </div>
+                                <div class="login-form">
+                                    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                                        <input type="text" id="nombreEmpresa" name="nombreEmpresa" placeholder="Nombre del negocio">
+                                        <input type="text" id="dominioB2B" name="dominioB2B" placeholder="Dominio del negocio">
+                                        <input type="text" id="giroDominio" name="giroDominio" placeholder="Giro del negocio">
+                                        <input type="mail" id="correo" name="correo" placeholder="Correo Electrónico">
+                                        <input type="password" id="password" name="password" placeholder="Clave de seguridad">
+                                        <div class="button-box">
+                                            <button type="submit" class="default-btn">Crear cuenta</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -138,26 +153,16 @@
                         <div class="login">
                             <div class="login-form-container">
                                 <div class="login-text">
-                                    <h2>INICIO DE SESIÓN</h2>
-                                    <span>Inicie sesión utilizando el dominio de su pagina web.</span>
+                                    <h2>REGISTRAR SIN DOMINIO</h2>
+                                    <span>Registre solo llenando el formulario con los detalles de la cuenta a continuación.</span>
                                 </div>
                                 <div class="login-form">
-                                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                        <input type="text" name="usuario" id="usuario" placeholder="name@example.com">
-                                        <input type="password" name="contraseña" id="contraseña" placeholder="Password">
+                                    <form action="#" method="post">
+                                        <input type="text" id="nombre" name="nombre" placeholder="Nombre completo">
+                                        <input type="mail" id="correo" name="correo"  placeholder="Correo Electrónico">
+                                        <input type="password" id="password" name="password"  placeholder="Clave de seguridad">
                                         <div class="button-box">
-                                            <div class="login-toggle-btn">
-                                                <input type="checkbox" id="remember">
-                                                <label for="remember">Acuérdate de mí </label>
-                                                <a href="/recovery.php">¿Has olvidado tu contraseña?</a>
-                                            </div>
-                                            <div class="login-toggle-btn">
-                                                <a href="/signup.php">Registrate con tu dominio web</a>
-                                            </div>
-                                            <div class="login-toggle-btn">
-                                                <a href="/signup.php">Registrate sin dominio web</a>
-                                            </div>
-                                            <button type="submit" class="default-btn">Acceder</button>
+                                            <button type="submit" class="default-btn">Crear cuenta</button>
                                         </div>
                                     </form>
                                 </div>
@@ -167,7 +172,7 @@
                 </div>
             </div>
         </div>
-        <!-- Login end --> 
+        <!-- Register end --> 
         
         <!-- Footer Start -->
         <footer class="footer-area">  

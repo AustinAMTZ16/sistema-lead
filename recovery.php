@@ -1,9 +1,6 @@
 <?php
     // Iniciar la sesión
-    session_start();
-    require_once './functions/IniciarSesion.php';
-    // Cerrar la conexión
-    $conn->close();
+    require_once './functions/RecuperarPassword.php';
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -49,7 +46,7 @@
 		                <div class="col-md-4 col-sm-4">
 		                    <div class="header-top-right text-end">
 		                        <ul>
-		                            <li><a style="color: white;">Sistema MexiClientes</a></li>
+		                            <li><a style="color: white;" href="index.php">Sistema MexiClientes</a></li>
 		                        </ul>
 		                    </div>
 		                </div>
@@ -122,11 +119,28 @@
 			</div> -->
 		</header>
 		<!-- Header Area End -->
-		
-        <!-- Login start -->
-        <div class="login-area pt-50 pb-150">
+        <!-- Register start -->
+        <div class="register-area pt-150 pb-150">
             <div class="container">
                 <div class="row">
+                    <div class="col-md-6 col-md-offset-3 text-center">
+                        <div class="login">
+                            <div class="login-form-container">
+                                <div class="login-text">
+                                    <h2>RECUPERACIÓN DE CUENTA</h2>
+                                    <span>Recupere su cuenta le enviaremos un correo electrónico validando su identidad.</span>
+                                </div>
+                                <div class="login-form">
+                                    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+                                        <input type="text" name="correo" id="correo" placeholder="Correo Electrónico">
+                                        <div class="button-box">
+                                            <button type="submit" class="default-btn">Recuperar cuenta</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-md-6 col-md-offset-3 text-center">
                         <div class="login">
                             <div class="">
@@ -134,40 +148,10 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-md-offset-3 text-center">
-                        <div class="login">
-                            <div class="login-form-container">
-                                <div class="login-text">
-                                    <h2>INICIO DE SESIÓN</h2>
-                                    <span>Inicie sesión utilizando el dominio de su pagina web.</span>
-                                </div>
-                                <div class="login-form">
-                                    <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                        <input type="text" name="usuario" id="usuario" placeholder="name@example.com">
-                                        <input type="password" name="contraseña" id="contraseña" placeholder="Password">
-                                        <div class="button-box">
-                                            <div class="login-toggle-btn">
-                                                <input type="checkbox" id="remember">
-                                                <label for="remember">Acuérdate de mí </label>
-                                                <a href="/recovery.php">¿Has olvidado tu contraseña?</a>
-                                            </div>
-                                            <div class="login-toggle-btn">
-                                                <a href="/signup.php">Registrate con tu dominio web</a>
-                                            </div>
-                                            <div class="login-toggle-btn">
-                                                <a href="/signup.php">Registrate sin dominio web</a>
-                                            </div>
-                                            <button type="submit" class="default-btn">Acceder</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <!-- Login end --> 
+        <!-- Register end --> 
         
         <!-- Footer Start -->
         <footer class="footer-area">  
