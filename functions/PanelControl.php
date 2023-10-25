@@ -1,6 +1,6 @@
 <?php
     //Iniciar la sesión
-    require_once './../connection/conexion.php';
+    require_once './connection/conexion.php';
 
     $usuario = $_SESSION["usuario"];
     $isUser = $_SESSION["isUser"];
@@ -16,7 +16,8 @@
                 tp.fechaNacimiento,
                 tp.lugarNacimiento,
                 tc.puntosRecompensa,
-                tp.estadoSistema 
+                tp.estadoSistema,
+                tp.fechaCreacion
                 FROM tb_prospecto tp
                 LEFT JOIN tb_recompensa tc
                 on tp.idProspecto = tc.idProspecto

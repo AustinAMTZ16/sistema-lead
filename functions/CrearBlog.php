@@ -1,5 +1,5 @@
 <?php
-    require_once './../connection/conexion.php';
+    require_once './connection/conexion.php';
 
     $tituloBlog = $_POST['tituloBlog'];
     $descripcionBlog = $_POST['decripcionBlog'];
@@ -22,7 +22,7 @@
 
         if ($conn->query($sqlBlog) === TRUE) {
             // echo "La imagen se ha guardado en la base de datos correctamente.";
-            header("Location: panelcontrol.php"); // Redireccionar a la página principal después de crear el registro
+            header("Location: panelEmpresa.php"); // Redireccionar a la página principal después de crear el registro
             exit();
         } else {
             echo "Error al guardar 0" .$imagenBlog. $conn->error;

@@ -20,7 +20,7 @@
             $_SESSION['giroDominio'] = $row['giroDominio'];
 
 
-            header("Location: ./views/panelcontrol.php");
+            header("Location: ./panelEmpresa.php");
             exit();
         } else {
             // Usuario inválido, mostrar mensaje de error

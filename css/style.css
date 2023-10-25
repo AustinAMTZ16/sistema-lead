@@ -2867,3 +2867,10 @@ textarea {
     border: 1px solid #EC1C23;
     color: #fff;
 }
+
+.miTextarea {
+    width: 100%; /* El ancho del textarea se ajusta al 100% del contenedor */
+    max-width: 100%; /* Ancho máximo */
+    height: auto; /* La altura se ajusta automáticamente según el contenido */
+    padding: 10px; /* Agrega un poco de espacio alrededor del contenido */
+}

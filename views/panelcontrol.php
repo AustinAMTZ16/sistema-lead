@@ -31,7 +31,7 @@
               <div class="columna12" style="overflow: auto; width:100%;">
                 <h4>Listado de Prospecto</h4>
                 <a class="btn btn-primary mb-3" href="./create.php">Crear nuevo</a>
-                  <div class="fila">
+                <div class="fila">
                     <div class="columna12">
                       <table class="table table-responsive" id="myTable">
                         <thead>
@@ -68,7 +68,7 @@
                         </tbody>
                       </table>
                     </div>
-                  </div>
+                </div>
               </div>
             </div>
             

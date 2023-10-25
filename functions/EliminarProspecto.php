@@ -13,14 +13,14 @@
         WHERE idProspecto=$id";
         if ($conn->query($sqlDelate) === TRUE) {
             //echo "Se borro del sistema: "; 
-            header("Location: ./../views/panelcontrol.php"); 
+            header("Location: ./../viewProspectoLista.php"); 
             exit();
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
             //header("Location: panelcontrol.php"); 
         }
     }else{
-        header("Location: ./../views/panelcontrol.php");
+        header("Location: ./../viewProspectoLista.php");
         exit();
     }
     // Cerrar la conexión

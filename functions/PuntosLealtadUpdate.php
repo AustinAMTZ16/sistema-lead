@@ -1,6 +1,6 @@
 <?php
 
-    require_once './../connection/conexion.php';
+    require_once './connection/conexion.php';
 
 
     // Verificar si se envió el formulario
