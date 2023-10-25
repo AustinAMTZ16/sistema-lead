@@ -124,12 +124,17 @@
                             </div>
                             <div class="login-form">
                                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                                    <input type="text" name="head_titulo" id="head_titulo" placeholder="Titulo de pestaña de pagina web">
 
                                     <input type="text" name="tituloBlog" id="tituloBlog" placeholder="Titulo de tu POST">
 
+                                    <input type="text" name="BlogSubtitulo" id="BlogSubtitulo" placeholder="Subtitulo de POST">
+
                                     <textarea name="decripcionBlog" id="decripcionBlog" cols="145" rows="10" class="miTextarea" placeholder="Cuerpo de tu POST"></textarea>
 
-                                    <input type="text" name="accionBlog" id="accionBlog" placeholder="URL donde vamos a enviar al usuario">
+                                    <input type="text" name="BlogSlogan" id="BlogSlogan" placeholder="Slogan de venta para el POST">
+
+                                    <input type="text" name="accionBlog" id="accionBlog" placeholder="Nombre corto tu blog sin espacios importante">
                                     
                                     <input type="file" name="imgBlog" id="imgBlog" style="display: none;">
 
