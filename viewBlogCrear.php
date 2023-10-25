@@ -1,15 +1,15 @@
 <?php
-// Iniciar la sesión
-session_start();
-require_once './functions/CrearBlog.php';
-// Cerrar la conexión
-$conn->close();
-// Verificar si el usuario ha iniciado sesión
-if (!isset($_SESSION["usuario"])) {
-    // Redireccionar al usuario a la página de inicio de sesión
-    header("Location: ./index.php");
-    exit();
-}
+    // Iniciar la sesión
+    session_start();
+    require_once './functions/BlogCrear.php';
+    // Cerrar la conexión
+    $conn->close();
+    // Verificar si el usuario ha iniciado sesión
+    if (!isset($_SESSION["usuario"])) {
+        // Redireccionar al usuario a la página de inicio de sesión
+        header("Location: ./index.php");
+        exit();
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -75,19 +75,10 @@ if (!isset($_SESSION["usuario"])) {
                         <div class="logo">
                             <a href="index.html">
                                 <?php
-                                if ($arregloLogo->num_rows > 0) {
-                                    // Paso 3: Obtener el valor de la imagen en base64
-                                    $fila = $arregloLogo->fetch_assoc();
-                                    $imagenBase64 = $fila["logotipoEmpresa"];
-
-                                    // Paso 4: Mostrar la imagen en HTML utilizando la etiqueta <img>
-                                    echo '<img width="10%" src="data:image/jpeg;base64,' . $imagenBase64 . '" alt="Imagen en base64">';
-                                } else {
-                                    echo "No se encontró la imagen en la base de datos.";
-                                }
+                                    echo $_SESSION["imgEmpresa"];
                                 ?>
                                 <b>
-                                    <?php echo $_SESSION["usuario"]; ?>
+                                    <?php echo $_SESSION["usuario"];?>
                                 </b>
                             </a>
                         </div>
@@ -153,9 +144,11 @@ if (!isset($_SESSION["usuario"])) {
 
                                     <div class="button-box">
                                         <button type="submit" class="default-btn" onclick="return confirm('¿Está seguro de Crear este registro?')">Crear Prospecto</button>
-                                        <button type="submit" class="default-btn" onclick="window.location.href='panelEmpresa.php'">Regresar al Menu</button>
                                     </div>
                                 </form>
+                                <div class="button-box">
+                                    <button type="submit" class="default-btn" onclick="window.location.href='viewBlogLista.php'">Regresar al Menu</button>
+                                </div>
                             </div>
                         </div>
                     </div>

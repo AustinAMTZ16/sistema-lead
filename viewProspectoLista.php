@@ -1,15 +1,15 @@
 <?php
-session_start();
-require_once './functions/PanelControl.php';
-// Cerrar la conexión
-$conn->close();
-//validacion doble comprueba por url
-// Verificar si el usuario ha iniciado sesión
-if (!isset($_SESSION["usuario"])) {
-    // Redireccionar al usuario a la página de inicio de sesión
-    header("Location: ./index.php");
-    exit();
-}
+    session_start();
+    require_once './functions/ProspectoLista.php';
+    // Cerrar la conexión
+    $conn->close();
+    //validacion doble comprueba por url
+    // Verificar si el usuario ha iniciado sesión
+    if (!isset($_SESSION["usuario"])) {
+        // Redireccionar al usuario a la página de inicio de sesión
+        header("Location: ./index.php");
+        exit();
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -74,21 +74,12 @@ if (!isset($_SESSION["usuario"])) {
                     <div class="col-md-3">
                         <div class="logo">
                             <a href="index.html">
-                            <?php
-                                if ($arregloLogo->num_rows > 0) {
-                                // Paso 3: Obtener el valor de la imagen en base64
-                                $fila = $arregloLogo->fetch_assoc();
-                                $imagenBase64 = $fila["logotipoEmpresa"];
-
-                                // Paso 4: Mostrar la imagen en HTML utilizando la etiqueta <img>
-                                echo '<img width="10%" src="data:image/jpeg;base64,' . $imagenBase64 . '" alt="Imagen en base64">';
-                                } else {
-                                echo "No se encontró la imagen en la base de datos.";
-                                }
-                            ?>
-                            <b>
-                                <?php echo $_SESSION["usuario"];?>
-                            </b>
+                                <?php
+                                    echo $_SESSION["imgEmpresa"];
+                                ?>
+                                <b>
+                                    <?php echo $_SESSION["usuario"];?>
+                                </b>
                             </a>
                         </div>
                     </div>
@@ -157,7 +148,7 @@ if (!isset($_SESSION["usuario"])) {
                                                 <br>
                                                 <a class="btn btn-warning btn-sm" href="viewProspectoPuntosLealtad.php?idProspecto=<?php echo $row['idProspecto']; ?>">Puntos Lealtad</a>
                                                 <br>
-                                                <a class="btn btn-danger btn-sm" href="./functions/EliminarProspecto.php?idProspecto=<?php echo $row['idProspecto']; ?>" onclick="return confirm('¿Está seguro de eliminar este registro?')">Quitar </a>
+                                                <a class="btn btn-danger btn-sm" href="./functions/ProspectoEliminar.php?idProspecto=<?php echo $row['idProspecto']; ?>" onclick="return confirm('¿Está seguro de eliminar este registro?')">Quitar </a>
                                                 <!--Llamar a funcion cambiar estado(sqlCambiar estado dentro de  la tabla tb_Prospecto va buscar el registro seleccionado y va a modificar propiedad estadoSistema='Falso') -->
                                             </td>
                                         </tr>

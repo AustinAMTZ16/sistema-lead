@@ -1,7 +1,7 @@
 <?php
     // Iniciar la sesión
     session_start();
-    require_once './functions/PuntosLealtadUpdate.php';
+    require_once './functions/ProspectoPuntosLealtad.php';
     // Cerrar la conexión
     $conn->close();
     // Verificar si el usuario ha iniciado sesión
@@ -74,21 +74,12 @@
                     <div class="col-md-3">
                         <div class="logo">
                             <a href="index.html">
-                            <?php
-                                if ($arregloLogo->num_rows > 0) {
-                                // Paso 3: Obtener el valor de la imagen en base64
-                                $fila = $arregloLogo->fetch_assoc();
-                                $imagenBase64 = $fila["logotipoEmpresa"];
-
-                                // Paso 4: Mostrar la imagen en HTML utilizando la etiqueta <img>
-                                echo '<img width="10%" src="data:image/jpeg;base64,' . $imagenBase64 . '" alt="Imagen en base64">';
-                                } else {
-                                echo "No se encontró la imagen en la base de datos.";
-                                }
-                            ?>
-                            <b>
-                                <?php echo $_SESSION["usuario"];?>
-                            </b>
+                                <?php
+                                    echo $_SESSION["imgEmpresa"];
+                                ?>
+                                <b>
+                                    <?php echo $_SESSION["usuario"];?>
+                                </b>
                             </a>
                         </div>
                     </div>
@@ -137,13 +128,15 @@
                                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                     <input type="text"  name="idProspecto" value="<?php echo isset($_GET['idProspecto']) ? $_GET['idProspecto'] : ''; ?>" hidden>
                                     
+                                    <input type="text" class="form-control" name="puntosRecompensaF" required placeholder="Ingrese  Puntos Recompensa">
                                     
-
                                     <div class="button-box">
-                                        <button type="submit" class="default-btn" onclick="return confirm('¿Está seguro de Crear este registro?')">Crear Prospecto</button>
-                                        <button type="submit" class="default-btn" onclick="window.location.href='panelEmpresa.php'">Regresar al Menu</button>
+                                        <button class="default-btn" type="submit" onclick="return confirm('¿Está seguro de Crear este registro?')">Asignar</button>
                                     </div>
                                 </form>
+                                <div class="button-box">
+                                    <button type="submit" class="default-btn" onclick="window.location.href='viewProspectoLista.php'">Regresar al Menu</button>
+                                </div>
                             </div>
                         </div>
                     </div>

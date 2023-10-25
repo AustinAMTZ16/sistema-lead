@@ -12,12 +12,26 @@
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            // Usuario válido, redireccionar a la página de inicio
-
             $row = mysqli_fetch_assoc($result);
+            // Usuario válido, redireccionar a la página de inicio
+            $isUser = $row['idLogin'];
+            // Obtener todos los registros de la base de datos P/Obtener el logotipo base64
+            $sqlLogotipo = "SELECT logotipoEmpresa FROM tb_empresa where id_login = $isUser";
+            $arregloLogo = $conn->query($sqlLogotipo);
+            if ($arregloLogo->num_rows > 0) {
+                // Paso 3: Obtener el valor de la imagen en base64
+                $fila = $arregloLogo->fetch_assoc();
+                $imagenBase64 = $fila["logotipoEmpresa"];
+
+                // Paso 4: Mostrar la imagen en HTML utilizando la etiqueta <img>
+                $imgEmpresa = '<img width="10%" src="data:image/jpeg;base64,' . $imagenBase64 . '" alt="Imagen en base64">';
+            } else {
+                $imgEmpresa = "No se encontró la imagen en la base de datos.";
+            }
             $_SESSION["isUser"] = $row['idLogin'];
             $_SESSION['usuario'] = $row['dominioB2B'];
             $_SESSION['giroDominio'] = $row['giroDominio'];
+            $_SESSION['imgEmpresa'] = $imgEmpresa;
 
 
             header("Location: ./panelEmpresa.php");

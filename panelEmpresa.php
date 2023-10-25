@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once './functions/PanelControl.php';
+require_once './functions/ProspectoLista.php';
 // Cerrar la conexión
 $conn->close();
 //validacion doble comprueba por url
@@ -74,21 +74,12 @@ if (!isset($_SESSION["usuario"])) {
                     <div class="col-md-3">
                         <div class="logo">
                             <a href="index.html">
-                            <?php
-                                if ($arregloLogo->num_rows > 0) {
-                                // Paso 3: Obtener el valor de la imagen en base64
-                                $fila = $arregloLogo->fetch_assoc();
-                                $imagenBase64 = $fila["logotipoEmpresa"];
-
-                                // Paso 4: Mostrar la imagen en HTML utilizando la etiqueta <img>
-                                echo '<img width="10%" src="data:image/jpeg;base64,' . $imagenBase64 . '" alt="Imagen en base64">';
-                                } else {
-                                echo "No se encontró la imagen en la base de datos.";
-                                }
-                            ?>
-                            <b>
-                                <?php echo $_SESSION["usuario"];?>
-                            </b>
+                                <?php
+                                    echo $_SESSION["imgEmpresa"];
+                                ?>
+                                <b>
+                                    <?php echo $_SESSION["usuario"];?>
+                                </b>
                             </a>
                         </div>
                     </div>
@@ -130,40 +121,7 @@ if (!isset($_SESSION["usuario"])) {
                         <div style="overflow: auto; width:95%;">
                             <h4>Listado de Prospecto</h4>
                             <a class="default-btn" href="./viewProspectoCrear.php">Crear nuevo</a>
-                            <table class="table table-responsive" id="myTable">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Telefono</th>
-                                        <th>Correo</th>
-                                        <th>Puntos Lealtad</th>
-                                        <th>Fecha de registro</th>
-                                        <th>&nbsp;</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php while ($row = $result->fetch_assoc()) : ?>
-                                        <tr>
-                                            <td><?php echo $row['idProspecto']; ?></td>
-                                            <td><?php echo $row['nombre']; ?></td>
-                                            <td><?php echo $row['telefono']; ?></td>
-                                            <td><?php echo $row['correo']; ?></td>
-                                            <td><?php echo $row['puntosRecompensa']; ?></td>
-                                            <td><?php echo $row['fechaCreacion']; ?></td>
-
-                                            <td>
-                                                <a class="btn btn-primary btn-sm" href="viewProspectoModificar.php?idProspecto=<?php echo $row['idProspecto']; ?>">Modificar Cliente</a>
-                                                <br>
-                                                <a class="btn btn-warning btn-sm" href="viewProspectoPuntosLealtad.php?idProspecto=<?php echo $row['idProspecto']; ?>">Puntos Lealtad</a>
-                                                <br>
-                                                <a class="btn btn-danger btn-sm" href="./functions/EliminarProspecto.php?idProspecto=<?php echo $row['idProspecto']; ?>" onclick="return confirm('¿Está seguro de eliminar este registro?')">Quitar </a>
-                                                <!--Llamar a funcion cambiar estado(sqlCambiar estado dentro de  la tabla tb_Prospecto va buscar el registro seleccionado y va a modificar propiedad estadoSistema='Falso') -->
-                                            </td>
-                                        </tr>
-                                    <?php endwhile; ?>
-                                </tbody>
-                            </table>
+                            
                         </div>
                     </div>
                 </div>
@@ -172,41 +130,8 @@ if (!isset($_SESSION["usuario"])) {
                     <div class="login">
                         <div style="overflow: auto; width:95%;">
                             <h4>Listado de Blog</h4>
-                            <a class="default-btn" href="./createBlog.php">Crear nuevo POST</a>
-                            <table class="table table-responsive" id="myTable2">
-                                <thead>
-                                    <tr>
-                                        <th>idBlog</th>
-                                        <th>tituloBlog</th>
-                                        <!-- <th>decripcionBlog</th> -->
-                                        <th>imagenBlog</th>
-                                        <th>accionBlog</th>
-                                        <th>webOrigen</th>
-                                        <th>&nbsp;</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php while ($row = $result2->fetch_assoc()) : ?>
-                                        <tr>
-                                            <td><?php echo $row['idBlog']; ?></td>
-                                            <td><?php echo $row['tituloBlog']; ?></td>
-                                            <!-- <td><?php //echo $row['decripcionBlog']; 
-                                                        ?></td> -->
-                                            <td><?php echo '<img width="50%" src="data:image/jpeg;base64,' . $row['imagenBlog'] . '" alt="Imagen en base64">'; ?></td>
-                                            <td><?php echo $row['accionBlog']; ?></td>
-                                            <td><?php echo $row['webOrigen']; ?></td>
-
-                                            <td>
-                                                <!-- <a class="btn btn-primary btn-sm" href="x.php?idBlog=<?php //echo $row['idBlog']; ?>">Modificar POST</a>
-
-                                                <a class="btn btn-danger btn-sm" href="./../functions/x.php?idBlog=<?php //echo $row['idBlog']; ?>" onclick="return confirm('¿Está seguro de eliminar este registro?')">Quitar </a> -->
-
-                                                <!--Llamar a funcion cambiar estado(sqlCambiar estado dentro de  la tabla tb_Prospecto va buscar el registro seleccionado y va a modificar propiedad estadoSistema='Falso') -->
-                                            </td>
-                                        </tr>
-                                    <?php endwhile; ?>
-                                </tbody>
-                            </table>
+                            <a class="default-btn" href="./viewBlogCrear.php">Crear nuevo POST</a>
+                            
                         </div>
                     </div>
                 </div>

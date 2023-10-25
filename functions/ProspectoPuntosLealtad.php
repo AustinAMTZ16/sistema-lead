@@ -25,10 +25,10 @@
             $sqlActualizar = "UPDATE tb_recompensa SET puntosRecompensa = '$puntosRecompensa',fechaModificacion = '$fecha_actual' WHERE idProspecto = $idProspectoR";
             if ($conn->query($sqlActualizar) === TRUE) {
                 //echo "Registro actualizado correctamente1.";
-                header("Location: panelcontrol.php");
+                header("Location: viewProspectoLista.php");
             } else {
                 echo "Error al actualizar el registro: " . $conn->error;
-                header("Location: panelcontrol.php");
+                header("Location: viewProspectoLista.php");
             }
             //header("Location: panelcontrol.php");
         } else {
@@ -36,10 +36,10 @@
             $sqlInsertar = "INSERT INTO tb_recompensa (idProspecto, puntosRecompensa) VALUES ('$idProspecto', '$puntosRecompensa')";
             if ($conn->query($sqlInsertar) === TRUE) {
                 //echo "Registro insertado correctamente2.";
-                header("Location: panelcontrol.php");
+                header("Location: viewProspectoLista.php");
             } else {
                 echo "Error al insertar el registro: " . $conn->error;
-                header("Location: panelcontrol.php");
+                header("Location: viewProspectoLista.php");
             }
         }
     }

@@ -1,5 +1,6 @@
-<?    require_once './connection/conexion.php';
-
+<?    
+    require_once './connection/conexion.php';
+    
     // Verificar si se envió el formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
@@ -18,7 +19,7 @@
         WHERE idProspecto=$idM";
 
         if ($conn->query($sql) === TRUE) {
-            header("Location: panelEmpresa.php"); // Redireccionar a la página principal después de actualizar el registro
+            header("Location: viewProspectoLista.php"); // Redireccionar a la página principal después de actualizar el registro
             exit();
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;

@@ -1,15 +1,15 @@
 <?php
-session_start();
-require_once './functions/PanelControl.php';
-// Cerrar la conexión
-$conn->close();
-//validacion doble comprueba por url
-// Verificar si el usuario ha iniciado sesión
-if (!isset($_SESSION["usuario"])) {
-    // Redireccionar al usuario a la página de inicio de sesión
-    header("Location: ./index.php");
-    exit();
-}
+    session_start();
+    require_once './functions/BlogLista.php';
+    // Cerrar la conexión
+    $conn->close();
+    //validacion doble comprueba por url
+    // Verificar si el usuario ha iniciado sesión
+    if (!isset($_SESSION["usuario"])) {
+        // Redireccionar al usuario a la página de inicio de sesión
+        header("Location: ./index.php");
+        exit();
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -74,21 +74,12 @@ if (!isset($_SESSION["usuario"])) {
                     <div class="col-md-3">
                         <div class="logo">
                             <a href="index.html">
-                            <?php
-                                if ($arregloLogo->num_rows > 0) {
-                                // Paso 3: Obtener el valor de la imagen en base64
-                                $fila = $arregloLogo->fetch_assoc();
-                                $imagenBase64 = $fila["logotipoEmpresa"];
-
-                                // Paso 4: Mostrar la imagen en HTML utilizando la etiqueta <img>
-                                echo '<img width="10%" src="data:image/jpeg;base64,' . $imagenBase64 . '" alt="Imagen en base64">';
-                                } else {
-                                echo "No se encontró la imagen en la base de datos.";
-                                }
-                            ?>
-                            <b>
-                                <?php echo $_SESSION["usuario"];?>
-                            </b>
+                                <?php
+                                    echo $_SESSION["imgEmpresa"];
+                                ?>
+                                <b>
+                                    <?php echo $_SESSION["usuario"];?>
+                                </b>
                             </a>
                         </div>
                     </div>
@@ -135,10 +126,8 @@ if (!isset($_SESSION["usuario"])) {
                                     <tr>
                                         <th>idBlog</th>
                                         <th>tituloBlog</th>
-                                        <!-- <th>decripcionBlog</th> -->
                                         <th>imagenBlog</th>
                                         <th>accionBlog</th>
-                                        <th>webOrigen</th>
                                         <th>&nbsp;</th>
                                     </tr>
                                 </thead>
@@ -151,7 +140,6 @@ if (!isset($_SESSION["usuario"])) {
                                                         ?></td> -->
                                             <td><?php echo '<img width="50%" src="data:image/jpeg;base64,' . $row['imagenBlog'] . '" alt="Imagen en base64">'; ?></td>
                                             <td><?php echo $row['accionBlog']; ?></td>
-                                            <td><?php echo $row['webOrigen']; ?></td>
 
                                             <td>
                                                 <!-- <a class="btn btn-primary btn-sm" href="x.php?idBlog=<?php //echo $row['idBlog']; ?>">Modificar POST</a>
