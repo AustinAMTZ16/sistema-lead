@@ -38,8 +38,7 @@
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>
 
-
-    <link rel="stylesheet" href="./assessment/dataTables.min.css">
+    <link rel="stylesheet" href="css/dataTables.min.css">
     </link>
 </head>
 
@@ -203,7 +202,7 @@
     <script src="js/main.js"></script>
 
     <script src="./assessment/bootstrap.bundle.min.js"></script>
-    <script src="./assessment/jquery.dataTables.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable();

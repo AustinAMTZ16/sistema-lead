@@ -1,15 +1,15 @@
 <?php
-session_start();
-require_once './functions/ProspectoLista.php';
-// Cerrar la conexión
-$conn->close();
-//validacion doble comprueba por url
-// Verificar si el usuario ha iniciado sesión
-if (!isset($_SESSION["usuario"])) {
-    // Redireccionar al usuario a la página de inicio de sesión
-    header("Location: ./index.php");
-    exit();
-}
+    session_start();
+    require_once './functions/ProspectoLista.php';
+    // Cerrar la conexión
+    $conn->close();
+    //validacion doble comprueba por url
+    // Verificar si el usuario ha iniciado sesión
+    if (!isset($_SESSION["usuario"])) {
+        // Redireccionar al usuario a la página de inicio de sesión
+        header("Location: ./index.php");
+        exit();
+    }
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -38,8 +38,7 @@ if (!isset($_SESSION["usuario"])) {
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>
 
-
-    <link rel="stylesheet" href="./assessment/dataTables.min.css">
+    <link rel="stylesheet" href="css/dataTables.min.css">
     </link>
 </head>
 
@@ -166,8 +165,7 @@ if (!isset($_SESSION["usuario"])) {
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
 
-    <script src="./assessment/bootstrap.bundle.min.js"></script>
-    <script src="./assessment/jquery.dataTables.min.js"></script>
+    <script src="js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
             $('#myTable').DataTable();
