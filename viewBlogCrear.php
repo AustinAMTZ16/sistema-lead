@@ -73,7 +73,7 @@
                 <div class="row">
                     <div class="col-md-3">
                         <div class="logo">
-                            <a href="index.html">
+                            <a href="panelEmpresa.php">
                                 <?php
                                     echo $_SESSION["imgEmpresa"];
                                 ?>
