@@ -198,6 +198,14 @@
             $('#myTable2').DataTable();
         });
     </script>
+
+    <script src="./js/tinymce/tinymce/tinymce.min.js"></script>
+    <script>
+    tinymce.init({
+        selector: '#decripcionBlog', // Identificador del elemento HTML donde se mostrará el editor
+    });
+    </script>
+
 </body>
 
 </html>
