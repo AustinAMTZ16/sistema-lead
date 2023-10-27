@@ -1,8 +1,8 @@
 <?php
     session_start();
-    require_once './functions/ProspectoLista.php';
+    require_once './functions/PanelEmpresaKPI.php';
     // Cerrar la conexión
-    $conn->close();
+    //$conn->close();
     //validacion doble comprueba por url
     // Verificar si el usuario ha iniciado sesión
     if (!isset($_SESSION["usuario"])) {
@@ -118,8 +118,9 @@
                 <div class="col-md-6 col-md-offset-3 text-center">
                     <div class="login">
                         <div style="overflow: auto; width:95%;">
-                            <h4>Listado de Prospecto</h4>
-                            <a class="default-btn" href="./viewProspectoCrear.php">Crear nuevo</a>
+                            <h4>KPI de Prospecto</h4>
+                            <!-- <a class="default-btn" href="./viewProspectoCrear.php">Crear nuevo</a> -->
+                            <p>Total de prospectos registrados: <?php echo $total_prospectos; ?></p>
                             
                         </div>
                     </div>
@@ -128,9 +129,9 @@
                 <div class="col-md-6 col-md-offset-3 text-center">
                     <div class="login">
                         <div style="overflow: auto; width:95%;">
-                            <h4>Listado de Blog</h4>
-                            <a class="default-btn" href="./viewBlogCrear.php">Crear nuevo POST</a>
-                            
+                            <h4>KPI de Blog</h4>
+                            <!-- <a class="default-btn" href="./viewBlogCrear.php">Crear nuevo POST</a> -->
+                            <p>Total de POST creados: <?php echo $total_blog; ?></p>
                         </div>
                     </div>
                 </div>
