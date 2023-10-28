@@ -199,17 +199,17 @@
         });
     </script>
 
-    <script src="./js/tinymce/tinymce/tinymce.min.js"></script>
+    <script src="./js/tinymce/tinymce.min.js"></script>
     <script>
-    tinymce.init({
-        selector: '#decripcionBlog', // Identificador del elemento HTML donde se mostrará el editor
-        language: 'es_MX', // Idioma del editor
-        branding: false,
-        toolbar: 'undo redo | styles forecolor | bold italic | alignleft aligncenter alignright alignjustify | outdent ident',
-        statusbar:false,
-        promotion: false,
-        //plugins : 'image',
-    });
+        tinymce.init({
+            selector: '#decripcionBlog', // Identificador del elemento HTML donde se mostrará el editor
+            language: 'es_MX', // Idioma del editor
+            branding: false,
+            toolbar: 'undo redo | styles forecolor | bold italic | alignleft aligncenter alignright alignjustify | outdent ident',
+            statusbar:false,
+            promotion: false,
+            //plugins : 'image',
+        });
     </script>
 
 </body>
