@@ -129,15 +129,15 @@
 
                                     <input type="text" name="idProspecto" id="idProspecto" placeholder="idProspecto" value="<?php echo $usuario['idProspecto']; ?>" hidden>
 
-                                    <input type="text" name="nombre" id="nombre" placeholder="Nombre Parteno del prospecto" value="<?php echo $usuario['nombre']; ?>">
+                                    <input type="text" name="nombre" id="nombre" placeholder="Nombre Parteno del prospecto" value="<?php echo $usuario['nombre']; ?>" pattern="{1,30}" title="El valor debe contener solo letras y números, y tener menos de 30 caracteres" required>
 
-                                    <input type="text" name="apellidoPaterno" id="apellidoPaterno" placeholder="Apellido Parteno del prospecto" value="<?php echo $usuario['apellidoPaterno']; ?>">
+                                    <input type="text" name="apellidoPaterno" id="apellidoPaterno" placeholder="Apellido Parteno del prospecto" value="<?php echo $usuario['apellidoPaterno']; ?>" pattern="{1,30}" title="El valor debe contener solo letras y números, y tener menos de 30 caracteres" required>
 
-                                    <input type="text" name="apellidoMaterno" id="apellidoMaterno" placeholder="Apellido Materno del prospecto" value="<?php echo $usuario['apellidoMaterno']; ?>">
+                                    <input type="text" name="apellidoMaterno" id="apellidoMaterno" placeholder="Apellido Materno del prospecto" value="<?php echo $usuario['apellidoMaterno']; ?>" pattern="{1,30}" title="El valor debe contener solo letras y números, y tener menos de 30 caracteres" >
 
-                                    <input type="text" name="telefono" id="telefono" placeholder="Telefono del prospecto" value="<?php echo $usuario['telefono']; ?>">
+                                    <input type="text" name="telefono" id="telefono" placeholder="Telefono del prospecto" value="<?php echo $usuario['telefono']; ?>" pattern="[0-9]{1,12}" title="El valor debe contener solo números, y tener menos de 10 caracteres" required>
 
-                                    <input type="text" name="correo" id="correo" placeholder="Correo Electrónico del prospecto" value="<?php echo $usuario['correo']; ?>">
+                                    <input type="text" name="correo" id="correo" placeholder="Correo Electrónico del prospecto" value="<?php echo $usuario['correo']; ?>" pattern="{1,30}" title="El valor debe contener solo letras y números, y tener menos de 30 caracteres" required>
 
                                     <input type="text" name="asunto" id="asunto" placeholder="Asunto del registro" value="<?php echo $usuario['asunto']; ?>" readonly>
                                     <input type="text" name="mensaje" id="mensaje" placeholder="Asunto del registro" value="<?php echo $usuario['mensaje']; ?>" readonly>

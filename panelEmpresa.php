@@ -121,7 +121,8 @@
                             <h4>KPI de Prospecto</h4>
                             <!-- <a class="default-btn" href="./viewProspectoCrear.php">Crear nuevo</a> -->
                             <p>Total de prospectos registrados: <?php echo $total_prospectos; ?></p>
-                            
+                            <p>Registros por día: <?php echo $total_blog_dia; ?></p>
+                            <p>Fedback Actualizados: <a href=""><?php echo $RegistrosActualizados; ?></a></p>
                         </div>
                     </div>
                 </div>
@@ -132,6 +133,59 @@
                             <h4>KPI de Blog</h4>
                             <!-- <a class="default-btn" href="./viewBlogCrear.php">Crear nuevo POST</a> -->
                             <p>Total de POST creados: <?php echo $total_blog; ?></p>
+                            <p>Total de POST Estado Activo: <?php echo $contador_activo; ?></p>
+                            <p>Total de POST Estado Oculto: <?php echo $contador_oculto; ?></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Login end -->
+
+    <!-- Login start -->
+    <div class="login-area pt-50 pb-150">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-3 text-center">
+                    <div class="login">
+                        <div style="overflow: auto; width:95%;">
+                            <h4>Listado de Fedback de los últimos <?php echo $RegistrosActualizados; ?> Registros.</h4>
+                            <a class="default-btn" href="./viewProspectoCrear.php">Crear nuevo</a>
+                            <table class="table table-responsive" id="myTable">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Nombre</th>
+                                        <th>Telefono</th>
+                                        <th>Correo</th>
+                                        <th>Puntos Lealtad</th>
+                                        <th>Fecha de registro</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php while ($row = $result->fetch_assoc()) : ?>
+                                        <tr>
+                                            <td><?php echo $row['idProspecto']; ?></td>
+                                            <td><?php echo $row['nombre']; ?></td>
+                                            <td><?php echo $row['telefono']; ?></td>
+                                            <td><?php echo $row['correo']; ?></td>
+                                            <td><?php echo $row['puntosRecompensa']; ?></td>
+                                            <td><?php echo $row['fechaCreacion']; ?></td>
+
+                                            <td>
+                                                <a class="btn btn-primary btn-sm" href="viewProspectoModificar.php?idProspecto=<?php echo $row['idProspecto']; ?>">Modificar Cliente</a>
+                                                <br>
+                                                <a class="btn btn-warning btn-sm" href="viewProspectoPuntosLealtad.php?idProspecto=<?php echo $row['idProspecto']; ?>">Puntos Lealtad</a>
+                                                <br>
+                                                <a class="btn btn-danger btn-sm" href="./functions/ProspectoEliminar.php?idProspecto=<?php echo $row['idProspecto']; ?>" onclick="return confirm('¿Está seguro de eliminar este registro?')">Quitar </a>
+                                                <!--Llamar a funcion cambiar estado(sqlCambiar estado dentro de  la tabla tb_Prospecto va buscar el registro seleccionado y va a modificar propiedad estadoSistema='Falso') -->
+                                            </td>
+                                        </tr>
+                                    <?php endwhile; ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

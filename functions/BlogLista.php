@@ -32,7 +32,8 @@
         decripcionBlog,
         imagenBlog,
         accionBlog,
-        webOrigen
+        webOrigen,
+        blogEstado
         FROM tb_blog tp
         where tp.webOrigen = '$usuario' 
         Order by tp.idBlog DESC

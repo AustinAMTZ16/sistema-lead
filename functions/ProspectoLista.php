@@ -17,7 +17,7 @@
                 tp.lugarNacimiento,
                 tc.puntosRecompensa,
                 tp.estadoSistema,
-                tp.fechaCreacion
+                DATE_SUB(tp.fechaCreacion, INTERVAL 6 HOUR) as fechaCreacion
                 FROM tb_prospecto tp
                 LEFT JOIN tb_recompensa tc
                 on tp.idProspecto = tc.idProspecto

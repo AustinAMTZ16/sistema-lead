@@ -124,30 +124,44 @@
                             </div>
                             <div class="login-form">
                                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
-                                    <input type="text" name="head_titulo" id="head_titulo" placeholder="Titulo de pestaña de pagina web">
+                                
+                                    <div>
+                                    <input type="text" name="head_titulo" id="head_titulo" placeholder="Titulo de pestaña de pagina web" pattern="{1,40}" title="El valor debe contener solo letras y números, y tener menos de 40 caracteres" required>
+                                    </div>
 
-                                    <input type="text" name="tituloBlog" id="tituloBlog" placeholder="Titulo de tu POST">
+                                    <div>
+                                    <input type="text" name="tituloBlog" id="tituloBlog" placeholder="Titulo de tu POST" pattern="{1,100}" title="El valor debe contener solo letras y números, y tener menos de 100 caracteres" required>
+                                    </div>
 
-                                    <input type="text" name="BlogSubtitulo" id="BlogSubtitulo" placeholder="Subtitulo de POST">
+                                    <div>
+                                    <input type="text" name="BlogSubtitulo" id="BlogSubtitulo" placeholder="Subtitulo de POST" pattern="{1,40}" title="El valor debe contener solo letras y números, y tener menos de 40 caracteres">
+                                    </div>
 
                                     <textarea name="decripcionBlog" id="decripcionBlog" cols="145" rows="10" class="miTextarea" placeholder="Cuerpo de tu POST"></textarea>
 
-                                    <input type="text" name="BlogSlogan" id="BlogSlogan" placeholder="Slogan de venta para el POST">
+                                    <div>
+                                    <input type="text" name="BlogSlogan" id="BlogSlogan" placeholder="Slogan de venta para el POST" pattern="{1,150}" title="El valor debe contener solo letras y números, y tener menos de 150 caracteres">
+                                    </div>
 
-                                    <input type="text" name="accionBlog" id="accionBlog" placeholder="Nombre corto tu blog sin espacios importante">
-                                    
-                                    <input type="file" name="imgBlog" id="imgBlog" style="display: none;">
+                                     <div>
+                                    <input type="text" name="accionBlog" id="accionBlog" placeholder="Nombre corto tu blog sin espacios importante" pattern="[a-zA-Z0-9]{1,25}" title="El valor debe ser sin espacios y debe contener solo letras y números, y tener menos de 25 caracteres" required>
+                                    </div> 
 
-                                    <label for="imgBlog" class="miBotonPersonalizado" style="
+                                    <div>
+                                    <input type="file" name="imgBlog" id="imgBlog" required>
+
+                                    <!-- <label for="imgBlog" class="miBotonPersonalizado" style="
                                             color: #fff;
                                             background-color:blue;
                                             padding: 10px 20px;
                                             cursor: pointer;
                                             border-radius: 5px;
-                                            ">Seleccionar Archivo</label>
+                                            ">Seleccionar Archivo
+                                    </label> -->
+                                    </div>
 
                                     <div class="button-box">
-                                        <button type="submit" class="default-btn" onclick="return confirm('¿Está seguro de Crear este registro?')">Crear Prospecto</button>
+                                        <button type="submit" class="default-btn" onclick="return confirm('¿Está seguro de Crear este blog?')">Crear Blog</button>
                                     </div>
                                 </form>
                                 <div class="button-box">
@@ -212,6 +226,7 @@
         });
     </script>
 
+    <!-- <script src="./js/validacionesForm.js"></script> -->
 </body>
 
 </html>

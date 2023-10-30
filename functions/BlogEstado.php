@@ -5,21 +5,28 @@
     require_once './../connection/conexion.php';
     
     // Obtener el ID del registro a editar
-    $id = $_GET["idProspecto"];
+    $id = $_GET["idBlog"];
+    $estado = $_GET["estado"];
 
     // Verificar si se envió el formulario
     if ($id != null){
-        $sqlDelate = "DELETE FROM tb_prospecto WHERE idProspecto=$id";
+        if($estado == 1){
+            $sqlDelate = "UPDATE tb_blog SET blogEstado=0
+            WHERE idBlog=$id";
+        }else{
+            $sqlDelate = "UPDATE tb_blog SET blogEstado=1
+            WHERE idBlog=$id";
+        }
         if ($conn->query($sqlDelate) === TRUE) {
             //echo "Se borro del sistema: "; 
-            header("Location: ./../viewProspectoLista.php"); 
+            header("Location: ./../viewBlogLista.php"); 
             exit();
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;
             //header("Location: panelcontrol.php"); 
         }
     }else{
-        header("Location: ./../viewProspectoLista.php");
+        echo "Error: " . $sql . "<br>" . $conn->error;
         exit();
     }
     // Cerrar la conexión

@@ -55,7 +55,7 @@
                     ) VALUES('1','$fecha_actual', '$idProstecto')";
 
         if ($conn->query($sqlPuntos) === TRUE) {
-            header("Location: panelEmpresa.php"); // Redireccionar a la página principal después de crear el registro
+            header("Location: viewProspectoLista.php"); // Redireccionar a la página principal después de crear el registro
             exit();
         } else {
             echo "Error: " . $sql . "<br>" . $conn->error;

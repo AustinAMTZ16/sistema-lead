@@ -1,15 +1,15 @@
 <?php
-    session_start();
-    require_once './functions/BlogLista.php';
-    // Cerrar la conexión
-    $conn->close();
-    //validacion doble comprueba por url
-    // Verificar si el usuario ha iniciado sesión
-    if (!isset($_SESSION["usuario"])) {
-        // Redireccionar al usuario a la página de inicio de sesión
-        header("Location: ./index.php");
-        exit();
-    }
+session_start();
+require_once './functions/BlogLista.php';
+// Cerrar la conexión
+$conn->close();
+//validacion doble comprueba por url
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["usuario"])) {
+    // Redireccionar al usuario a la página de inicio de sesión
+    header("Location: ./index.php");
+    exit();
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -75,10 +75,10 @@
                         <div class="logo">
                             <a href="panelEmpresa.php">
                                 <?php
-                                    echo $_SESSION["imgEmpresa"];
+                                echo $_SESSION["imgEmpresa"];
                                 ?>
                                 <b>
-                                    <?php echo $_SESSION["usuario"];?>
+                                    <?php echo $_SESSION["usuario"]; ?>
                                 </b>
                             </a>
                         </div>
@@ -142,11 +142,22 @@
                                             <td><?php echo $row['accionBlog']; ?></td>
 
                                             <td>
-                                                <!-- <a class="btn btn-primary btn-sm" href="x.php?idBlog=<?php //echo $row['idBlog']; ?>">Modificar POST</a>
-
-                                                <a class="btn btn-danger btn-sm" href="./../functions/x.php?idBlog=<?php //echo $row['idBlog']; ?>" onclick="return confirm('¿Está seguro de eliminar este registro?')">Quitar </a> -->
+                                                <a class="btn btn-primary btn-sm" href="viewBlogModificar.php?idBlog=<?php echo $row['idBlog']; ?>">Modificar POST</a>
+                                                <br>
+                                                <a
+                                                <?php 
+                                                if($row['blogEstado']== 0){ 
+                                                    echo 'class="btn btn-success btn-sm"';}else if ($row['blogEstado']== 1){echo 'class="btn btn-warning btn-sm"';} 
+                                                ?>
+                                                 href="./functions/BlogEstado.php?idBlog=<?php echo $row['idBlog']; ?>&estado=<?php echo $row['blogEstado']; ?>" onclick="return confirm('¿Está seguro de eliminar este blog?')" style="color: white;">Estado: 
+                                                <?php 
+                                                    if($row['blogEstado']== 0){ 
+                                                    echo 'Activo';}else{echo 'Oculto';} 
+                                                ?></a>
 
                                                 <!--Llamar a funcion cambiar estado(sqlCambiar estado dentro de  la tabla tb_Prospecto va buscar el registro seleccionado y va a modificar propiedad estadoSistema='Falso') -->
+
+                                                
                                             </td>
                                         </tr>
                                     <?php endwhile; ?>
@@ -185,7 +196,7 @@
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-    
+
     <script src="js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {

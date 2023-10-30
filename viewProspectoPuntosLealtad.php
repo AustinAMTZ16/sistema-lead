@@ -127,7 +127,7 @@
                                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                     <input type="text"  name="idProspecto" value="<?php echo isset($_GET['idProspecto']) ? $_GET['idProspecto'] : ''; ?>" hidden>
                                     
-                                    <input type="text" class="form-control" name="puntosRecompensaF" required placeholder="Ingrese  Puntos Recompensa">
+                                    <input type="text" class="form-control" name="puntosRecompensaF" required placeholder="Ingrese  Puntos Recompensa" pattern="[0-9]{1,3}" title="El valor debe contener solo y números, y tener menos de 3 caracteres" required>
                                     
                                     <div class="button-box">
                                         <button class="default-btn" type="submit" onclick="return confirm('¿Está seguro de Crear este registro?')">Asignar</button>
