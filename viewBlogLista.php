@@ -149,7 +149,7 @@ if (!isset($_SESSION["usuario"])) {
                                                 if($row['blogEstado']== 0){ 
                                                     echo 'class="btn btn-success btn-sm"';}else if ($row['blogEstado']== 1){echo 'class="btn btn-warning btn-sm"';} 
                                                 ?>
-                                                 href="./functions/BlogEstado.php?idBlog=<?php echo $row['idBlog']; ?>&estado=<?php echo $row['blogEstado']; ?>" onclick="return confirm('¿Está seguro de eliminar este blog?')" style="color: white;">Estado: 
+                                                 href="./functions/BlogEstado.php?idBlog=<?php echo $row['idBlog']; ?>&estado=<?php echo $row['blogEstado']; ?>" style="color: white;">Estado: 
                                                 <?php 
                                                     if($row['blogEstado']== 0){ 
                                                     echo 'Activo';}else{echo 'Oculto';} 
