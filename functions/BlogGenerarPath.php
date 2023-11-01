@@ -71,36 +71,6 @@
                 </script>
                 <!-- Google tag (gtag.js) ADS (Austintv52@gmail.com)-->
 
-                <!-- Messenger Plugin de chat Code -->
-                <div id="fb-root"></div>
-                <!-- Your Plugin de chat code -->
-                <div id="fb-customer-chat" class="fb-customerchat">
-                </div>
-                <script>
-                    var chatbox = document.getElementById("fb-customer-chat");
-                    chatbox.setAttribute("page_id", "115144064851488");
-                    chatbox.setAttribute("attribution", "biz_inbox");
-                </script>
-                <!-- Your SDK code -->
-                <script>
-                    window.fbAsyncInit = function() {
-                        FB.init({
-                            xfbml: true,
-                            version: "v18.0"
-                        });
-                    };
-
-                    (function(d, s, id) {
-                        var js, fjs = d.getElementsByTagName(s)[0];
-                        if (d.getElementById(id)) return;
-                        js = d.createElement(s);
-                        js.id = id;
-                        js.src = "https://connect.facebook.net/es_LA/sdk/xfbml.customerchat.js";
-                        fjs.parentNode.insertBefore(js, fjs);
-                    }(document, "script", "facebook-jssdk"));
-                </script>
-                <!-- Messenger Plugin de chat Code -->
-
                 <!-- Google Tag Manager Aldahir-->
                 <script>
                     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({"gtm.start": new Date().getTime(),        event:"gtm.js"});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src="https://www.googletagmanager.com/gtm.js?id="+i+dl;f.parentNode.insertBefore(j,f);
@@ -336,9 +306,7 @@
                         font-size: 25px;
                         position: fixed;
                         bottom: 20px;
-                        /* Ajusta la distancia desde la parte inferior */
-                        left: 20px;
-                        /* Ajusta la distancia desde la derecha */
+                        right: 60px; /* Ajusta la distancia desde la derecha */
                         cursor: pointer;
                         text-decoration: none;
                         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
