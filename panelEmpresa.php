@@ -76,9 +76,9 @@
                                 <?php
                                     echo $_SESSION["imgEmpresa"];
                                 ?>
-                                <b>
-                                    <?php echo $_SESSION["usuario"];?>
-                                </b>
+                                <!--b>
+                                    <?php //echo $_SESSION["usuario"];?>
+                                </b-->
                             </a>
                         </div>
                     </div>
@@ -90,10 +90,13 @@
                                         <li><a href="./panelEmpresa.php">Inicio</a>
                                         <li><a href="./viewProspectoLista.php">Prospectos</a>
                                         <li><a href="./viewBlogLista.php">Blog</a>
+                                        <li><a href="./viewWebLista.php">Mi WEB</a>
                                         <li><a href="">Cuenta</a>
                                             <ul>
                                                 <li>
                                                     <a href="./functions/logout.php">Cerrar Sesión</a>
+                                                    <!-- <!-- <a href="#">Cambiar clave</a>
+                                                    <a href="#">Configuración</a> --> -->
                                                 </li>
                                             </ul>
                                         </li>

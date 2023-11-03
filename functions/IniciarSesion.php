@@ -24,7 +24,7 @@
                 $imagenBase64 = $fila["logotipoEmpresa"];
 
                 // Paso 4: Mostrar la imagen en HTML utilizando la etiqueta <img>
-                $imgEmpresa = '<img width="10%" src="data:image/jpeg;base64,' . $imagenBase64 . '" alt="Imagen en base64">';
+                $imgEmpresa = '<img width="50%" src="data:image/jpeg;base64,' . $imagenBase64 . '" alt="Imagen en base64">';
             } else {
                 $imgEmpresa = "No se encontró la imagen en la base de datos.";
             }
