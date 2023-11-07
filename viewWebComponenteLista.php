@@ -1,15 +1,15 @@
 <?php
-    session_start();
-    //require_once './functions/PanelEmpresaKPI.php';
-    // Cerrar la conexión
-    //$conn->close();
-    //validacion doble comprueba por url
-    // Verificar si el usuario ha iniciado sesión
-    if (!isset($_SESSION["usuario"])) {
-        // Redireccionar al usuario a la página de inicio de sesión
-        header("Location: ./index.php");
-        exit();
-    }
+session_start();
+require_once './functions/WebComponenteLista.php';
+// Cerrar la conexión
+$conn->close();
+//validacion doble comprueba por url
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["usuario"])) {
+    // Redireccionar al usuario a la página de inicio de sesión
+    header("Location: ./index.php");
+    exit();
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -38,11 +38,17 @@
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>
 
+
     <link rel="stylesheet" href="css/dataTables.min.css">
     </link>
 </head>
 
 <body>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <!-- Header Area Start -->
     <header class="top">
         <div class="header-top">
             <div class="container">
@@ -69,10 +75,10 @@
                         <div class="logo">
                             <a href="panelEmpresa.php">
                                 <?php
-                                    echo $_SESSION["imgEmpresa"];
+                                echo $_SESSION["imgEmpresa"];
                                 ?>
                                 <!--b>
-                                    <?php //echo $_SESSION["usuario"];?>
+                                    <?php //echo $_SESSION["usuario"]; ?>
                                 </b-->
                             </a>
                         </div>
@@ -116,39 +122,61 @@
                 <div class="col-md-12 col-md-offset-3 text-center">
                     <div class="login">
                         <div style="overflow: auto; width:95%;">
-                            <h4>Secciones de tu pagina web</h4>
-                            <ul>
-                                <li>
-                                    <!-- <a href="viewWebPerfilCrear.php">Perfil del negocio</a> -->
-                                </li>
-                                <li>
-                                    <a href="viewWebPerfilModificar.php">Perfil del negocio</a>
-                                </li><br>
-                                <li>
-                                    <!-- <a href="viewWebPageWebCrear.php">Crear Sección WEB</a> -->
-                                </li>
-                                <li>
-                                    <a href="viewWebPageWebModificar.php?idPageWeb=1">Modificar Sección Inicio</a>
-                                </li>
-                                <li>
-                                    <a href="viewWebPageWebModificar.php?idPageWeb=2">Modificar Sección Acerca de</a>
-                                </li>
-                                <li>
-                                    <a href="viewWebPageWebModificar.php?idPageWeb=3">Modificar Sección Servicios</a>
-                                </li>
-                                <li>
-                                    <!-- <a href="viewWebPageWebModificar.php?idPageWeb=4">Modificar Sección Blog</a> -->
-                                </li>
-                                <li>
-                                    <a href="viewWebPageWebModificar.php?idPageWeb=5">Modificar Sección Contacto</a>
-                                </li><br><br>
-                                <li>
-                                    <a href="viewWebComponenteCrear.php">Crear nuevo componente</a>
-                                </li>
-                                <li>
-                                    <a href="viewWebComponenteLista.php">Listado de componentes</a>
-                                </li>
-                            </ul>
+                            <h4>Listado de componentes</h4>
+                            <table class="table table-responsive" id="myTable2">
+                                <thead>
+                                    <tr>
+                                        <th>idComponente</th>
+                                        <th>imagen_componente</th>
+                                        <th>title_componente</th>
+                                        <th>description_componente</th>
+                                        <th>title_btn_action</th>
+                                        <th>action_btn_link</th>
+                                        <th>estado_componente</th>
+                                        <th>page_seccion</th>
+                                        <th>type_componente</th>
+                                        <th>idPerfilNegocio</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php while ($row = $componente->fetch_assoc()) : ?>
+                                        <tr>
+                                            <td><?php echo $row['idComponente']; ?></td>
+                                            <!-- <td><?php //echo $row['decripcionBlog']; 
+                                                        ?></td> -->
+                                            <td><?php echo '<img width="30%" src="data:image/jpeg;base64,' . $row['imagen_componente'] . '" alt="Imagen en base64">'; ?></td>
+                                            <td><?php echo $row['title_componente']; ?></td>
+                                            <td><?php echo $row['description_componente']; ?></td>
+                                            <td><?php echo $row['title_btn_action']; ?></td>
+                                            <td><?php echo $row['action_btn_link']; ?></td>
+                                            <td><?php echo $row['estado_componente']; ?></td>
+                                            <td><?php echo $row['page_seccion']; ?></td>
+                                            <td><?php echo $row['type_componente']; ?></td>
+                                            <td><?php echo $row['idPerfilNegocio']; ?></td>
+                                            <td>
+                                                <a class="btn btn-primary btn-sm" href="viewWebComponenteModificar.php?idComponente=<?php echo $row['idComponente']; ?>">Modificar</a>
+                                                <br>
+                                                <a
+                                                    <?php 
+                                                    if($row['estado_componente']== 1){ 
+                                                        echo 'class="btn btn-success btn-sm"';}else if ($row['estado_componente']== 0){echo 'class="btn btn-warning btn-sm"';} 
+                                                    ?>
+                                                    href="./functions/BlogEstado.php?idBlog=<?php echo $row['idComponente']; ?>&estado=<?php echo $row['estado_componente']; ?>" style="color: white;">Estado: 
+                                                    <?php 
+                                                        if($row['estado_componente']== 0){ 
+                                                        echo 'Oculto';}else{echo 'Activo';} 
+                                                    ?>
+                                                </a>
+
+                                                <!--Llamar a funcion cambiar estado(sqlCambiar estado dentro de  la tabla tb_Prospecto va buscar el registro seleccionado y va a modificar propiedad estadoSistema='Falso') -->
+
+                                                
+                                            </td>
+                                        </tr>
+                                    <?php endwhile; ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>

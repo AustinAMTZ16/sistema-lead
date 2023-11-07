@@ -1,15 +1,15 @@
 <?php
-    session_start();
-    //require_once './functions/PanelEmpresaKPI.php';
-    // Cerrar la conexión
-    //$conn->close();
-    //validacion doble comprueba por url
-    // Verificar si el usuario ha iniciado sesión
-    if (!isset($_SESSION["usuario"])) {
-        // Redireccionar al usuario a la página de inicio de sesión
-        header("Location: ./index.php");
-        exit();
-    }
+session_start();
+require_once './functions/WebComponenteCrear.php';
+// Cerrar la conexión
+$conn->close();
+//validacion doble comprueba por url
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["usuario"])) {
+    // Redireccionar al usuario a la página de inicio de sesión
+    header("Location: ./index.php");
+    exit();
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -69,10 +69,11 @@
                         <div class="logo">
                             <a href="panelEmpresa.php">
                                 <?php
-                                    echo $_SESSION["imgEmpresa"];
+                                echo $_SESSION["imgEmpresa"];
                                 ?>
                                 <!--b>
-                                    <?php //echo $_SESSION["usuario"];?>
+                                    <?php //echo $_SESSION["usuario"]; 
+                                    ?>
                                 </b-->
                             </a>
                         </div>
@@ -85,7 +86,7 @@
                                         <li><a href="./panelEmpresa.php">Inicio</a>
                                         <li><a href="./viewProspectoLista.php">Prospectos</a>
                                         <li><a href="./viewBlogLista.php">Blog</a>
-                                        <li><a href="./viewWebLista.php">Mi WEB</a>
+                                                                                <li><a href="./viewWebLista.php">Mi WEB</a>
                                         <li><a href="">Cuenta</a>
                                             <ul>
                                                 <li>
@@ -115,40 +116,62 @@
             <div class="row">
                 <div class="col-md-12 col-md-offset-3 text-center">
                     <div class="login">
-                        <div style="overflow: auto; width:95%;">
-                            <h4>Secciones de tu pagina web</h4>
-                            <ul>
-                                <li>
-                                    <!-- <a href="viewWebPerfilCrear.php">Perfil del negocio</a> -->
-                                </li>
-                                <li>
-                                    <a href="viewWebPerfilModificar.php">Perfil del negocio</a>
-                                </li><br>
-                                <li>
-                                    <!-- <a href="viewWebPageWebCrear.php">Crear Sección WEB</a> -->
-                                </li>
-                                <li>
-                                    <a href="viewWebPageWebModificar.php?idPageWeb=1">Modificar Sección Inicio</a>
-                                </li>
-                                <li>
-                                    <a href="viewWebPageWebModificar.php?idPageWeb=2">Modificar Sección Acerca de</a>
-                                </li>
-                                <li>
-                                    <a href="viewWebPageWebModificar.php?idPageWeb=3">Modificar Sección Servicios</a>
-                                </li>
-                                <li>
-                                    <!-- <a href="viewWebPageWebModificar.php?idPageWeb=4">Modificar Sección Blog</a> -->
-                                </li>
-                                <li>
-                                    <a href="viewWebPageWebModificar.php?idPageWeb=5">Modificar Sección Contacto</a>
-                                </li><br><br>
-                                <li>
-                                    <a href="viewWebComponenteCrear.php">Crear nuevo componente</a>
-                                </li>
-                                <li>
-                                    <a href="viewWebComponenteLista.php">Listado de componentes</a>
-                                </li>
-                            </ul>
+
+                    </div>
+                </div>
+                <div class="col-md-12 col-md-offset-3 text-center">
+                    <div class="login">
+                        <img src="data:image/jpeg;base64,<?php echo $Perfil['bodyFooterLogo']; ?>" alt="">
+                        <div class="login-form-container">
+                            <div class="login-text">
+                                <h2>Contenido sección inicio</h2>
+                                <span>Por favor de llenar todos los campos requeridos.</span>
+                            </div>
+                            <div class="login-form">
+                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
+                                    <div>                                        
+                                        <input type="file" name="imagen_componente" require>
+                                        <input type="text" name="title_componente" placeholder="titulo del carrusel" required pattern="{1,50}" title="El titulo del carrusel no debe ser mayor a 50 caracteres." required >
+                                        <input type="text" name="description_componente" placeholder="descripcion del carrusel" required pattern="{1,50}" title="La descripcion del carrusel no debe ser mayor a 50 caracteres." required>
+                                        <input type="text" name="title_btn_action" placeholder="titulo del boton del carrusel" required pattern="{1,50}" title="El titulo del boton del carrusel no debe ser mayor a 50 caracteres." required>
+                                        <input type="text" name="action_btn_link" placeholder="accion del boton" required pattern="{1,50}" title="La accion del boton no debe ser mayor a 50 caracteres." required>
+                                        <select name="estado_componente" class="form-select">
+                                            <option selected>Estado del componente en la pagina web</option>
+                                            <option value="1">1. Visible</option>
+                                            <option value="2">2. Oculto</option>
+                                        </select>
+                                        <select name="page_seccion" class="form-select">
+                                            <option selected>Seleccione la pagina web relacionada</option>
+                                            <option value="1">1. Inicio</option>
+                                            <option value="2">2. Acerca de</option>
+                                            <option value="3">3. Servicios</option>
+                                            <option value="4">4. Contacto</option>
+                                        </select>
+                                        <select name="type_componente" class="form-select">
+                                            <option selected>Seleccione el tip de componente</option>
+                                            <option>bodyheadCarrusel</option>
+                                            <option>bodysectionProductosDestacados</option>
+                                            <option>bodysectionAcercaNegocio</option>
+                                            <option>bodysectionServicio</option>
+                                            <option>bodysectionClientes</option>
+                                            <option>bodysectionRecomendaciones</option>
+                                            <option>form_actions_text</option>
+                                            <option>Area_Start</option>
+                                            <option>bodysectionTeam</option>
+                                        </select>
+                                    </div> <br>
+
+                                    <div class="button-box">
+                                        <button type="submit" class="default-btn" onclick="return confirm('¿Está seguro de guardar la pagina web?')">Guardar componente</button>
+                                    </div>
+                                </form>
+                                <!-- <div class="button-box">
+                                    <a  class="default-btn"  href="functions/WebGenerarPath.php?idPageWeb=<?php //echo $PageWeb['idPageWeb'];?>&idEmpresaUser=<?php //echo $idEmpresaUser;?>">Generar HTML</a>
+                                </div> -->
+                                <div class="button-box">
+                                    <button type="submit" class="default-btn" onclick="window.location.href='viewWebLista.php'">Regresar al Menu</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
