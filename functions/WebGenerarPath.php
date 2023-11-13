@@ -915,7 +915,7 @@
                                                 <p>
                                                     <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_uno' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a>
                                                     <br>
-                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a></p>
+                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_dos</a></p>
                                                 <!-- <p>$bodyFooterEmailNegocio_uno</p> -->
                                             </div>
                                         </div>
@@ -1185,7 +1185,7 @@
                                                 <p> 
                                                     $bodyFooterTitleContacto
                                                     <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_uno'>$bodyFooterTelefonoNegocio_uno</a> /
-                                                    <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_dos'>$bodyFooterTelefonoNegocio_uno</a>
+                                                    <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_dos'>$bodyFooterTelefonoNegocio_dos</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -1421,7 +1421,7 @@
                                                 <p>
                                                     <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_uno' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a>
                                                     <br>
-                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a></p>
+                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_dos</a></p>
                                                 <!-- <p>$bodyFooterEmailNegocio_uno</p> -->
                                             </div>
                                         </div>
@@ -1600,7 +1600,7 @@
                                                 <p> 
                                                     $bodyFooterTitleContacto
                                                     <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_uno'>$bodyFooterTelefonoNegocio_uno</a> /
-                                                    <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_dos'>$bodyFooterTelefonoNegocio_uno</a>
+                                                    <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_dos'>$bodyFooterTelefonoNegocio_dos</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -1770,7 +1770,7 @@
                                                 <p>
                                                     <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_uno' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a>
                                                     <br>
-                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a></p>
+                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_dos</a></p>
                                                 <!-- <p>$bodyFooterEmailNegocio_uno</p> -->
                                             </div>
                                         </div>
@@ -1895,7 +1895,7 @@
                                                 <p> 
                                                     $bodyFooterTitleContacto
                                                     <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_uno'>$bodyFooterTelefonoNegocio_uno</a> /
-                                                    <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_dos'>$bodyFooterTelefonoNegocio_uno</a>
+                                                    <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_dos'>$bodyFooterTelefonoNegocio_dos</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -2017,7 +2017,7 @@
                                                 <p>
                                                     <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_uno' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a>
                                                     <br>
-                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a></p>
+                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_dos</a></p>
                                                 <!-- <p>$bodyFooterEmailNegocio_uno</p> -->
                                             </div>
                                         </div>
@@ -2326,7 +2326,7 @@
                                                 <p>
                                                     <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_uno' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a>
                                                     <br>
-                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a></p>
+                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_dos</a></p>
                                                 <!-- <p>$bodyFooterEmailNegocio_uno</p> -->
                                             </div>
                                         </div>
