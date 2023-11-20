@@ -15,14 +15,13 @@
 
 
         // Consulta SQL para actualizar el registro
-        $sql = "UPDATE tb_prospecto SET nombre='$nombre', apellidoPaterno='$apellidoPaterno',apellidoMaterno='$apellidoMaterno',telefono='$telefono', correo='$correo',conversacion='$conversacion', origenProspecto='$origenProspecto' 
-        WHERE idProspecto=$idM";
+        $sqlR = "UPDATE tb_prospecto SET nombre='$nombre', apellidoPaterno='$apellidoPaterno',apellidoMaterno='$apellidoMaterno',telefono='$telefono', correo='$correo',conversacion='$conversacion', origenProspecto='$origenProspecto' WHERE idProspecto=$idM";
 
-        if ($conn->query($sql) === TRUE) {
-            header("Location: viewProspectoLista.php"); // Redireccionar a la página principal después de actualizar el registro
+        if ($conn->query($sqlR) === TRUE) {
+            header("Location: viewProspectoLista.php"); 
             exit();
         } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
+            echo "Error: " . $sqlR . "<br>" . $conn->error;
         }
     }
 

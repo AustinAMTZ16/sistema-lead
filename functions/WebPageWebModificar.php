@@ -41,14 +41,14 @@
         $headTitle=$_POST['headTitle'];
         $headDescription=$_POST['headDescription'];
         $headKeywords=$_POST['headKeywords'];
-        $headPlugins=$_POST['headPlugins'];
-        $headPlugins = htmlspecialchars($headPlugins, ENT_QUOTES, 'UTF-8');
-        $bodyheadFooterScriptPlugins=$_POST['bodyheadFooterScriptPlugins'];
-        $bodyheadFooterScriptPlugins = htmlspecialchars($bodyheadFooterScriptPlugins, ENT_QUOTES, 'UTF-8');
-        $bodybtnWhatsapp=$_POST['bodybtnWhatsapp'];
-        $bodybtnWhatsapp = htmlspecialchars($bodybtnWhatsapp, ENT_QUOTES, 'UTF-8');
+        //$headPlugins=$_POST['headPlugins'];
+        //$headPlugins = htmlspecialchars($headPlugins, ENT_QUOTES, 'UTF-8');
+        // $bodyheadFooterScriptPlugins=$_POST['bodyheadFooterScriptPlugins'];
+        // $bodyheadFooterScriptPlugins = htmlspecialchars($bodyheadFooterScriptPlugins, ENT_QUOTES, 'UTF-8');
+        // $bodybtnWhatsapp=$_POST['bodybtnWhatsapp'];
+        // $bodybtnWhatsapp = htmlspecialchars($bodybtnWhatsapp, ENT_QUOTES, 'UTF-8');
 
-        $sqlPageWebModificar = "UPDATE tb_cms_page_web SET namePageWebMenu='$namePageWebMenu', fileNameWeb='$fileNameWeb', filePatchServer='$filePatchServer', headTitle='$headTitle', headDescription='$headDescription', headKeywords='$headKeywords', headPlugins='$headPlugins', bodyheadFooterScriptPlugins='$bodyheadFooterScriptPlugins', bodybtnWhatsapp='$bodybtnWhatsapp'";
+        $sqlPageWebModificar = "UPDATE tb_cms_page_web SET namePageWebMenu='$namePageWebMenu', fileNameWeb='$fileNameWeb', filePatchServer='$filePatchServer', headTitle='$headTitle', headDescription='$headDescription', headKeywords='$headKeywords' WHERE idPageWeb = $idPageWeb";
 
         if ($conn->query($sqlPageWebModificar) === TRUE) {
             //$file = EditarPath($head_titulo, $BlogImagen64, $BlogTitulo, $BlogSubtitulo,$BlogCuerpo, $BlogSlogan, $nombreArchivo);
