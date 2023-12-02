@@ -73,7 +73,7 @@ if (!isset($_SESSION["usuario"])) {
                                 ?>
                                 <!--b>
                                     <?php //echo $_SESSION["usuario"]; ?>
-</b-->
+                                </b-->
                             </a>
                         </div>
                     </div>
@@ -127,6 +127,7 @@ if (!isset($_SESSION["usuario"])) {
                                 <span>Por favor de llenar todos los campos requeridos.</span>
                             </div>
                             <div class="login-form">
+                                
                                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
                                     <div>
                                         <input type="text" name="idPageWeb" value="Identificar de la pagina web" hidden>
@@ -149,6 +150,7 @@ if (!isset($_SESSION["usuario"])) {
                                         <button type="submit" class="default-btn" onclick="return confirm('¿Está seguro de guardar la pagina web?')">Guardar Perfil</button>
                                     </div>
                                 </form>
+
                                 <div class="button-box">
                                     <button type="submit" class="default-btn" onclick="window.location.href='viewWebLista.php'">Regresar al Menu</button>
                                 </div>

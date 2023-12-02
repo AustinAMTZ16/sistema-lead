@@ -1,7 +1,13 @@
 <?php
     require_once './connection/conexion.php';
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        $idEmpresaUser=$_SESSION["isUser"];
+        // $_SESSION["isUser"] = $row['idLogin']; //75
+        // $_SESSION['usuario'] = $row['dominioB2B']; //icmetal.mx
+        // $_SESSION['giroDominio'] = $row['giroDominio']; //Comercialización de metales
+        // $_SESSION['imgEmpresa'] = $imgEmpresa; //IMAGEN -> tb_empresa
+
+
+        $idEmpresaUser=$_SESSION["isUser"];  //75
         $idPageWeb=0;
         $namePageWebMenu=$_POST['namePageWebMenu'];
         $fileNameWeb=$_POST['fileNameWeb'];

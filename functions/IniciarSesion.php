@@ -28,10 +28,10 @@
             } else {
                 $imgEmpresa = "No se encontró la imagen en la base de datos.";
             }
-            $_SESSION["isUser"] = $row['idLogin'];
-            $_SESSION['usuario'] = $row['dominioB2B'];
-            $_SESSION['giroDominio'] = $row['giroDominio'];
-            $_SESSION['imgEmpresa'] = $imgEmpresa;
+            $_SESSION["isUser"] = $row['idLogin']; //75
+            $_SESSION['usuario'] = $row['dominioB2B']; //icmetal.mx
+            $_SESSION['giroDominio'] = $row['giroDominio']; //Comercialización de metales
+            $_SESSION['imgEmpresa'] = $imgEmpresa; //IMAGEN -> tb_empresa
 
 
             header("Location: ./panelEmpresa.php");
