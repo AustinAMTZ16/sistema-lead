@@ -119,7 +119,7 @@
                             <h4>Secciones de tu pagina web</h4>
                             <ul>
                                 <li>
-                                    <!-- <a href="viewWebPerfilCrear.php">Perfil del negocio</a> -->
+                                    <a href="viewWebPerfilCrear.php">Crear Perfil del negocio</a>
                                 </li>
                                 <li>
                                     <a href="viewWebPerfilModificar.php">Perfil del negocio</a>
