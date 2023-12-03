@@ -152,9 +152,9 @@ if (!isset($_SESSION["usuario"])) {
                                         <button type="submit" class="default-btn" onclick="return confirm('¿Está seguro de guardar la pagina web?')">Guardar Perfil</button>
                                     </div>
                                 </form>
-                                <div class="button-box">
+                                <!-- <div class="button-box">
                                     <a  class="default-btn"  href="functions/WebGenerarPath.php?idPageWeb=<?php echo $PageWeb['idPageWeb'];?>&idEmpresaUser=<?php echo $idEmpresaUser;?>">Generar HTML</a>
-                                </div>
+                                </div> -->
                                 <div class="button-box">
                                     <button type="submit" class="default-btn" onclick="window.location.href='viewWebLista.php'">Regresar al Menu</button>
                                 </div>
