@@ -1,6 +1,8 @@
 <?php
 session_start();
 require_once './functions/WebPageWebModificar.php';
+
+
 // Cerrar la conexión
 $conn->close();
 //validacion doble comprueba por url
@@ -86,7 +88,7 @@ if (!isset($_SESSION["usuario"])) {
                                         <li><a href="./panelEmpresa.php">Inicio</a>
                                         <li><a href="./viewProspectoLista.php">Prospectos</a>
                                         <li><a href="./viewBlogLista.php">Blog</a>
-                                                                                <li><a href="./viewWebLista.php">Mi WEB</a>
+                                        <li><a href="./viewWebLista.php">Mi WEB</a>
                                         <li><a href="">Cuenta</a>
                                             <ul>
                                                 <li>

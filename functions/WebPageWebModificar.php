@@ -12,16 +12,25 @@
     */
     $idPageWeb = $_GET["idPageWeb"]; //Data Formulario web IdPageWeb
     $idEmpresaUser=$_SESSION["isUser"]; //Data Sesision IdUsuarioLogeado
+
+    $idNegocio = $_GET["idNegocio"]; //idNegocio
+    $fileNameWeb = $_GET["fileNameWeb"]; // nombre del archivo
+
     $idPerfilNegocio = 0; //sqlRelacionNegocio
     
     $sqlRelacionNegocio = "SELECT idPerfilNegocio FROM tb_cms_perfil_negocio WHERE idEmpresaUser = $idEmpresaUser";
+    
     $result = $conn->query($sqlRelacionNegocio); 
+
+    
     if($result->num_rows > 0){
+        
         $fila = $result->fetch_assoc();
         $idPerfilWeb = $fila['idPerfilNegocio']; //(Se obtine idPerfilNegocio)
         //echo 'Sesion Usuario: ' . $idEmpresaUser . " Formulario Page Web: ". $idPageWeb . "SQL PerfilWeb" . $idPerfilWeb;
 
-        $sqlRelacionPageWeb = "SELECT idPageWeb, namePageWebMenu, fileNameWeb, filePatchServer, headTitle, headDescription, headKeywords, headPlugins, bodyheadFooterScriptPlugins, bodybtnWhatsapp,  idPerfilNegocio FROM tb_cms_page_web WHERE idPageWeb = $idPageWeb";
+        $sqlRelacionPageWeb = "SELECT idPageWeb, namePageWebMenu, fileNameWeb, filePatchServer, headTitle, headDescription, headKeywords, headPlugins, bodyheadFooterScriptPlugins, bodybtnWhatsapp,  idPerfilNegocio FROM tb_cms_page_web WHERE idPerfilNegocio = $idPerfilWeb AND fileNameWeb = '$fileNameWeb'";
+        
         $res = $conn->query($sqlRelacionPageWeb);
         if($res->num_rows > 0){
             $PageWeb = $res->fetch_assoc();

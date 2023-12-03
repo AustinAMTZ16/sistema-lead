@@ -128,19 +128,19 @@
                                     <a href="viewWebPageWebCrear.php">Crear Sección WEB</a>
                                 </li>
                                 <li>
-                                    <a href="viewWebPageWebModificar.php?idPageWeb=1">Modificar Sección Inicio</a>
+                                    <a href="viewWebPageWebModificar.php?idNegocio=<?php echo $_SESSION["isUser"] ?>&fileNameWeb=index">Modificar Sección Inicio</a>
                                 </li>
                                 <li>
-                                    <a href="viewWebPageWebModificar.php?idPageWeb=2">Modificar Sección Acerca de</a>
+                                    <a href="viewWebPageWebModificar.php?idNegocio=<?php echo $_SESSION["isUser"] ?>&fileNameWeb=acerca">Modificar Sección Acerca de</a>
                                 </li>
                                 <li>
-                                    <a href="viewWebPageWebModificar.php?idPageWeb=3">Modificar Sección Servicios</a>
+                                    <a href="viewWebPageWebModificar.php?idNegocio=<?php echo $_SESSION["isUser"] ?>&fileNameWeb=servicios">Modificar Sección Servicios</a>
                                 </li>
                                 <li>
                                     <!-- <a href="viewWebPageWebModificar.php?idPageWeb=4">Modificar Sección Blog</a> -->
                                 </li>
                                 <li>
-                                    <a href="viewWebPageWebModificar.php?idPageWeb=5">Modificar Sección Contacto</a>
+                                    <a href="viewWebPageWebModificar.php?idNegocio=<?php echo $_SESSION["isUser"] ?>&fileNameWeb=contacto">Modificar Sección Contacto</a>
                                 </li><br><br>
                                 <li>
                                     <a href="viewWebComponenteCrear.php">Crear nuevo componente</a>
