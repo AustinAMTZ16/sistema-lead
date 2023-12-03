@@ -88,10 +88,10 @@
                                 <nav>
                                     <ul>
                                         <li><a href="./panelEmpresa.php">Inicio</a>
-                                        <!-- <li><a href="./viewProspectoLista.php">Prospectos</a> -->
+                                        <li><a href="./viewProspectoLista.php">Prospectos</a>
                                         <li><a href="./viewBlogLista.php">Blog</a>
                                         <li><a href="./viewWebLista.php">Mi WEB</a>
-                                        <li><a href="./viewProductoLista.php">Productos</a>
+                                        <!-- <li><a href="./viewProductoLista.php">Productos</a> -->
                                         <li><a href="">Cuenta</a>
                                             <ul>
                                                 <li>
