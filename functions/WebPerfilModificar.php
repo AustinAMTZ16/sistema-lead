@@ -29,14 +29,15 @@
 
         //Consulta SQL para actualizar el registro (head_titulo, tituloBlog, BlogSubtitulo ,decripcionBlog, BlogSlogan, imagenBlog, FileTituloPOST, accionBlog, webOrigen)
 
-        $sqlPerfilModificar = "UPDATE tb_cms_perfil_negocio SET bodyFooterLogo='$bodyFooterLogo', bodyFooterSlogan='$bodyFooterSlogan', bodyFooterLinkFacebook='$bodyFooterLinkFacebook', bodyFooterLinkInstagram='$bodyFooterLinkInstagram', bodyFooterLinkTwitter='$bodyFooterLinkTwitter', bodyFooterLinkLinkedIn='$bodyFooterLinkLinkedIn', bodyFooterLinkTikTok='$bodyFooterLinkTikTok', bodyFooterTitleContacto='$bodyFooterTitleContacto', bodyFooterDireccionNegocio_uno='$bodyFooterDireccionNegocio_uno', bodyFooterDireccionNegocio_dos='$bodyFooterDireccionNegocio_dos', bodyFooterTelefonoNegocio_uno='$bodyFooterTelefonoNegocio_uno', bodyFooterTelefonoNegocio_dos='$bodyFooterTelefonoNegocio_dos', bodyFooterEmailNegocio_uno='$bodyFooterEmailNegocio_uno', bodyFooterEmailNegocio_dos='$bodyFooterEmailNegocio_dos', bodyFooterCopyright='$bodyFooterCopyright', idEmpresaUser='$idEmpresaUser'";
+        $sqlPerfilModificar = "UPDATE tb_cms_perfil_negocio SET bodyFooterLogo='$bodyFooterLogo', bodyFooterSlogan='$bodyFooterSlogan', bodyFooterLinkFacebook='$bodyFooterLinkFacebook', bodyFooterLinkInstagram='$bodyFooterLinkInstagram', bodyFooterLinkTwitter='$bodyFooterLinkTwitter', bodyFooterLinkLinkedIn='$bodyFooterLinkLinkedIn', bodyFooterLinkTikTok='$bodyFooterLinkTikTok', bodyFooterTitleContacto='$bodyFooterTitleContacto', bodyFooterDireccionNegocio_uno='$bodyFooterDireccionNegocio_uno', bodyFooterDireccionNegocio_dos='$bodyFooterDireccionNegocio_dos', bodyFooterTelefonoNegocio_uno='$bodyFooterTelefonoNegocio_uno', bodyFooterTelefonoNegocio_dos='$bodyFooterTelefonoNegocio_dos', bodyFooterEmailNegocio_uno='$bodyFooterEmailNegocio_uno', bodyFooterEmailNegocio_dos='$bodyFooterEmailNegocio_dos', bodyFooterCopyright='$bodyFooterCopyright' WHERE idEmpresaUser='$idEmpresaUser'";
 
+        echo $sqlPerfilModificar; 
         //echo $sqlBlogModificar;
-        if ($conn->query($sqlPerfilModificar) === TRUE) {
-            //$file = EditarPath($head_titulo, $BlogImagen64, $BlogTitulo, $BlogSubtitulo,$BlogCuerpo, $BlogSlogan, $nombreArchivo);
-            header("Location: viewWebLista.php"); // Redireccionar a la página principal después de actualizar el registro
-            exit();
-        } else {
-            echo "Error: " . $conn->error;
-        }
+        // if ($conn->query($sqlPerfilModificar) === TRUE) {
+        //     //$file = EditarPath($head_titulo, $BlogImagen64, $BlogTitulo, $BlogSubtitulo,$BlogCuerpo, $BlogSlogan, $nombreArchivo);
+        //     header("Location: viewWebLista.php"); // Redireccionar a la página principal después de actualizar el registro
+        //     exit();
+        // } else {
+        //     echo "Error: " . $conn->error;
+        // }
     }
