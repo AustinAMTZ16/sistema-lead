@@ -2,122 +2,123 @@
     //LOGICA PARA SISTEMA DE GESTIÓN DE CONTENIDO DEL SITIO WEB
     //INDEX.HTML
     /**
-    *VARIABLES SEO Y PAGINAS WEB:
-    *   fileNameWeb: Nombre del archivo html [varchar30]
-    *   filePatchServer: Ruta donde se alamacenara el archivo [varchar100]
-    *       idPageWeb: Identificador de las paginas del negocio [int10 A_I FK]
-    *   namePageWeb: Nombre de la sección esta se usara para identificar la seccion y hacer dinamico el menu.
-    *   headTitle: Titulo de pestaña de la pagina web SEO [varchar100]
-    *   headDescription: Descripcion de archivo web SEO [varchar300]
-    *   headKeywords: Palabras clave de archivo web SEO [longtext]
-    *   headPlugins: Seccion libre con el objetivo de poder integrar plugins de terceros [longtext]
-    *   bodyheadFooterScript: Seccion de scripts en el body [longtext]
-    *   bodyheadFooterScriptPlugins: Seccion libre con el objetivo de poder integrar plugins de terceros [longtext]
-    *   bodybtnWhatsapp: Control de la visibilidad del boton whatsapp [text]
-    *       idPerfilNegocio: Identificador del negocio  [int10 A_I FK]
-    *   bodyFooterLogo: logotipo de la negocio [longtext]
-    *   bodyFooterSlogan: Descripcion corta del giro de la empresa [varchar200]
-    *   bodyFooterLinkFacebook: Red social de la empresa [varchar200]
-    *   bodyFooterLinkInstagram: Red social de la empresa [varchar200]
-    *   bodyFooterLinkTwitter: Red socila de la empresa [varchar200]
-    *   bodyFooterLinkLinkedIn: Red social de la empresa [varchar200]
-    *   bodyFooterLinkTikTok: Red social de la empresa [varchar200]
-    *   bodyFooterTitleContacto: Titulo seccion de contacto [varchar100]
-    *   bodyFooterDireccionNegocio_uno: Direccion del negocio [varchar100]
-    *   bodyFooterDireccionNegocio_dos: Direccion del negocio [varchar100]
-    *   bodyFooterTelefonoNegocio_uno: Telefono del negocio [varchar12]
-    *   bodyFooterTelefonoNegocio_dos: Telefono del negocio [varchar12]
-    *   bodyFooterEmailNegocio_uno: Correo electronico del negocio [varchar20]
-    *   bodyFooterEmailNegocio_dos: Correo electronico del negocio [varchar20]
-    *   bodyFooterCopyright: Seccion de copyright y politicas de privaciodad [varchar200]
-    *
-    *   bodyheadCarrusel: {
-            imagen_componente: imagen del carrusel 
-            title_componente: titulo del carrusel
-            description_componente: descripcion del carrusel
-            title_btn_action: titulo del boton del carrusel
-            action_btn_link: accion del boton 
-            estado_componente: estado del componente visible - false
-            page_seccion: Pagina web relacionada
-            type_componente: tipo de componente
-        }   
-        {
-            ídComponente: 1;
-            imagenComponente: "data64";
-            title: "LAS CASUALIDADES NO EXISTEN ";
-            description: "Tu quieres hacer crecer tu negocio y nosotros hacemos crecer a las empresas en Mexico mediante marketing y programación. <br>
-            ¡Es hora de tomar acción! ¡Ponte en contacto con nosotros hoy y descubre cómo podemos impulsar tu éxito en línea!";
-            title_btn_action: "Contactar";
-            action_btn_link: "./contacto.html";
-            estado_componet: true;
-            page_seccion: 1;
-            type_component: "bodyheadCarrusel_1";
-        }
-        bodysectionProductosDestacados: {
-            imagen: imagen del carrusel 
-            title: titulo del carrusel
-            description: descripcion del carrusel
-            title_btn_action: titulo del boton del carrusel
-            action_btn_link: accion del boton 
-            estado_componet: estado del componente visible - false
-            page_seccion: Pagina web relacionada
-            type_component: tipo de componente
-        }
-        bodysectionAcercaNegocio: {
-            imagen: imagen del carrusel 
-            title: titulo del carrusel
-            description: descripcion del carrusel
-            title_btn_action: titulo del boton del carrusel
-            action_btn_link: accion del boton 
-            estado_componet: estado del componente visible - false
-            page_seccion: Pagina web relacionada
-            type_component: tipo de componente
-        }
-        bodysectionServicio: {
-            imagen: imagen del carrusel 
-            title: titulo del carrusel
-            description: descripcion del carrusel
-            title_btn_action: titulo del boton del carrusel
-            action_btn_link: accion del boton 
-            estado_componet: estado del componente visible - false
-            page_seccion: Pagina web relacionada
-            type_component: tipo de componente
-        }
-        bodysectionClientes: {
-            imagen: imagen del carrusel 
-            title: titulo del carrusel
-            description: descripcion del carrusel
-            title_btn_action: titulo del boton del carrusel
-            action_btn_link: accion del boton 
-            estado_componet: estado del componente visible - false
-            page_seccion: Pagina web relacionada
-            type_component: tipo de componente
-        }
-        bodysectionRecomendaciones: {
-            imagen: imagen del carrusel 
-            title: titulo del carrusel
-            description: descripcion del carrusel
-            title_btn_action: titulo del boton del carrusel
-            action_btn_link: accion del boton 
-            estado_componet: estado del componente visible - false
-            page_seccion: Pagina web relacionada
-            type_component: tipo de componente
-        }
-        form_actions_text: {
-            imagen: imagen del carrusel 
-            title: titulo del carrusel
-            description: descripcion del carrusel
-            title_btn_action: titulo del boton del carrusel
-            estado_componet: estado del componente visible - false
-            page_seccion: Pagina web relacionada
-            type_component: tipo de componente
-        }
-        Area_Start{}
+        *VARIABLES SEO Y PAGINAS WEB:
+        *   fileNameWeb: Nombre del archivo html [varchar30]
+        *   filePatchServer: Ruta donde se alamacenara el archivo [varchar100]
+        *       idPageWeb: Identificador de las paginas del negocio [int10 A_I FK]
+        *   namePageWeb: Nombre de la sección esta se usara para identificar la seccion y hacer dinamico el menu.
+        *   headTitle: Titulo de pestaña de la pagina web SEO [varchar100]
+        *   headDescription: Descripcion de archivo web SEO [varchar300]
+        *   headKeywords: Palabras clave de archivo web SEO [longtext]
+        *   headPlugins: Seccion libre con el objetivo de poder integrar plugins de terceros [longtext]
+        *   bodyheadFooterScript: Seccion de scripts en el body [longtext]
+        *   bodyheadFooterScriptPlugins: Seccion libre con el objetivo de poder integrar plugins de terceros [longtext]
+        *   bodybtnWhatsapp: Control de la visibilidad del boton whatsapp [text]
+        *       idPerfilNegocio: Identificador del negocio  [int10 A_I FK]
+        *   bodyFooterLogo: logotipo de la negocio [longtext]
+        *   bodyFooterSlogan: Descripcion corta del giro de la empresa [varchar200]
+        *   bodyFooterLinkFacebook: Red social de la empresa [varchar200]
+        *   bodyFooterLinkInstagram: Red social de la empresa [varchar200]
+        *   bodyFooterLinkTwitter: Red socila de la empresa [varchar200]
+        *   bodyFooterLinkLinkedIn: Red social de la empresa [varchar200]
+        *   bodyFooterLinkTikTok: Red social de la empresa [varchar200]
+        *   bodyFooterTitleContacto: Titulo seccion de contacto [varchar100]
+        *   bodyFooterDireccionNegocio_uno: Direccion del negocio [varchar100]
+        *   bodyFooterDireccionNegocio_dos: Direccion del negocio [varchar100]
+        *   bodyFooterTelefonoNegocio_uno: Telefono del negocio [varchar12]
+        *   bodyFooterTelefonoNegocio_dos: Telefono del negocio [varchar12]
+        *   bodyFooterEmailNegocio_uno: Correo electronico del negocio [varchar20]
+        *   bodyFooterEmailNegocio_dos: Correo electronico del negocio [varchar20]
+        *   bodyFooterCopyright: Seccion de copyright y politicas de privaciodad [varchar200]
+        *
+        *   bodyheadCarrusel: {
+                imagen_componente: imagen del carrusel 
+                title_componente: titulo del carrusel
+                description_componente: descripcion del carrusel
+                title_btn_action: titulo del boton del carrusel
+                action_btn_link: accion del boton 
+                estado_componente: estado del componente visible - false
+                page_seccion: Pagina web relacionada
+                type_componente: tipo de componente
+            }   
+            {
+                ídComponente: 1;
+                imagenComponente: "data64";
+                title: "LAS CASUALIDADES NO EXISTEN ";
+                description: "Tu quieres hacer crecer tu negocio y nosotros hacemos crecer a las empresas en Mexico mediante marketing y programación. <br>
+                ¡Es hora de tomar acción! ¡Ponte en contacto con nosotros hoy y descubre cómo podemos impulsar tu éxito en línea!";
+                title_btn_action: "Contactar";
+                action_btn_link: "./contacto.html";
+                estado_componet: true;
+                page_seccion: 1;
+                type_component: "bodyheadCarrusel_1";
+            }
+            bodysectionProductosDestacados: {
+                imagen: imagen del carrusel 
+                title: titulo del carrusel
+                description: descripcion del carrusel
+                title_btn_action: titulo del boton del carrusel
+                action_btn_link: accion del boton 
+                estado_componet: estado del componente visible - false
+                page_seccion: Pagina web relacionada
+                type_component: tipo de componente
+            }
+            bodysectionAcercaNegocio: {
+                imagen: imagen del carrusel 
+                title: titulo del carrusel
+                description: descripcion del carrusel
+                title_btn_action: titulo del boton del carrusel
+                action_btn_link: accion del boton 
+                estado_componet: estado del componente visible - false
+                page_seccion: Pagina web relacionada
+                type_component: tipo de componente
+            }
+            bodysectionServicio: {
+                imagen: imagen del carrusel 
+                title: titulo del carrusel
+                description: descripcion del carrusel
+                title_btn_action: titulo del boton del carrusel
+                action_btn_link: accion del boton 
+                estado_componet: estado del componente visible - false
+                page_seccion: Pagina web relacionada
+                type_component: tipo de componente
+            }
+            bodysectionClientes: {
+                imagen: imagen del carrusel 
+                title: titulo del carrusel
+                description: descripcion del carrusel
+                title_btn_action: titulo del boton del carrusel
+                action_btn_link: accion del boton 
+                estado_componet: estado del componente visible - false
+                page_seccion: Pagina web relacionada
+                type_component: tipo de componente
+            }
+            bodysectionRecomendaciones: {
+                imagen: imagen del carrusel 
+                title: titulo del carrusel
+                description: descripcion del carrusel
+                title_btn_action: titulo del boton del carrusel
+                action_btn_link: accion del boton 
+                estado_componet: estado del componente visible - false
+                page_seccion: Pagina web relacionada
+                type_component: tipo de componente
+            }
+            form_actions_text: {
+                imagen: imagen del carrusel 
+                title: titulo del carrusel
+                description: descripcion del carrusel
+                title_btn_action: titulo del boton del carrusel
+                estado_componet: estado del componente visible - false
+                page_seccion: Pagina web relacionada
+                type_component: tipo de componente
+            }
+            Area_Start{}
     */
     require_once '../connection/conexion.php';
     // Obtener el ID del registro a editar
-    $idEmpresaUser=$_GET['idEmpresaUser'];
-    $idPageWeb = $_GET['idPageWeb']; //Data Formulario web IdPageWeb
+    $idEmpresaUser=$_GET['idEmpresaUser']; //20
+    $idPageWeb = $_GET['idPageWeb']; //Data Formulario web IdPageWeb 1
+    $SeccionPage = $_GET['SeccionPageSelecionado'];
     
     // Consulta SQL para obtener el registro específico  
     $sqlPerfilNegocio = 'SELECT idPerfilNegocio, bodyFooterLogo, bodyFooterSlogan, bodyFooterLinkFacebook, bodyFooterLinkInstagram, bodyFooterLinkTwitter, bodyFooterLinkLinkedIn, bodyFooterLinkTikTok, bodyFooterTitleContacto, bodyFooterDireccionNegocio_uno, bodyFooterDireccionNegocio_dos, bodyFooterTelefonoNegocio_uno, bodyFooterTelefonoNegocio_dos, bodyFooterEmailNegocio_uno, bodyFooterEmailNegocio_dos, bodyFooterCopyright, idEmpresaUser FROM tb_cms_perfil_negocio WHERE idEmpresaUser = '.$idEmpresaUser.'';
@@ -147,8 +148,9 @@
     $bodyFooterCopyright=$Perfil['bodyFooterCopyright'];
     $idEmpresaUser=$Perfil['idEmpresaUser'];
 
-    // Consulta SQL para obtener la seccion a modificar
-    $sqlPageWebSeccion = 'SELECT * FROM tb_cms_page_web WHERE idPageWeb = '.$idPageWeb.'';
+    // Consulta SQL para obtener la seccion a modificar --> MODIFICAR idPageWeb POR idPerfilNegocio Y fileNameWeb
+    $sqlPageWebSeccion = 'SELECT * FROM tb_cms_page_web WHERE fileNameWeb = "'.$SeccionPage.'" AND idPerfilNegocio = '.$idPerfilNegocio.'';
+
     $dataPage = $conn->query($sqlPageWebSeccion);
     if($dataPage > 0){
         $PageWeb = $dataPage ->fetch_assoc(); 
@@ -166,20 +168,22 @@
     $bodyheadFooterScriptPlugins=$PageWeb['bodyheadFooterScriptPlugins'];
     $bodybtnWhatsapp=$PageWeb['bodybtnWhatsapp'];
     $idPerfilNegocio=$PageWeb['idPerfilNegocio'];
+    
     //echo $idPageWeb  . $bodyFooterSlogan . $fileNameWeb;
 
-    $sqlContenidoSeccion="SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = 1 AND page_seccion = 1 AND type_componente = 'bodyheadCarrusel'";
-    $datacomponentes = $conn->query($sqlContenidoSeccion);
-    if($dataPage > 0){
-        $ArrayComponente = $datacomponentes ->fetch_assoc(); 
-        // header('Location: viewWebLista.php'); // Redireccionar a la página principal después de actualizar el registro
-        // exit();
-    }
+    // $sqlContenidoSeccion="SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = 1 AND page_seccion = 1 AND type_componente = 'bodyheadCarrusel'";
+    // $datacomponentes = $conn->query($sqlContenidoSeccion);
+    // if($dataPage > 0){
+    //     $ArrayComponente = $datacomponentes ->fetch_assoc(); 
+    //     // header('Location: viewWebLista.php'); // Redireccionar a la página principal después de actualizar el registro
+    //     // exit();
+    // }
 
 
-    switch ($idPageWeb){
-        case 1:
-            $sqlContenidobodyheadCarrusel = "SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'bodyheadCarrusel'";
+    switch ($SeccionPage){
+        // SECCION INICIO
+        case "index":
+            $sqlContenidobodyheadCarrusel = 'SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "bodyheadCarrusel"';
             $datacomponentes = $conn->query($sqlContenidobodyheadCarrusel);
             if ($datacomponentes->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -230,7 +234,7 @@
                 $type_componente_3 =  $resultados[2]['type_componente'];
             }
 
-            $sqlContenidobodysectionProductosDestacados = "SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'bodysectionProductosDestacados'";
+            $sqlContenidobodysectionProductosDestacados = 'SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "bodysectionProductosDestacados"';
             $databodysectionProductosDestacados = $conn->query($sqlContenidobodysectionProductosDestacados);
             if ($databodysectionProductosDestacados->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -284,7 +288,7 @@
                 $type_componentePD3 =  $resultados[2]['type_componente'];
             }
 
-            $sqlContenidobodysectionAcercaNegocio ="SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'bodysectionAcercaNegocio'";
+            $sqlContenidobodysectionAcercaNegocio ='SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "bodysectionAcercaNegocio"';
             $databodysectionAcercaNegocio = $conn->query($sqlContenidobodysectionAcercaNegocio);
             if ($databodysectionAcercaNegocio->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -304,7 +308,7 @@
                 $type_componenteAN1 =  $resultados[0]['type_componente'];
             }
 
-            $sqlContenidobodysectionServicio = "SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'bodysectionServicio'";
+            $sqlContenidobodysectionServicio = 'SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "bodysectionServicio"';
             $databodysectionServicio = $conn->query($sqlContenidobodysectionServicio);
             if ($databodysectionServicio->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -358,7 +362,7 @@
                 $type_componenteSS3 =  $resultados[2]['type_componente'];
             }
 
-            $sqlContenidobodysectionClientes = "SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'bodysectionClientes'";
+            $sqlContenidobodysectionClientes = 'SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "bodysectionClientes"';
             $databodysectionClientes = $conn->query($sqlContenidobodysectionClientes);
             if ($databodysectionClientes->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -446,7 +450,7 @@
                 $type_componenteSC5 =  $resultados[4]['type_componente'];
             }
 
-            $sqlContenidbodysectionRecomendaciones="SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'bodysectionRecomendaciones'";
+            $sqlContenidbodysectionRecomendaciones='SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "bodysectionRecomendaciones"';
             $databodysectionRecomendaciones = $conn->query($sqlContenidbodysectionRecomendaciones);
             if ($databodysectionRecomendaciones->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -466,7 +470,7 @@
                 $type_componenteSR1 =  $resultados[0]['type_componente'];
             }
 
-            $sqlContenidoform_actions_text="SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'form_actions_text'";
+            $sqlContenidoform_actions_text='SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "form_actions_text"';
             $dataform_actions_text = $conn->query($sqlContenidoform_actions_text);
             if ($dataform_actions_text->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -486,7 +490,7 @@
                 $type_componenteFA1 =  $resultados[0]['type_componente'];
             }
 
-            $sqlContenidoform_actions_text="SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'form_actions_text'";
+            $sqlContenidoform_actions_text='SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "form_actions_text"';
             $dataform_actions_text = $conn->query($sqlContenidoform_actions_text);
             if ($dataform_actions_text->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -915,7 +919,7 @@
                                                 <p>
                                                     <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_uno' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a>
                                                     <br>
-                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_dos</a></p>
+                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a></p>
                                                 <!-- <p>$bodyFooterEmailNegocio_uno</p> -->
                                             </div>
                                         </div>
@@ -951,15 +955,17 @@
             ";
             $Ruta = '../'.$filePatchServer.$fileNameWeb;
             //echo $Ruta;
-            if (file_put_contents($Ruta, $PageWebFile)) {
+            if ($pageSI=file_put_contents($Ruta, $PageWebFile)) {
+                //echo $pageSI;
                 header('Location: ../viewWebLista.php'); // Redireccionar a la página principal después de actualizar el registro
                 exit();
             } else {
                 return  'Hubo un error al crear el archivo.';
             }
             break; // Termina el caso actual y sale del switch
-        case 2:
-            $sqlContenidoArea_Start = "SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'Area_Start'";
+        // SECCION ACERCA
+        case "acerca":
+            $sqlContenidoArea_Start = 'SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "Area_Start"';
             $dataArea_Start = $conn->query($sqlContenidoArea_Start);
             if ($dataArea_Start->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -979,7 +985,7 @@
                 $type_componenteAS1 =  $resultados[0]['type_componente'];
             }
 
-            $sqlContenidobodysectionAcercaNegocio ="SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'bodysectionAcercaNegocio'";
+            $sqlContenidobodysectionAcercaNegocio ='SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "bodysectionAcercaNegocio"';
             $databodysectionAcercaNegocio = $conn->query($sqlContenidobodysectionAcercaNegocio);
             if ($databodysectionAcercaNegocio->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -999,7 +1005,7 @@
                 $type_componenteAN1 =  $resultados[0]['type_componente'];
             }
 
-            $sqlContenidobodysectionClientes = "SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'bodysectionClientes'";
+            $sqlContenidobodysectionClientes = 'SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "bodysectionClientes"';
             $databodysectionClientes = $conn->query($sqlContenidobodysectionClientes);
             if ($databodysectionClientes->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -1087,7 +1093,7 @@
                 $type_componenteSC5 =  $resultados[4]['type_componente'];
             }
 
-            $sqlContenidoform_actions_text="SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'form_actions_text'";
+            $sqlContenidoform_actions_text='SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "form_actions_text"';
             $dataform_actions_text = $conn->query($sqlContenidoform_actions_text);
             if ($dataform_actions_text->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -1107,7 +1113,7 @@
                 $type_componenteFA1 =  $resultados[0]['type_componente'];
             }
 
-            $sqlContenidobodysectionTeam = "SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = 1 AND page_seccion = 2 AND type_componente = 'bodysectionTeam'";
+            $sqlContenidobodysectionTeam = 'SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "bodysectionTeam"';
             $databodysectionTeam = $conn->query($sqlContenidobodysectionTeam);
             if ($databodysectionTeam->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -1185,7 +1191,7 @@
                                                 <p> 
                                                     $bodyFooterTitleContacto
                                                     <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_uno'>$bodyFooterTelefonoNegocio_uno</a> /
-                                                    <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_dos'>$bodyFooterTelefonoNegocio_dos</a>
+                                                    <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_dos'>$bodyFooterTelefonoNegocio_uno</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -1421,7 +1427,7 @@
                                                 <p>
                                                     <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_uno' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a>
                                                     <br>
-                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_dos</a></p>
+                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a></p>
                                                 <!-- <p>$bodyFooterEmailNegocio_uno</p> -->
                                             </div>
                                         </div>
@@ -1458,14 +1464,16 @@
             $Ruta = '../'.$filePatchServer.$fileNameWeb;
             //echo $Ruta;
             if (file_put_contents($Ruta, $PageWebFile)) {
+                //echo $PageWebFile;
                 header('Location: ../viewWebLista.php'); // Redireccionar a la página principal después de actualizar el registro
                 exit();
             } else {
                 return  'Hubo un error al crear el archivo.';
             }
             break;
-        case 3:
-            $sqlContenidoArea_Start = "SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'Area_Start'";
+        // SECCION SERVICIOS
+        case "servicios":
+            $sqlContenidoArea_Start = 'SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "Area_Start"';
             $dataArea_Start = $conn->query($sqlContenidoArea_Start);
             if ($dataArea_Start->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -1485,7 +1493,7 @@
                 $type_componenteAS1 =  $resultados[0]['type_componente'];
             }
 
-            $sqlContenidoform_actions_text="SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'form_actions_text'";
+            $sqlContenidoform_actions_text= 'SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "form_actions_text"';
             $dataform_actions_text = $conn->query($sqlContenidoform_actions_text);
             if ($dataform_actions_text->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -1505,7 +1513,7 @@
                 $type_componenteFA1 =  $resultados[0]['type_componente'];
             }
 
-            $sqlContenidobodysectionServicio = "SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'bodysectionServicio'";
+            $sqlContenidobodysectionServicio = 'SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "bodysectionServicio"';
             $databodysectionServicio = $conn->query($sqlContenidobodysectionServicio);
             if ($databodysectionServicio->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -1600,7 +1608,7 @@
                                                 <p> 
                                                     $bodyFooterTitleContacto
                                                     <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_uno'>$bodyFooterTelefonoNegocio_uno</a> /
-                                                    <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_dos'>$bodyFooterTelefonoNegocio_dos</a>
+                                                    <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_dos'>$bodyFooterTelefonoNegocio_uno</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -1770,7 +1778,7 @@
                                                 <p>
                                                     <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_uno' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a>
                                                     <br>
-                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_dos</a></p>
+                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a></p>
                                                 <!-- <p>$bodyFooterEmailNegocio_uno</p> -->
                                             </div>
                                         </div>
@@ -1807,13 +1815,15 @@
             $Ruta = '../'.$filePatchServer.$fileNameWeb;
             //echo $Ruta;
             if (file_put_contents($Ruta, $PageWebFile)) {
+                //echo $PageWebFile;
                 header('Location: ../viewWebLista.php'); // Redireccionar a la página principal después de actualizar el registro
                 exit();
             } else {
                 return  'Hubo un error al crear el archivo.';
             }
-        break;
-        case 4:
+            break;
+        // SECCION BLOG-LISTA
+        case "blog-lista":
             $sqlContenidoArea_Start = "SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'Area_Start'";
             $dataArea_Start = $conn->query($sqlContenidoArea_Start);
             if ($dataArea_Start->num_rows > 0) {
@@ -1895,7 +1905,7 @@
                                                 <p> 
                                                     $bodyFooterTitleContacto
                                                     <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_uno'>$bodyFooterTelefonoNegocio_uno</a> /
-                                                    <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_dos'>$bodyFooterTelefonoNegocio_dos</a>
+                                                    <a style='color: aliceblue;' href='tel:+52$bodyFooterTelefonoNegocio_dos'>$bodyFooterTelefonoNegocio_uno</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -1957,7 +1967,7 @@
                         <div class='course-area pt-150 pb-150'>
                             <div class='container'>   
                                 <div class='row'>
-
+                                        // BLOG-LIST
                                 </div>
                             </div> 
                         </div>    
@@ -2017,7 +2027,7 @@
                                                 <p>
                                                     <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_uno' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a>
                                                     <br>
-                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_dos</a></p>
+                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a></p>
                                                 <!-- <p>$bodyFooterEmailNegocio_uno</p> -->
                                             </div>
                                         </div>
@@ -2060,8 +2070,9 @@
                 return  'Hubo un error al crear el archivo.';
             }
             break;
-        case 5:
-            $sqlContenidoArea_Start = "SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'Area_Start'";
+        // SECCION ACERCA
+        case "contacto":
+            $sqlContenidoArea_Start = 'SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "Area_Start"';
             $dataArea_Start = $conn->query($sqlContenidoArea_Start);
             if ($dataArea_Start->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -2081,7 +2092,7 @@
                 $type_componenteAS1 =  $resultados[0]['type_componente'];
             }
 
-            $sqlContenidoform_actions_text="SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'form_actions_text'";
+            $sqlContenidoform_actions_text='SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "form_actions_text"';
             $dataform_actions_text = $conn->query($sqlContenidoform_actions_text);
             if ($dataform_actions_text->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -2101,7 +2112,7 @@
                 $type_componenteFA1 =  $resultados[0]['type_componente'];
             }
 
-            $sqlContenidobodysectionAcercaNegocio ="SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = $idPerfilNegocio AND page_seccion = $idPageWeb AND type_componente = 'bodysectionAcercaNegocio'";
+            $sqlContenidobodysectionAcercaNegocio ='SELECT * FROM tb_cms_componente_web WHERE idPerfilNegocio = '.$idPerfilNegocio.' AND page_seccion = "'.$SeccionPage.'" AND type_componente = "bodysectionAcercaNegocio"';
             $databodysectionAcercaNegocio = $conn->query($sqlContenidobodysectionAcercaNegocio);
             if ($databodysectionAcercaNegocio->num_rows > 0) {
                 // Inicializa un arreglo para almacenar los resultados
@@ -2326,7 +2337,7 @@
                                                 <p>
                                                     <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_uno' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a>
                                                     <br>
-                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_dos</a></p>
+                                                    <a style='color:gray;' href='tel:+52$bodyFooterTelefonoNegocio_dos' target='_blank'>+52 $bodyFooterTelefonoNegocio_uno</a></p>
                                                 <!-- <p>$bodyFooterEmailNegocio_uno</p> -->
                                             </div>
                                         </div>
@@ -2363,6 +2374,7 @@
             $Ruta = '../'.$filePatchServer.$fileNameWeb;
             //echo $Ruta;
             if (file_put_contents($Ruta, $PageWebFile)) {
+                //echo $PageWebFile;
                 header('Location: ../viewWebLista.php'); // Redireccionar a la página principal después de actualizar el registro
                 exit();
             } else {
@@ -2370,8 +2382,6 @@
             }
             break;
         default:
-            echo 'Opción no válida';
+            echo 'Opción no válida' . $SeccionPage;;
     }
 ?>
-
-
