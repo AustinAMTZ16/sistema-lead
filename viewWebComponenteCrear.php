@@ -146,6 +146,7 @@ if (!isset($_SESSION["usuario"])) {
                                             <option value="acerca">2. Acerca de</option>
                                             <option value="servicios">3. Servicios</option>
                                             <option value="contacto">4. Contacto</option>
+                                            <option value="landing">4. Landing Page</option>
                                         </select>
                                         <select name="type_componente" class="form-select">
                                             <option selected>Seleccione el tip de componente</option>
