@@ -97,7 +97,7 @@
                                                 <li>
                                                     <a href="./functions/logout.php">Cerrar Sesión</a>
                                                     <!-- <!-- <a href="#">Cambiar clave</a>
-                                                    <a href="#">Configuración</a> --> -->
+                                                    <a href="#">Configuración</a> -->
                                                 </li>
                                             </ul>
                                         </li>
