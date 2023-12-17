@@ -141,6 +141,9 @@
                                 </li>
                                 <li>
                                     <a href="viewWebPageWebModificar.php?idNegocio=<?php echo $_SESSION["isUser"] ?>&fileNameWeb=contacto">Modificar Sección Contacto</a>
+                                </li>
+                                <li>
+                                    <a href="viewWebPageWebModificar.php?idNegocio=<?php echo $_SESSION["isUser"] ?>&fileNameWeb=landing">Modificar Sección Landing Page</a>
                                 </li><br><br>
                                 <li>
                                     <a href="viewWebComponenteCrear.php">Crear nuevo componente</a>
