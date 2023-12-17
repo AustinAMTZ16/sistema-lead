@@ -1681,7 +1681,7 @@
                     </body>
                 </html>
             ";
-            $Ruta = '../'.$filePatchServer.$fileNameWeb;
+            $Ruta = '../'.$filePatchServer.'index.html';
             //echo $Ruta;
             if ($pageSI=file_put_contents($Ruta, $PageWebFile)) {
                 //echo $pageSI;
