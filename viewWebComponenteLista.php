@@ -92,6 +92,7 @@ if (!isset($_SESSION["usuario"])) {
                                         <li><a href="./viewProspectoLista.php">Prospectos</a>
                                         <li><a href="./viewBlogLista.php">Blog</a>
                                         <li><a href="./viewWebLista.php">Mi WEB</a>
+                                        <li><a href="./viewCRMLista.php">CRM</a>
                                         <li><a href="">Cuenta</a>
                                             <ul>
                                                 <li>

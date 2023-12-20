@@ -1,5 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
+<?php
+    session_start();
+    //require_once './functions/PanelEmpresaKPI.php';
+    // Cerrar la conexión
+    //$conn->close();
+    //validacion doble comprueba por url
+    // Verificar si el usuario ha iniciado sesión
+    if (!isset($_SESSION["usuario"])) {
+        // Redireccionar al usuario a la página de inicio de sesión
+        header("Location: ./index.php");
+        exit();
+    }
+?>
+<!doctype html>
+<html class="no-js" lang="en">
+
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -27,13 +41,8 @@
     <link rel="stylesheet" href="css/dataTables.min.css">
     </link>
 </head>
+
 <body>
-
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-    <!-- Header Area Start -->
     <header class="top">
         <div class="header-top">
             <div class="container">
@@ -77,13 +86,13 @@
                                         <li><a href="./viewProspectoLista.php">Prospectos</a>
                                         <li><a href="./viewBlogLista.php">Blog</a>
                                         <li><a href="./viewWebLista.php">Mi WEB</a>
-                                        <li><a href="./viewProductoLista.php">Productos</a>
+                                        <li><a href="./viewCRMLista.php">CRM</a>
                                         <li><a href="">Cuenta</a>
                                             <ul>
                                                 <li>
                                                     <a href="./functions/logout.php">Cerrar Sesión</a>
-                                                    <!-- <!-- <a href="#">Cambiar clave</a>
-                                                    <a href="#">Configuración</a> --> -->
+                                                    <!-- <a href="#">Cambiar clave</a>
+                                                    <a href="#">Configuración</a> -->
                                                 </li>
                                             </ul>
                                         </li>
@@ -101,22 +110,29 @@
     </header>
     <!-- Header Area End -->
 
-
-        <!-- Login start -->
-        <div class="login-area pt-50 pb-150">
+    <!-- Login start -->
+    <div class="login-area pt-50 pb-150">
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-md-offset-3 text-center">
                     <div class="login">
                         <div style="overflow: auto; width:95%;">
-                            <h4>Crear un producto de tu negocio: </h4>
-
-                            <p>id_producto: </p>
-                            <p>descripcion_producto: </p>
-                            <p>negocio: </p>
-                            <p>fecha_creacion: </p>
-                            <p>estado_producto: </p>
-                            <p>cantidad: </p>
+                            <h4>CRM Negocio</h4>
+                            <ul>
+                                <li>
+                                    <a href="./viewCRMCrearProducto.php">Crear Productos</a>
+                                </li>
+                                <li>
+                                    <a href="./viewCRMProductosLista.php">Lista de productos</a>
+                                </li><br>
+                                
+                                <!-- <li>
+                                    <a href="#">Venta de productos</a>
+                                </li>
+                                <li>
+                                    <a href="#">Lista de venta</a>
+                                </li> -->
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -125,9 +141,19 @@
     </div>
     <!-- Login end -->
 
-    
-    
-
+    <!-- Footer Start -->
+    <footer class="footer-area">
+        <div class="footer-bottom text-center">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <p>Copyright © <a href="#">MexiClientes</a> 2023. All Right Reserved By <a href="#" target="_blank">Engranet.</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer End -->
 
     <script src="js/vendor/jquery-3.6.0.min.js"></script>
     <script src="js/vendor/jquery-migrate-3.3.2.min.js"></script>
@@ -152,4 +178,5 @@
         });
     </script>
 </body>
+
 </html>

@@ -1,8 +1,8 @@
 <?php
     session_start();
-    require_once './functions/ProspectoLista.php';
+    require_once './functions/CRMCrearProducto.php';
     // Cerrar la conexión
-    $conn->close();
+    //$conn->close();
     //validacion doble comprueba por url
     // Verificar si el usuario ha iniciado sesión
     if (!isset($_SESSION["usuario"])) {
@@ -43,11 +43,6 @@
 </head>
 
 <body>
-    <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-    <!-- Header Area Start -->
     <header class="top">
         <div class="header-top">
             <div class="container">
@@ -121,43 +116,41 @@
             <div class="row">
                 <div class="col-md-12 col-md-offset-3 text-center">
                     <div class="login">
-                        <div style="overflow: auto; width:95%;">
-                            <h4>Listado de Prospecto</h4>
-                            <a class="default-btn" href="./viewProspectoCrear.php">Crear nuevo</a>
-                            <table class="table table-responsive" id="myTable">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Telefono</th>
-                                        <th>Correo</th>
-                                        <th>Puntos Lealtad</th>
-                                        <th>Fecha de registro</th>
-                                        <th>&nbsp;</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php while ($row = $result->fetch_assoc()) : ?>
-                                        <tr>
-                                            <td><?php echo $row['idProspecto']; ?></td>
-                                            <td><?php echo $row['nombre']; ?></td>
-                                            <td><?php echo $row['telefono']; ?></td>
-                                            <td><?php echo $row['correo']; ?></td>
-                                            <td><?php echo $row['puntosRecompensa']; ?></td>
-                                            <td><?php echo $row['fechaCreacion']; ?></td>
+                    <div class="login-form-container">
+                            <div class="login-text">
+                                <h2>Crear nuevo producto</h2>
+                                <span>Por favor de llenar todos los campos requeridos.</span>
+                            </div>
+                            <div class="login-form">
+                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="multipart/form-data">
 
-                                            <td>
-                                                <a class="btn btn-primary btn-sm" href="viewProspectoModificar.php?idProspecto=<?php echo $row['idProspecto']; ?>">Modificar Cliente</a>
-                                                <br>
-                                                <a class="btn btn-warning btn-sm" href="viewProspectoPuntosLealtad.php?idProspecto=<?php echo $row['idProspecto']; ?>">Puntos Lealtad</a>
-                                                <br>
-                                                <a class="btn btn-danger btn-sm" href="./functions/ProspectoEliminar.php?idProspecto=<?php echo $row['idProspecto']; ?>" onclick="return confirm('¿Está seguro de eliminar este registro?')">Quitar </a>
-                                                <!--Llamar a funcion cambiar estado(sqlCambiar estado dentro de  la tabla tb_Prospecto va buscar el registro seleccionado y va a modificar propiedad estadoSistema='Falso') -->
-                                            </td>
-                                        </tr>
-                                    <?php endwhile; ?>
-                                </tbody>
-                            </table>
+                                    <input type="text" name="nombre_producto" id="nombre_producto" placeholder="Nombre del producto" pattern="{1,100}" title="El valor debe contener solo letras y tener menos de 100 caracteres" required>
+
+                                    <textarea name="descripcion_producto" id="descripcion_producto" cols="145" rows="10" class="miTextarea" placeholder="Descripción del producto"></textarea>
+
+                                    <input type="text" name="sku_producto" id="sku_producto" placeholder="Stock del producto" pattern="[0-9]{1,5}" title="El valor debe contener solo números, y tener menos de 5 caracteres">
+
+                                    <input type="file" name="img_producto" id="img_producto" require>
+
+                                    <input type="text" name="precio_compra" id="precio_compra" placeholder="Precio de compra"  title="El valor debe contener solo números, y tener menos de 5 caracteres" required>
+
+                                    <input type="text" name="precio_venta" id="precio_venta" placeholder="Precio de venta"  title="El valor debe contener solo números, y tener menos de 5 caracteres" required>
+                                
+                                    <select name="estatus_producto" class="form-select">
+                                            <option selected>Seleccione el estatus del producto</option>
+                                            <option value="1">Activo</option>
+                                            <option value="2">Inhabilitado</option>
+                                    </select>
+                                    
+
+                                    <div class="button-box">
+                                        <button type="submit" class="default-btn" onclick="return confirm('¿Está seguro de Crear este registro?')">Crear producto</button>
+                                    </div>
+                                </form>
+                                <div class="button-box">
+                                    <button type="submit" class="default-btn" onclick="window.location.href='viewCRMLista.php'">Regresar al Menu</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -191,7 +184,7 @@
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-    
+
     <script src="js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
@@ -200,6 +193,18 @@
 
         $(document).ready(function() {
             $('#myTable2').DataTable();
+        });
+    </script>
+    <script src="./js/tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: '#descripcion_producto', // Identificador del elemento HTML donde se mostrará el editor
+            language: 'es_MX', // Idioma del editor
+            branding: false,
+            toolbar: 'undo redo | styles forecolor | bold italic | alignleft aligncenter alignright alignjustify | outdent ident',
+            statusbar:false,
+            promotion: false,
+            //plugins : 'image',
         });
     </script>
 </body>

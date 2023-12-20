@@ -1,15 +1,15 @@
 <?php
-    session_start();
-    require_once './functions/ProspectoLista.php';
-    // Cerrar la conexión
-    $conn->close();
-    //validacion doble comprueba por url
-    // Verificar si el usuario ha iniciado sesión
-    if (!isset($_SESSION["usuario"])) {
-        // Redireccionar al usuario a la página de inicio de sesión
-        header("Location: ./index.php");
-        exit();
-    }
+session_start();
+require_once './functions/CRMListaProductos.php';
+// Cerrar la conexión
+$conn->close();
+//validacion doble comprueba por url
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["usuario"])) {
+    // Redireccionar al usuario a la página de inicio de sesión
+    header("Location: ./index.php");
+    exit();
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -37,6 +37,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>
+
 
     <link rel="stylesheet" href="css/dataTables.min.css">
     </link>
@@ -74,10 +75,10 @@
                         <div class="logo">
                             <a href="panelEmpresa.php">
                                 <?php
-                                    echo $_SESSION["imgEmpresa"];
+                                echo $_SESSION["imgEmpresa"];
                                 ?>
                                 <!--b>
-                                    <?php //echo $_SESSION["usuario"];?>
+                                    <?php //echo $_SESSION["usuario"]; ?>
                                 </b-->
                             </a>
                         </div>
@@ -122,37 +123,57 @@
                 <div class="col-md-12 col-md-offset-3 text-center">
                     <div class="login">
                         <div style="overflow: auto; width:95%;">
-                            <h4>Listado de Prospecto</h4>
-                            <a class="default-btn" href="./viewProspectoCrear.php">Crear nuevo</a>
-                            <table class="table table-responsive" id="myTable">
+                            <h4>Listado de productos</h4>
+                            <table class="table table-responsive" id="myTable2">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Telefono</th>
-                                        <th>Correo</th>
-                                        <th>Puntos Lealtad</th>
-                                        <th>Fecha de registro</th>
+                                        <th>id_producto</th>
+                                        <th>nombre_producto</th>
+                                        <th>descripcion_producto</th>
+                                        <th>sku_producto</th>
+                                        <th>img_producto</th>
+                                        <th>precio_compra</th>
+                                        <th>precio_venta</th>
+                                        <th>id_perfil_cliente</th>
+                                        <th>estatus_producto</th>
+                                        <th>fecha_registro</th>
                                         <th>&nbsp;</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php while ($row = $result->fetch_assoc()) : ?>
+                                    <?php while ($row = $ListaProductos->fetch_assoc()) : ?>
                                         <tr>
-                                            <td><?php echo $row['idProspecto']; ?></td>
-                                            <td><?php echo $row['nombre']; ?></td>
-                                            <td><?php echo $row['telefono']; ?></td>
-                                            <td><?php echo $row['correo']; ?></td>
-                                            <td><?php echo $row['puntosRecompensa']; ?></td>
-                                            <td><?php echo $row['fechaCreacion']; ?></td>
-
+                                            <td><?php echo $row['id_producto']; ?></td>
+                                            <!-- <td><?php //echo $row['decripcionBlog']; 
+                                                        ?></td> -->
+                                            <td><?php echo $row['nombre_producto']; ?></td>
+                                            <td><?php echo $row['descripcion_producto']; ?></td>
+                                            <td><?php echo $row['sku_producto']; ?></td>
+                                            <td><?php echo '<img width="30%" src="data:image/jpeg;base64,' . $row['img_producto'] . '" alt="Imagen en base64">'; ?></td>
+                                            <td><?php echo $row['precio_compra']; ?></td>
+                                            <td><?php echo $row['precio_venta']; ?></td>
+                                            <td><?php echo $row['id_perfil_cliente']; ?></td>
+                                            <td><?php echo $row['estatus_producto']; ?></td>
+                                            <td><?php echo $row['fecha_registro']; ?></td>
                                             <td>
-                                                <a class="btn btn-primary btn-sm" href="viewProspectoModificar.php?idProspecto=<?php echo $row['idProspecto']; ?>">Modificar Cliente</a>
+                                                <a class="btn btn-primary btn-sm" href="viewCRMModificarProducto.php?id_producto=<?php echo $row['id_producto']; ?>">Modificar</a>
                                                 <br>
-                                                <a class="btn btn-warning btn-sm" href="viewProspectoPuntosLealtad.php?idProspecto=<?php echo $row['idProspecto']; ?>">Puntos Lealtad</a>
-                                                <br>
-                                                <a class="btn btn-danger btn-sm" href="./functions/ProspectoEliminar.php?idProspecto=<?php echo $row['idProspecto']; ?>" onclick="return confirm('¿Está seguro de eliminar este registro?')">Quitar </a>
+                                                <a
+                                                    <?php 
+                                                    if($row['estatus_producto']== 1){ 
+                                                        echo 'class="btn btn-success btn-sm"';}else if ($row['estatus_producto']== 0){echo 'class="btn btn-warning btn-sm"';} 
+                                                    ?>
+                                                    
+                                                    style="color: white;">Estado: 
+                                                    <?php 
+                                                        if($row['estatus_producto']== 0){ 
+                                                        echo 'Oculto';}else {echo 'Activo';} 
+                                                    ?>
+                                                </a>
+
                                                 <!--Llamar a funcion cambiar estado(sqlCambiar estado dentro de  la tabla tb_Prospecto va buscar el registro seleccionado y va a modificar propiedad estadoSistema='Falso') -->
+
+                                                
                                             </td>
                                         </tr>
                                     <?php endwhile; ?>
@@ -191,7 +212,7 @@
     <script src="js/jquery.nicescroll.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
-    
+
     <script src="js/jquery.dataTables.min.js"></script>
     <script>
         $(document).ready(function() {
