@@ -1,6 +1,6 @@
 <?php
     session_start();
-    //require_once './functions/PanelEmpresaKPI.php';
+    require_once './functions/CRMVentaProductos.php';
     // Cerrar la conexión
     //$conn->close();
     //validacion doble comprueba por url
@@ -115,24 +115,72 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-md-offset-3 text-center">
-                    <div class="login">
-                        <div style="overflow: auto; width:95%;">
-                            <h4>CRM Negocio</h4>
-                            <ul>
-                                <li>
-                                    <a href="./viewCRMCrearProducto.php">Crear Productos</a>
-                                </li>
-                                <li>
-                                    <a href="./viewCRMProductosLista.php">Lista de productos</a>
-                                </li><br>
-                                
-                                <li>
-                                    <a href="./viewCRMVentaProductos.php">Venta de productos</a>
-                                </li>
-                                <!--<li>
-                                    <a href="#">Lista de venta</a>
-                                </li> -->
-                            </ul>
+                <div class="login">
+                        <div class="login-form-container">
+                            <div class="login-text">
+                                <h2>Registro de Venta</h2>
+                                <span>Por favor de llenar todos los campos requeridos.</span>
+                            </div>
+                            <div class="login-form">
+                                <!-- <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+
+                                    <input type="text" name="nombre" id="nombre" placeholder="Nombre del prospecto" pattern="{1,30}" title="El valor debe contener solo letras y números, y tener menos de 30 caracteres" required>
+
+                                    <input type="text" name="apellidoPaterno" id="apellidoPaterno" placeholder="Apellido Parteno del prospecto" pattern="{1,30}" title="El valor debe contener solo letras y números, y tener menos de 30 caracteres" required>
+
+                                    <input type="text" name="apellidoMaterno" id="apellidoMaterno" placeholder="Apellido Materno del prospecto" pattern="{1,30}" title="El valor debe contener solo letras y números, y tener menos de 30 caracteres">
+
+                                    <input type="text" name="telefono" id="telefono" placeholder="Telefono del prospecto" pattern="[0-9]{1,12}" title="El valor debe contener solo números, y tener menos de 30 caracteres" required>
+
+                                    <input type="text" name="correo" id="correo" placeholder="Correo Electrónico del prospecto" pattern="{1,50}" title="El valor debe contener solo letras y números, y tener menos de 50 caracteres" required>
+                                    
+                                    <textarea name="conversacion" id="conversacion" cols="145" rows="10" class="miTextarea" placeholder="Comentarios sobre el seguimiento del prospecto"></textarea>
+
+                                    <select name="origenProspecto" class="form-select">
+                                            <option selected>Seleccione el origel del prospecto</option>
+                                            <option>Red Social</option>
+                                            <option>Formulario WEB</option>
+                                            <option>Usuario Presente</option>
+                                    </select>
+                                    
+
+                                    <div class="button-box">
+                                        <button type="submit" class="default-btn" onclick="return confirm('¿Está seguro de Crear este registro?')">Registrar Venta</button>
+                                    </div>
+                                </form> -->
+
+                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
+                                    <label>Cliente:</label>
+                                    <input type="text" name="cliente_id"><br><br>
+                                    <label>Estado ticket:</label>
+                                    <input type="text" name="estado_ticket"><br><br>
+                                    <label>Metodo de pago:</label>
+                                    <input type="text" name="metodo_pago"><br><br>
+                                    <label>Descuento en cas de aplicar:</label>
+                                    <input type="text" name="descuentos" value="0"><br><br>
+                                    <label>Impusto en caso de aplicar:</label>
+                                    <input type="text" name="impuestos" value="0"><br><br>
+
+                                    <div id="productos">
+                                    <!-- Aquí se agregarán dinámicamente los campos de producto -->
+                                    <label>Producto:</label>
+                                    <input type="text" name="productos[]">
+                                    <label>Cantidad:</label>
+                                    <input type="number" name="cantidades[]" value="1">
+                                    <br><br>
+                                    </div>
+
+                                    <input type="button" class="default-btn" value="Agregar Producto" onclick="agregarProducto()">
+
+                                    <!-- <input type="submit" value="Registrar Venta"> -->
+                                    <div class="button-box">
+                                        <button type="submit" class="default-btn" onclick="return confirm('¿Está seguro de Crear este registro?')">Registrar Venta</button>
+                                    </div>
+                                </form>
+                                <div class="button-box">
+                                    <button type="submit" class="default-btn" onclick="window.location.href='viewCRMLista.php'">Regresar al Menu</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -177,6 +225,23 @@
             $('#myTable2').DataTable();
         });
     </script>
+    <script>
+    // Función para agregar campos de producto dinámicamente
+    function agregarProducto() {
+      const divProductos = document.getElementById("productos");
+      const nuevoProducto = document.createElement("div");
+
+      nuevoProducto.innerHTML = `
+        <label>Producto:</label>
+        <input type="text" name="productos[]">
+        <label>Cantidad:</label>
+        <input type="number" name="cantidades[]">
+        <br><br>
+      `;
+
+      divProductos.appendChild(nuevoProducto);
+    }
+  </script>
 </body>
 
 </html>
