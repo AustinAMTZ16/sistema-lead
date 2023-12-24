@@ -129,9 +129,9 @@
                                 <li>
                                     <a href="./viewCRMVentaProductos.php">Venta de productos</a>
                                 </li>
-                                <!--<li>
-                                    <a href="#">Lista de venta</a>
-                                </li> -->
+                                <li>
+                                    <a href="viewCRMListaTickets.php">Lista de venta</a>
+                                </li>
                             </ul>
                         </div>
                     </div>

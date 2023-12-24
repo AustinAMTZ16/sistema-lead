@@ -1,15 +1,15 @@
 <?php
-    session_start();
-    require_once './functions/CRMVentaProductos.php';
-    // Cerrar la conexión
-    //$conn->close();
-    //validacion doble comprueba por url
-    // Verificar si el usuario ha iniciado sesión
-    if (!isset($_SESSION["usuario"])) {
-        // Redireccionar al usuario a la página de inicio de sesión
-        header("Location: ./index.php");
-        exit();
-    }
+session_start();
+require_once './functions/CRMListatickes.php';
+// Cerrar la conexión
+$conn->close();
+//validacion doble comprueba por url
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["usuario"])) {
+    // Redireccionar al usuario a la página de inicio de sesión
+    header("Location: ./index.php");
+    exit();
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -38,11 +38,17 @@
     <link rel="stylesheet" href="css/responsive.css">
     <script src="js/vendor/modernizr-3.11.2.min.js"></script>
 
+
     <link rel="stylesheet" href="css/dataTables.min.css">
     </link>
 </head>
 
 <body>
+    <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <!-- Header Area Start -->
     <header class="top">
         <div class="header-top">
             <div class="container">
@@ -69,10 +75,10 @@
                         <div class="logo">
                             <a href="panelEmpresa.php">
                                 <?php
-                                    echo $_SESSION["imgEmpresa"];
+                                echo $_SESSION["imgEmpresa"];
                                 ?>
                                 <!--b>
-                                    <?php //echo $_SESSION["usuario"];?>
+                                    <?php //echo $_SESSION["usuario"]; ?>
                                 </b-->
                             </a>
                         </div>
@@ -115,46 +121,60 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-md-offset-3 text-center">
-                <div class="login">
-                        <div class="login-form-container">
-                            <div class="login-text">
-                                <h2>Registro de Venta</h2>
-                                <span>Por favor de llenar todos los campos requeridos.</span>
-                            </div>
-                            <div class="login-form">
-                                <!-- <input type="text" name="apellidoPaterno" id="apellidoPaterno" placeholder="Apellido Parteno del prospecto" pattern="{1,30}" title="El valor debe contener solo letras y números, y tener menos de 30 caracteres" required> -->
-                                <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
-                                    <label>Cliente:</label>
-                                    <input type="text" name="cliente_id"><br><br>
-                                    <label>Estado ticket:</label>
-                                    <input type="text" name="estado_ticket"><br><br>
-                                    <label>Metodo de pago:</label>
-                                    <input type="text" name="metodo_pago"><br><br>
-                                    <label>Descuento en cas de aplicar:</label>
-                                    <input type="text" name="descuentos" value="0"><br><br>
-                                    <label>Impusto en caso de aplicar:</label>
-                                    <input type="text" name="impuestos" value="0"><br><br>
+                    <div class="login">
+                        <div style="overflow: auto; width:95%;">
+                            <h4>Listado de productos</h4>
+                            <table class="table table-responsive" id="myTable2">
+                                <thead>
+                                    <tr>
+                                        <th>ticket.id_ticket</th> 
+                                        <th>ticket.fecha_venta</th>
+                                        <th>ticket.total_ticket</th>
+                                        <th>ticket.estado_ticket</th>
+                                        <th>ticket.metodo_pago</th>
+                                        <th>lead.nombre AS nombre_prospecto</th>
+                                        <th>lead.telefono AS telefono_prospecto</th>
+                                        <th>lead.correo AS correo_prospecto</th>
+                                        <th>producto.nombre_producto</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php while ($row = $ListaProductos->fetch_assoc()) : ?>
+                                        <tr>
+                                            <td><?php echo $row['id_ticket']; ?></td>
+                                            <td><?php echo $row['fecha_venta']; ?></td>
+                                            <td><?php echo $row['total_ticket']; ?></td>
+                                            <td><?php echo $row['estado_ticket']; ?></td>
+                                            <td><?php echo $row['metodo_pago']; ?></td>
+                                            <td><?php echo $row['nombre_prospecto']; ?></td>
+                                            <td><?php echo $row['telefono_prospecto']; ?></td>
+                                            <td><?php echo $row['correo_prospecto']; ?></td>
+                                            <td><?php echo $row['nombre_producto']; ?></td>
+                                            <td>
+                                                <a class="btn btn-primary btn-sm" href="viewCRMModificarProducto.php?id_producto=<?php echo $row['id_producto']; ?>">Modificar</a>
+                                                <br>
+                                                <!-- <a
+                                                    <?php 
+                                                    if($row['estatus_producto']== 1){ 
+                                                        echo 'class="btn btn-success btn-sm"';}else if ($row['estatus_producto']== 0){echo 'class="btn btn-warning btn-sm"';} 
+                                                    ?>
+                                                    
+                                                    style="color: white;">Estado: 
+                                                    <?php 
+                                                        if($row['estatus_producto']== 0){ 
+                                                        echo 'Oculto';}else {echo 'Activo';} 
+                                                    ?>
+                                                </a> -->
 
-                                    <div id="productos">
-                                    <!-- Aquí se agregarán dinámicamente los campos de producto -->
-                                    <label>Producto:</label>
-                                    <input type="text" name="productos[]">
-                                    <label>Cantidad:</label>
-                                    <input type="number" name="cantidades[]" value="1">
-                                    <br><br>
-                                    </div>
+                                                <!--Llamar a funcion cambiar estado(sqlCambiar estado dentro de  la tabla tb_Prospecto va buscar el registro seleccionado y va a modificar propiedad estadoSistema='Falso') -->
 
-                                    <input type="button" class="default-btn" value="Agregar Producto" onclick="agregarProducto()">
-
-                                    <!-- <input type="submit" value="Registrar Venta"> -->
-                                    <div class="button-box">
-                                        <button type="submit" class="default-btn" onclick="return confirm('¿Está seguro de Crear este registro?')">Registrar Venta</button>
-                                    </div>
-                                </form>
-                                <div class="button-box">
-                                    <button type="submit" class="default-btn" onclick="window.location.href='viewCRMLista.php'">Regresar al Menu</button>
-                                </div>
-                            </div>
+                                                
+                                            </td>
+                                        </tr>
+                                    <?php endwhile; ?>
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -199,23 +219,6 @@
             $('#myTable2').DataTable();
         });
     </script>
-    <script>
-    // Función para agregar campos de producto dinámicamente
-    function agregarProducto() {
-      const divProductos = document.getElementById("productos");
-      const nuevoProducto = document.createElement("div");
-
-      nuevoProducto.innerHTML = `
-        <label>Producto:</label>
-        <input type="text" name="productos[]">
-        <label>Cantidad:</label>
-        <input type="number" name="cantidades[]">
-        <br><br>
-      `;
-
-      divProductos.appendChild(nuevoProducto);
-    }
-  </script>
 </body>
 
 </html>

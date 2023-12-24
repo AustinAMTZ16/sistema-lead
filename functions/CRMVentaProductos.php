@@ -65,7 +65,7 @@
                         $subtotal_descuento = ($subtotal / 100)*$descuento;
                         $total = $subtotal - $subtotal_descuento;
                     }else{
-                        $total = $subtotal_descuento;
+                        $total = $subtotal;
                     }
 
                     if($impuesto>0 && $descuento > 0){
@@ -111,4 +111,6 @@
         // Cerrar la conexión a la base de datos
         $conn->close();
     }
+
+    
 ?>
