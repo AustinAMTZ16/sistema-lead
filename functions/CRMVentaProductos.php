@@ -1,4 +1,6 @@
 <?php
+    // Conectar a la base de datos (modifica con tus propios datos)
+    require_once './connection/conexion.php';
     // Verificar si se han enviado datos del formulario
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $usuario = $_SESSION["usuario"];
@@ -23,8 +25,12 @@
 
         $subtotal_descuento = 0;
         $total_total= 0;
-        // Conectar a la base de datos (modifica con tus propios datos)
-        require_once './connection/conexion.php';
+        
+        // echo    'Cliente: ' . $cliente . 
+        //         '<br>Estado: ' . $estado_ticket .
+        //         '<br>Metodo: ' . $estado_ticket .
+        //         '<br>Productos: ' . $productos[1] .
+        //         '<br>Cantidad: ' . $cantidades[1] . '<br>';
 
         // Iniciar una transacción para asegurar la integridad de los datos
         $conn->autocommit(false);
@@ -46,7 +52,7 @@
                 $cantidad = $cantidades[$i];
 
                 // Consultar la base de datos para obtener el ID del producto
-                $sql_producto = "SELECT id_producto, precio_venta FROM tb_crm_productos WHERE nombre_producto = '$nombre_producto'";
+                $sql_producto = "SELECT id_producto, precio_venta FROM tb_crm_productos WHERE id_producto = '$nombre_producto'";
                 $result = $conn->query($sql_producto);
                 //echo $sql_producto.'<br>';
 
@@ -112,5 +118,16 @@
         $conn->close();
     }
 
-    
+    // Consulta para obtener los productos
+    //$sqlCatalogoProductos = "SELECT id_producto, nombre_producto FROM tb_crm_productos";
+    $isUser = $_SESSION["isUser"];
+    $sqlCatalogoProductos = "SELECT id_producto, nombre_producto, precio_venta FROM tb_crm_productos WHERE id_perfil_cliente = $isUser";
+    $result = $conn->query($sqlCatalogoProductos);
+    $productos = array();
+
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $productos[] = $row;
+        }
+    }
 ?>

@@ -1,15 +1,15 @@
 <?php
-    session_start();
-    require_once './functions/CRMVentaProductos.php';
-    // Cerrar la conexión
-    //$conn->close();
-    //validacion doble comprueba por url
-    // Verificar si el usuario ha iniciado sesión
-    if (!isset($_SESSION["usuario"])) {
-        // Redireccionar al usuario a la página de inicio de sesión
-        header("Location: ./index.php");
-        exit();
-    }
+session_start();
+require_once './functions/CRMVentaProductos.php';
+// Cerrar la conexión
+//$conn->close();
+//validacion doble comprueba por url
+// Verificar si el usuario ha iniciado sesión
+if (!isset($_SESSION["usuario"])) {
+    // Redireccionar al usuario a la página de inicio de sesión
+    header("Location: ./index.php");
+    exit();
+}
 ?>
 <!doctype html>
 <html class="no-js" lang="en">
@@ -69,10 +69,11 @@
                         <div class="logo">
                             <a href="panelEmpresa.php">
                                 <?php
-                                    echo $_SESSION["imgEmpresa"];
+                                echo $_SESSION["imgEmpresa"];
                                 ?>
                                 <!--b>
-                                    <?php //echo $_SESSION["usuario"];?>
+                                    <?php //echo $_SESSION["usuario"];
+                                    ?>
                                 </b-->
                             </a>
                         </div>
@@ -115,7 +116,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 col-md-offset-3 text-center">
-                <div class="login">
+                    <div class="login">
                         <div class="login-form-container">
                             <div class="login-text">
                                 <h2>Registro de Venta</h2>
@@ -125,28 +126,86 @@
                                 <!-- <input type="text" name="apellidoPaterno" id="apellidoPaterno" placeholder="Apellido Parteno del prospecto" pattern="{1,30}" title="El valor debe contener solo letras y números, y tener menos de 30 caracteres" required> -->
                                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                     <label>Cliente:</label>
-                                    <input type="text" name="cliente_id"><br><br>
+                                    <?php
+                                    // Obtener el usuario del registro a editar
+                                    $usuario = $_SESSION["usuario"];
+                                    $sqlCatalogoClientes = "SELECT idProspecto, nombre, apellidoPaterno, telefono, correo FROM tb_prospecto WHERE dominioOrigen = '$usuario'";
+                                    $result = $conn->query($sqlCatalogoClientes);
+                                    // Comprobar si hay resultados
+                                    if ($result->num_rows > 0) {
+                                        echo '<select name="cliente_id" class="form-select">'; // Comienza el elemento select
+                                        echo '<option value="">Seleccione un cliente</option>'; // Opción por defecto
+
+                                        // Iterar sobre los resultados y crear las opciones del select
+                                        while ($row = $result->fetch_assoc()) {
+                                            echo '<option value="' . $row['idProspecto'] . '">';
+                                            echo $row['nombre'] . ' ' . $row['apellidoPaterno'] . ' - ' . $row['telefono'] . ' - ' . $row['correo'];
+                                            echo '</option>';
+                                        }
+
+                                        echo '</select>'; // Cierra el elemento select
+                                    } else {
+                                        echo 'No se encontraron clientes.';
+                                    }
+                                    ?>
                                     <label>Estado ticket:</label>
-                                    <input type="text" name="estado_ticket"><br><br>
+                                    <select name="estado_ticket" class="form-select">
+                                        <option selected>Seleccione un estado del ticket</option>
+                                        <option value="1">1. Pendiente</option>
+                                        <option value="2">2. Pagado</option>
+                                        <option value="2">2. Cancelado</option>
+                                    </select>
                                     <label>Metodo de pago:</label>
-                                    <input type="text" name="metodo_pago"><br><br>
-                                    <label>Descuento en cas de aplicar:</label>
-                                    <input type="text" name="descuentos" value="0"><br><br>
+                                    <select name="metodo_pago" class="form-select">
+                                        <option selected>Seleccione un metodo de pago</option>
+                                        <option value="1">1. Efectivo</option>
+                                        <option value="2">2. TDB</option>
+                                        <option value="2">2. TDC</option>
+                                    </select>
+
+                                    <label>Descuento en caso de aplicar:</label>
+                                    <input type="text" name="descuentos" value="0" placeholder="0%">
                                     <label>Impusto en caso de aplicar:</label>
-                                    <input type="text" name="impuestos" value="0"><br><br>
-
+                                    <input type="text" name="impuestos" value="0" placeholder="0%">
+                                    <br><br><br><br>
                                     <div id="productos">
-                                    <!-- Aquí se agregarán dinámicamente los campos de producto -->
-                                    <label>Producto:</label>
-                                    <input type="text" name="productos[]">
-                                    <label>Cantidad:</label>
-                                    <input type="number" name="cantidades[]" value="1">
-                                    <br><br>
+                                        <!-- Aquí se agregarán dinámicamente los campos de producto -->
+                                        <!-- <label>Producto:</label>
+                                        <input type="text" name="productos[]"> -->
+
+                                        <?php
+                                        // Obtener el usuario del registro a editar
+                                        $isUser = $_SESSION["isUser"];
+                                        $sqlCatalogoProductos = "SELECT id_producto, nombre_producto, precio_venta FROM tb_crm_productos WHERE id_perfil_cliente = $isUser";
+                                        $result = $conn->query($sqlCatalogoProductos);
+                                        //$usuario = $result->fetch_assoc();
+                                        // Comprobar si hay resultados
+                                        if ($result->num_rows > 0) {
+                                            echo '<select name="productos[]" class="form-select">'; // Comienza el elemento select
+                                            echo '<option value="">Seleccione un producto</option>'; // Opción por defecto
+
+                                            // Iterar sobre los resultados y crear las opciones del select
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo '<option value="' . $row['id_producto'] . '">';
+                                                echo $row['id_producto'] . ' - ' . $row['nombre_producto'] . ' $' . $row['precio_venta'];
+                                                echo '</option>';
+                                            }
+
+                                            echo '</select>'; // Cierra el elemento select
+                                        } else {
+                                            echo 'No se encontraron productoss.';
+                                        }
+                                        ?>
+
+                                        <label>Cantidad:</label>
+                                        <input type="number" name="cantidades[]" value="1">
+                                        <br><br>
                                     </div>
-
                                     <input type="button" class="default-btn" value="Agregar Producto" onclick="agregarProducto()">
-
                                     <!-- <input type="submit" value="Registrar Venta"> -->
+
+
+
                                     <div class="button-box">
                                         <button type="submit" class="default-btn" onclick="return confirm('¿Está seguro de Crear este registro?')">Registrar Venta</button>
                                     </div>
@@ -200,22 +259,78 @@
         });
     </script>
     <script>
-    // Función para agregar campos de producto dinámicamente
-    function agregarProducto() {
-      const divProductos = document.getElementById("productos");
-      const nuevoProducto = document.createElement("div");
+        //Función para agregar campos de producto dinámicamente
+        function agregarProducto() {
+            const divProductos = document.getElementById("productos");
+            const nuevoProducto = document.createElement("div");
 
-      nuevoProducto.innerHTML = `
-        <label>Producto:</label>
-        <input type="text" name="productos[]">
-        <label>Cantidad:</label>
-        <input type="number" name="cantidades[]">
-        <br><br>
-      `;
+            nuevoProducto.innerHTML = `
+            <?php
+                                        // Obtener el usuario del registro a editar
+                                        $isUser = $_SESSION["isUser"];
+                                        $sqlCatalogoProductos = "SELECT id_producto, nombre_producto, precio_venta FROM tb_crm_productos WHERE id_perfil_cliente = $isUser";
+                                        $result = $conn->query($sqlCatalogoProductos);
+                                        //$usuario = $result->fetch_assoc();
+                                        // Comprobar si hay resultados
+                                        if ($result->num_rows > 0) {
+                                            echo '<select name="productos[]" class="form-select">'; // Comienza el elemento select
+                                            echo '<option value="">Seleccione un producto</option>'; // Opción por defecto
 
-      divProductos.appendChild(nuevoProducto);
-    }
-  </script>
+                                            // Iterar sobre los resultados y crear las opciones del select
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo '<option value="' . $row['id_producto'] . '">';
+                                                echo $row['id_producto'] . ' - ' . $row['nombre_producto'] . ' $' . $row['precio_venta'];
+                                                echo '</option>';
+                                            }
+
+                                            echo '</select>'; // Cierra el elemento select
+                                        } else {
+                                            echo 'No se encontraron productoss.';
+                                        }
+                                        ?>
+            <label>Cantidad:</label>
+            <input type="number" name="cantidades[]" value="1">
+            <br><br>
+        `;
+
+            divProductos.appendChild(nuevoProducto);
+        }
+    </script>
+
+    <script>
+        // function agregarProducto() {
+        //     const divProductos = document.getElementById("productos");
+
+        //     // Realizar solicitud AJAX para obtener los productos
+        //     const xhr = new XMLHttpRequest();
+        //     xhr.open('GET', 'obtener_productos.php', true);
+
+        //     xhr.onload = function() {
+        //         if (xhr.status === 200) {
+        //             const productos = JSON.parse(xhr.responseText);
+
+        //             // Agregar los productos al formulario dinámicamente
+        //             productos.forEach(producto => {
+        //                 const nuevoProducto = document.createElement("div");
+        //                 nuevoProducto.innerHTML = `
+        //                     <label>Producto:</label>
+        //                     <input type="text" name="productos[]" value="${producto.nombre_producto}">
+        //                     <label>Cantidad:</label>
+        //                     <input type="number" name="cantidades[]" value="1">
+        //                     <br><br>
+        //                 `;
+        //                 divProductos.appendChild(nuevoProducto);
+        //             });
+        //         } else {
+        //             // Manejar errores si la solicitud no es exitosa
+        //             console.error('Error al obtener productos');
+        //         }
+        //     };
+
+        //     xhr.send();
+        // }
+    </script>
+
 </body>
 
 </html>
