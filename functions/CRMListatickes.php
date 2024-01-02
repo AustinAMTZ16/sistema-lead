@@ -14,20 +14,20 @@
             $fila = $result->fetch_assoc();
             $idPerfilWeb = $fila['idEmpresaUser']; //(Se obtine idPerfilNegocio)
             //echo 'Sesion Usuario: ' . $idEmpresaUser . " Formulario Page Web: ". $idPageWeb . "SQL PerfilWeb" . $idPerfilWeb;
-            $sqlListaProductos = "  SELECT DISTINCT ticket.id_ticket, 
-                                                    ticket.fecha_venta, 
-                                                    ticket.total_ticket, 
-                                                    ticket.estado_ticket,
-                                                    ticket.metodo_pago,
-                                                    lead.nombre AS nombre_prospecto,
-                                                    lead.telefono AS telefono_prospecto,
-                                                    lead.correo AS correo_prospecto,
-                                                    producto.nombre_producto 
-                                    FROM tb_crm_tickets AS ticket 
-                                    INNER JOIN tb_crm_detalles_ticket AS detalle ON ticket.id_ticket = detalle.ticket_id 
-                                    INNER JOIN tb_prospecto AS lead ON ticket.cliente_id = lead.idProspecto 
-                                    INNER JOIN tb_crm_productos AS producto ON detalle.producto_id = producto.id_producto 
-                                    WHERE perfil_negocio_id = '$idPerfilWeb';";
+            $sqlListaProductos = "SELECT DISTINCT t.id_ticket, 
+                                        t.fecha_venta, 
+                                        t.total_ticket, 
+                                        t.estado_ticket,
+                                        t.metodo_pago,
+                                        p.nombre AS nombre_prospecto,
+                                        p.telefono AS telefono_prospecto,
+                                        p.correo AS correo_prospecto,
+                                        pr.nombre_producto 
+                                FROM tb_crm_tickets t
+                                INNER JOIN tb_crm_detalles_ticket d ON t.id_ticket = d.ticket_id 
+                                INNER JOIN tb_prospecto p ON t.cliente_id = p.idProspecto 
+                                INNER JOIN tb_crm_productos pr ON d.producto_id = pr.id_producto 
+                                WHERE t.perfil_negocio_id = '$idPerfilWeb';";
 
             $ListaProductos = $conn->query($sqlListaProductos);
     }

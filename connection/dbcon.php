@@ -1,8 +1,12 @@
 <?php
-    $servername = "45.89.204.4";
-    $username = "u115254492_rootdck";
-    $password = "N4v[uGo7?";
-    $dbname = "u115254492_apidck";
+    // $servername = "45.89.204.4";
+    // $username = "u115254492_rootdck";
+    // $password = "N4v[uGo7?";
+    // $dbname = "u115254492_apidck";
+    $servername = "localhost";
+    $username = "engranetmx";
+    $password = "huaweiP20";
+    $dbname = "sistemaMexiClientes";
 
     // Crear conexión
     $conn = mysqli_connect($servername, $username, $password, $dbname);
