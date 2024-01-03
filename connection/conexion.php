@@ -3,7 +3,7 @@
     // $username = "u115254492_rootdck";
     // $password = "N4v[uGo7?";
     // $dbname = "u115254492_apidck";
-    $servername = "localhost";
+    $servername = "24.144.89.231";
     $username = "engranetmx";
     $password = "huaweiP20";
     $dbname = "sistemaMexiClientes";
